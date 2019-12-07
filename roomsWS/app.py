@@ -4,10 +4,14 @@ from flask import abort
 from flask import make_response
 from flask import request
 from flask import url_for
-
+from flask import json
+from flask import Response
+from flask_cors import CORS
+from buildings import Building
 from flask_httpauth import HTTPBasicAuth
 
 app = Flask(__name__)
+CORS(app)
 
 tasks = [
     {
@@ -99,6 +103,31 @@ def get_task(task_id):
 @auth.login_required
 def get_tasks():
     return jsonify({'tasks': [make_public_task(task) for task in tasks]})
+
+@app.route("/getJsonFromFile/<filename>", methods=['GET'])
+def get_json_response(filename):
+    labels_dict = {}
+    response_dict = {}
+    try:
+        with open(filename, 'r') as labels:
+            labels_dict = json.load(labels)
+
+        #response_dict[STATUS] = "true"
+        response_dict["labels_mapping"] = labels_dict
+        js_dump = json.dumps(response_dict)
+        resp = Response(js_dump,status=200,\
+                        mimetype='application/json')
+    except FileNotFoundError as err:
+        response_dict = {'error': 'file not found in server'}
+        js_dump = json.dumps(response_dict)
+        resp = Response(js_dump,status=500,\
+                        mimetype='application/json')
+    except RuntimeError as err:
+        response_dict = {'error': 'error occured on server side. Please try again'}
+        js_dump = json.dumps(response_dict)
+        resp = Response(js_dump, status=500,\
+                        mimetype='application/json')
+    return resp
 
 
 if __name__ == '__main__':
