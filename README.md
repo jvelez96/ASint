@@ -10,3 +10,4 @@ pip install flask
 pip install flask-migrate
 pip install flask-sqlalchemy
 pip install flask-httpauth
+pip install flask-wtf
