@@ -3,6 +3,7 @@ from flask import Flask, jsonify
 from flask import abort
 from flask import make_response
 from flask import request
+import requests
 from flask import url_for
 from flask import json
 from flask import Response
@@ -48,6 +49,11 @@ def make_public_task(task):
         else:
             new_task[field] = task[field]
     return new_task
+
+
+@app.route('/roomsWS/campus', methods=['GET'])
+def get_all_campus():
+    return requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/spaces').content
 
 @app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['PUT'])
 def update_task(task_id):
