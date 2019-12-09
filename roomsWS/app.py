@@ -55,6 +55,10 @@ def make_public_task(task):
 def get_all_campus():
     return requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/spaces').content
 
+@app.route('/roomsWS/campus/<campus_id>', methods=['GET'])
+def get_buildings_for_campus(campus_id):
+    return requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/spaces/'+campus_id).content
+
 @app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['PUT'])
 def update_task(task_id):
     task = [task for task in tasks if task['id'] == task_id]

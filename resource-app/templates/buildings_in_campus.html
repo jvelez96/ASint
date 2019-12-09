@@ -1,0 +1,18 @@
+{% extends "template.html" %}
+{% block content %}
+
+<h1> Test RoomsWS</h1>
+<div>
+    <h1>Buildings in {{ buildings.name }}</h1>
+    <ul class="menu">
+        {% for build in buildings.containedSpaces %}
+            <li><a href="{{ url_for('floors_in_building', building_id = build.id) }}">
+                {{ build.name }}
+            </a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+
+{% endblock %}

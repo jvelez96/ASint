@@ -31,10 +31,31 @@ def home():
 
 @app.route("/rooms")
 def rooms():
-    campus = requests.get('http://127.0.0.1:5000/roomsWS/campus').content
+    resp = requests.get('http://127.0.0.1:5000/roomsWS/campus').content
+    campus = json.loads(resp)
     #campus = requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/spaces').content
     print(campus)
     return render_template("rooms.html", campus=campus)
+
+@app.route("/rooms/buildings/<campus_id>")
+def buildings_in_campus(campus_id):
+    resp = requests.get('http://127.0.0.1:5000/roomsWS/campus/' + campus_id).content
+    buildings = json.loads(resp)
+    #Ainda falta tratar esta string json para apenas mostrar os edificios
+    print(buildings)
+    return render_template("buildings_in_campus.html", buildings=buildings)
+
+@app.route("/rooms/floors/<building_id>")
+def floors_in_building(building_id):
+    resp = requests.get('http://127.0.0.1:5000/roomsWS/campus/' + building_id).content
+    building = json.loads(resp)
+    return render_template("floors_in_building.html", building=building)
+
+@app.route("/rooms/<floor_id>")
+def rooms_in_floor(floor_id):
+    resp = requests.get('http://127.0.0.1:5000/roomsWS/campus/' + floor_id).content
+    floor = json.loads(resp)
+    return render_template("rooms_in_floor.html", floor=floor)
 
 
 if __name__== "__main__":

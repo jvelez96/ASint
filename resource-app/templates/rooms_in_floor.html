@@ -1,0 +1,18 @@
+{% extends "template.html" %}
+{% block content %}
+
+<h1> Test RoomsWS</h1>
+<div>
+    <h1>Rooms in floor {{ floor.name }}</h1>
+    <ul class="menu">
+        {% for room in floor.containedSpaces %}
+            <li>
+                {{ room.name }}
+           </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+
+{% endblock %}

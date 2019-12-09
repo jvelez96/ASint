@@ -4,7 +4,11 @@
 <h1> Test RoomsWS</h1>
 <div>
     <ul class="menu">
-        <li>{{ campus }}</li>
+        {% for camp in campus %}
+            <li><a href=" {{ url_for('buildings_in_campus', campus_id = camp.id) }}">
+                {{ camp.name }}
+            </a></li>
+        {% endfor %}
     </ul>
 </div>
 
