@@ -21,10 +21,12 @@ pip install flask-httpauth
 pip install flask-wtf
 
 cd resource-app
+
 pip install -r requirements.txt
 
 
 Para correr a aplicação:
+
 python3 app.py
 
 
