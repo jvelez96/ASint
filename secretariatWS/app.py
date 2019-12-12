@@ -9,25 +9,26 @@ from flask import json
 from flask import Response
 from flask_cors import CORS
 
+from config import Config
+
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+
 from flask_httpauth import HTTPBasicAuth
 
 app = Flask(__name__)
+app.config.from_object(Config)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 CORS(app)
 
-tasks = [
-    {
-        'id': 1,
-        'title': u'Buy groceries',
-        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol',
-        'done': False
-    },
-    {
-        'id': 2,
-        'title': u'Learn Python',
-        'description': u'Need to find a good Python tutorial on the web',
-        'done': False
-    }
-]
+from models import Secretariat
+
+
+@app.shell_context_processor
+def make_shell_context():
+    return {'db': db, 'Secretariat' : Secretariat}
+
 
 auth = HTTPBasicAuth()
 
@@ -51,13 +52,19 @@ def make_public_task(task):
     return new_task
 
 
-@app.route('/roomsWS/campus', methods=['GET'])
-def get_all_campus():
-    return requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/spaces').content
+# Giving problems with special characters
+@app.route('/secretariatWS/secretariats/<id>', methods=['GET'])
+def get_secretariat(id):
+    return jsonify(Secretariat.query.get_or_404(id).to_dict())
 
-@app.route('/roomsWS/campus/<campus_id>', methods=['GET'])
-def get_buildings_for_campus(campus_id):
-    return requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/spaces/'+campus_id).content
+
+@app.route('/secretariatWS/secretariats', methods=['GET'])
+def get_all_secretariats():
+    page = request.args.get('page', 1, type=int)
+    per_page = min(request.args.get('per_page', 10, type=int), 100)
+    data = Secretariat.to_collection_dict(Secretariat.query, page, per_page, 'secretariatWS.get_all_secretariats')
+    return jsonify(data)
+
 
 @app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['PUT'])
 def update_task(task_id):
@@ -114,31 +121,10 @@ def get_task(task_id):
 def get_tasks():
     return jsonify({'tasks': [make_public_task(task) for task in tasks]})
 
-@app.route("/getJsonFromFile/<filename>", methods=['GET'])
-def get_json_response(filename):
-    labels_dict = {}
-    response_dict = {}
-    try:
-        with open(filename, 'r') as labels:
-            labels_dict = json.load(labels)
-
-        #response_dict[STATUS] = "true"
-        response_dict["labels_mapping"] = labels_dict
-        js_dump = json.dumps(response_dict)
-        resp = Response(js_dump,status=200,\
-                        mimetype='application/json')
-    except FileNotFoundError as err:
-        response_dict = {'error': 'file not found in server'}
-        js_dump = json.dumps(response_dict)
-        resp = Response(js_dump,status=500,\
-                        mimetype='application/json')
-    except RuntimeError as err:
-        response_dict = {'error': 'error occured on server side. Please try again'}
-        js_dump = json.dumps(response_dict)
-        resp = Response(js_dump, status=500,\
-                        mimetype='application/json')
-    return resp
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(
+        host='0.0.0.0',
+        port=5003,
+        debug=True)
