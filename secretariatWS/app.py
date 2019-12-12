@@ -22,7 +22,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 CORS(app)
 
-from models import Secretariat
+from models import *
 
 
 @app.shell_context_processor
