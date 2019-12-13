@@ -11,6 +11,8 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
+from flask import url_for
+
 
 
 app = Flask(__name__)
@@ -94,9 +96,29 @@ def new_secretariat():
         #not working for some reason
 
         r = requests.post(url=api_url, json=myjson)
+        resp= r.json()
+        response = json.loads(r.content)
+        print(resp)
+        print(resp["id"])
+        print("segundo id")
+        print(response)
+
         #Enviar para a pagina da secretaria inserida lendo a response
+
+        #tratar o caso de receber uma resposta de erro
+        #if resp["error"]:
+            #return render_template("new_secretariat.html", form=form)
+
+        #fazer o redirect para a pagina da nova secretaria atraves do resp["id"] que nao esta a funcionar pelo tipo dessa variavel
+        #return redirect(url_for(secretariats))
         return redirect('/secretariats')
     return render_template("new_secretariat.html", form=form)
+
+@app.route("/secretariats/delete/<id>")
+def delete_secretariat(id):
+    api_url = 'http://0.0.0.0:5003/secretariatWS/secretariats/' + id
+    x = requests.delete(api_url)
+    return redirect("/secretariats")
 
 if __name__== "__main__":
     app.run(host='0.0.0.0',

@@ -62,6 +62,7 @@ def get_secretariat(id):
 
 @app.route('/secretariatWS/secretariats', methods=['GET'])
 def get_all_secretariats():
+    #adicionar a receçao do nmr da pagina a enviar
     page = request.args.get('page', 1, type=int)
     per_page = min(request.args.get('per_page', 10, type=int), 100)
     data = Secretariat.to_collection_dict(Secretariat.query, page, per_page, 'get_all_secretariats')
@@ -86,6 +87,7 @@ def create_secretariat():
     response = jsonify(secr.to_dict())
     response.status_code = 201
     response.headers['Location'] = url_for('get_secretariat', id=secr.id)
+    #print(response)
     return response
 
 @app.route('/secretariatWS/secretariats/<id>', methods=['PUT'])
