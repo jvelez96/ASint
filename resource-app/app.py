@@ -4,6 +4,8 @@ from flask import Response
 from flask import redirect
 from flask_cors import CORS
 
+from flask_bootstrap import Bootstrap
+
 import requests
 
 from config import Config
@@ -20,6 +22,7 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 CORS(app)
+bootstrap = Bootstrap(app)
 
 from models import *
 from forms import *

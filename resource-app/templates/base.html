@@ -1,0 +1,45 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} {% else %}Welcome to FenixResourceApp{% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <!-- Brand -->
+      <a class="navbar-brand" href="{{ url_for('home') }}">FenixResourceApp</a>
+
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('rooms') }}">Rooms</a>
+        </li>
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Secretariats
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ url_for('new_secretariat') }}">Register Secretariat</a>
+            <a class="dropdown-item" href="{{ url_for('secretariats') }}">Secretariat Management</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {# application content needs to be provided in the app_content block #}
+        {% block app_content %}{% endblock %}
+    </div>
+{% endblock %}
