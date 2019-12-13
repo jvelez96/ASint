@@ -70,9 +70,11 @@ def get_all_secretariats():
 @app.route('/secretariatWS', methods=['POST'])
 def create_secretariat():
     data = request.get_json() or {}
+    print(data)
     #verificar o tratamento de se a descriçao nao for precisa
     if 'name' not in data or 'location' not in data or 'description' not in data or 'opening_hours' not in data:
         return bad_request('Must include all fields')
+
     if Secretariat.query.filter_by(name=data['name']).first():
         return bad_request('This secretariat already exists.')
 

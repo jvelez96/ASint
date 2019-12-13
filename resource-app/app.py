@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from flask import json
 from flask import Response
+from flask import redirect
 from flask_cors import CORS
 
 import requests
@@ -75,7 +76,7 @@ def secretariat_info(secr_id):
     print(secr)
     return render_template("secretariat_info.html", secr=secr)
 
-@app.route("/secretariats/new")
+@app.route("/secretariats/new", methods=['GET','POST'])
 def new_secretariat():
     form = NewSecretariatForm()
     if form.validate_on_submit():
@@ -87,12 +88,13 @@ def new_secretariat():
             'description': form.description.data,
             'opening_hours': form.opening_hours.data
         }
-        data = json.dumps(myjson)
-        print(data)
-
+        #data = json.dumps(myjson)
+        #print(data)
+        print(myjson)
         #not working for some reason
 
-        r = requests.post(url=api_url, json=data)
+        r = requests.post(url=api_url, json=myjson)
+        #Enviar para a pagina da secretaria inserida lendo a response
         return redirect('/secretariats')
     return render_template("new_secretariat.html", form=form)
 
