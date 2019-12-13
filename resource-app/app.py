@@ -78,6 +78,22 @@ def secretariat_info(secr_id):
 @app.route("/secretariats/new")
 def new_secretariat():
     form = NewSecretariatForm()
+    if form.validate_on_submit():
+        api_url = 'http://0.0.0.0:5003/secretariatWS'
+        #create json to send in post
+        myjson = {
+            'name': form.name.data,
+            'location': form.location.data,
+            'description': form.description.data,
+            'opening_hours': form.opening_hours.data
+        }
+        data = json.dumps(myjson)
+        print(data)
+
+        #not working for some reason
+
+        r = requests.post(url=api_url, json=data)
+        return redirect('/secretariats')
     return render_template("new_secretariat.html", form=form)
 
 if __name__== "__main__":
