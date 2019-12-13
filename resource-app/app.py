@@ -3,6 +3,7 @@ from flask import json
 from flask import Response
 from flask import redirect
 from flask_cors import CORS
+from flask import flash
 
 from flask_bootstrap import Bootstrap
 
@@ -121,6 +122,7 @@ def new_secretariat():
 def delete_secretariat(id):
     api_url = 'http://0.0.0.0:5003/secretariatWS/secretariats/' + id
     x = requests.delete(api_url)
+    flash("Secretariat registered")
     return redirect("/secretariats")
 
 if __name__== "__main__":
