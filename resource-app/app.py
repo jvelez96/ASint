@@ -19,6 +19,7 @@ migrate = Migrate(app, db)
 CORS(app)
 
 from models import *
+from forms import *
 
 
 @app.shell_context_processor
@@ -29,6 +30,7 @@ def make_shell_context():
 def home():
     return render_template("index.html")
 
+############################### Rooms WS integration ###############################################
 @app.route("/rooms")
 def rooms():
     resp = requests.get('http://127.0.0.1:5000/roomsWS/campus').content
@@ -57,6 +59,26 @@ def rooms_in_floor(floor_id):
     floor = json.loads(resp)
     return render_template("rooms_in_floor.html", floor=floor)
 
+############################### Secretariats WS integration ###############################################
+@app.route("/secretariats")
+def secretariats():
+    resp = requests.get('http://0.0.0.0:5003/secretariatWS/secretariats').content
+    dict_secrs = json.loads(resp)
+    secrs = dict_secrs["items"]
+    return render_template("secretariats.html", secrs=secrs)
+
+@app.route("/secretariats/<secr_id>")
+def secretariat_info(secr_id):
+    resp = requests.get('http://0.0.0.0:5003/secretariatWS/secretariats/' + secr_id).content
+    secr = json.loads(resp)
+    print("shit")
+    print(secr)
+    return render_template("secretariat_info.html", secr=secr)
+
+@app.route("/secretariats/new")
+def new_secretariat():
+    form = NewSecretariatForm()
+    return render_template("new_secretariat.html", form=form)
 
 if __name__== "__main__":
     app.run(host='0.0.0.0',
