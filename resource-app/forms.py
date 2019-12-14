@@ -10,4 +10,3 @@ class NewSecretariatForm(FlaskForm):
     opening_hours = StringField('Opening Hours', validators=[DataRequired()])
     submit = SubmitField('Register')
 
-
