@@ -28,6 +28,10 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 CORS(app)
 bootstrap = Bootstrap(app)
+roomsWS_url = 'http://127.0.0.1:5000'
+canteenWS_url = 'http://0.0.0.0:5002'
+secretariatWS_url = 'http://0.0.0.0:5003'
+
 
 from models import *
 from forms import *
@@ -44,7 +48,7 @@ def home():
 ############################### Rooms WS integration ###############################################
 @app.route("/rooms")
 def rooms():
-    resp = requests.get('http://127.0.0.1:5000/roomsWS/campus').content
+    resp = requests.get(roomsWS_url + '/roomsWS/campus').content
     campus = json.loads(resp)
     #campus = requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/spaces').content
     print(campus)
@@ -52,7 +56,7 @@ def rooms():
 
 @app.route("/rooms/buildings/<campus_id>")
 def buildings_in_campus(campus_id):
-    resp = requests.get('http://127.0.0.1:5000/roomsWS/campus/' + campus_id).content
+    resp = requests.get(roomsWS_url + '/roomsWS/campus/' + campus_id).content
     buildings = json.loads(resp)
     #Ainda falta tratar esta string json para apenas mostrar os edificios
     print(buildings)
@@ -60,27 +64,27 @@ def buildings_in_campus(campus_id):
 
 @app.route("/rooms/floors/<building_id>")
 def floors_in_building(building_id):
-    resp = requests.get('http://127.0.0.1:5000/roomsWS/campus/' + building_id).content
+    resp = requests.get(roomsWS_url + '/roomsWS/campus/' + building_id).content
     building = json.loads(resp)
     return render_template("floors_in_building.html", building=building)
 
 @app.route("/rooms/<floor_id>")
 def rooms_in_floor(floor_id):
-    resp = requests.get('http://127.0.0.1:5000/roomsWS/campus/' + floor_id).content
+    resp = requests.get(roomsWS_url + '/roomsWS/campus/' + floor_id).content
     floor = json.loads(resp)
     return render_template("rooms_in_floor.html", floor=floor)
 
 ############################### Secretariats WS integration ###############################################
 @app.route("/secretariats")
 def secretariats():
-    resp = requests.get('http://0.0.0.0:5003/secretariatWS/secretariats').content
+    resp = requests.get(secretariatWS_url + '/secretariatWS/secretariats').content
     dict_secrs = json.loads(resp)
     secrs = dict_secrs["items"]
     return render_template("secretariats.html", secrs=secrs)
 
 @app.route("/secretariats/<secr_id>")
 def secretariat_info(secr_id):
-    resp = requests.get('http://0.0.0.0:5003/secretariatWS/secretariats/' + secr_id).content
+    resp = requests.get(secretariatWS_url + '/secretariatWS/secretariats/' + secr_id).content
     secr = json.loads(resp)
     print("shit")
     print(secr)
@@ -90,7 +94,7 @@ def secretariat_info(secr_id):
 def new_secretariat():
     form = NewSecretariatForm()
     if form.validate_on_submit():
-        api_url = 'http://0.0.0.0:5003/secretariatWS'
+        api_url = secretariatWS_url + '/secretariatWS'
         #create json to send in post
         myjson = {
             'name': form.name.data,
@@ -131,7 +135,7 @@ def new_secretariat():
 
 @app.route("/secretariats/delete/<id>")
 def delete_secretariat(id):
-    api_url = 'http://0.0.0.0:5003/secretariatWS/secretariats/' + id
+    api_url = secretariatWS_url + '/secretariatWS/secretariats/' + id
     x = requests.delete(api_url)
     flash("Secretariat deleted!")
     return redirect("/secretariats")
@@ -140,7 +144,7 @@ def delete_secretariat(id):
 @app.route("/secretariats/edit/<id>", methods=['GET', 'POST'])
 def edit_secretariat(id):
     form = NewSecretariatForm()
-    api_url = 'http://0.0.0.0:5003/secretariatWS/secretariats/' + id
+    api_url = secretariatWS_url + '/secretariatWS/secretariats/' + id
     print("url")
     print(api_url)
 
