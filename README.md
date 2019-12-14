@@ -1,17 +1,16 @@
 # ASint
 
-To Dos:
-1- Web Application with Flask
+To Dos:<br/>
+1- Web Application with Flask<br/>
 2- Rooms Web Service
 
-installs:
-
-virtualenv flask
-pip install flask
-pip install flask-migrate
-pip install flask-sqlalchemy
-pip install flask-httpauth
-pip install flask-wtf
+installs:<br/>
+virtualenv flask<br/>
+pip install flask<br/>
+pip install flask-migrate<br/>
+pip install flask-sqlalchemy<br/>
+pip install flask-httpauth<br/>
+pip install flask-wtf<br/>
 
 Google Docs com o relatório:
 https://docs.google.com/document/d/1xfKFOosCpsnncgoj6PvZY9dCy7BVxgD0Z0u8m-gYso8/edit?usp=sharing
