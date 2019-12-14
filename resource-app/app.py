@@ -5,6 +5,7 @@ from flask import Response
 from flask import redirect
 from flask_cors import CORS
 from flask import flash
+from flask import jsonify
 
 from flask_bootstrap import Bootstrap
 
@@ -103,19 +104,29 @@ def new_secretariat():
         #not working for some reason
 
         r = requests.post(url=api_url, json=myjson)
-        resp= r.json()
+        if r.status_code == 201:
+            resp= r.json()
 
 
-        #Enviar para a pagina da secretaria inserida lendo a response
+            #Enviar para a pagina da secretaria inserida lendo a response
 
-        #tratar o caso de receber uma resposta de erro
-        #if resp["error"]:
-            #return render_template("new_secretariat.html", form=form)
+            #tratar o caso de receber uma resposta de erro
+            #if resp["error"]:
+                #return render_template("new_secretariat.html", form=form)
 
-        #fazer o redirect para a pagina da nova secretaria atraves do resp["id"] que nao esta a funcionar pelo tipo dessa variavel
-        #return redirect(url_for(secretariats))
-        url= '/secretariats/' + str(resp["id"])
-        return redirect(url)
+            #fazer o redirect para a pagina da nova secretaria atraves do resp["id"] que nao esta a funcionar pelo tipo dessa variavel
+            #return redirect(url_for(secretariats))
+            print(resp["id"])
+            url= '/secretariats/' + str(resp["id"])
+            print(url)
+            return redirect(url)
+        elif r.status_code == 400:
+            flash("Error: Secretary already exists, or fields not filled!")
+            return redirect(url_for('new_secretariat'))
+        else:
+            flash("Error!")
+            return redirect(url_for('new_secretariat'))
+
     return render_template("new_secretariat.html", form=form)
 
 @app.route("/secretariats/delete/<id>")
@@ -130,6 +141,8 @@ def delete_secretariat(id):
 def edit_secretariat(id):
     form = NewSecretariatForm()
     api_url = 'http://0.0.0.0:5003/secretariatWS/secretariats/' + id
+    print("url")
+    print(api_url)
 
     if request.method == 'GET':
 
@@ -152,25 +165,31 @@ def edit_secretariat(id):
         if form.validate_on_submit():
             #create json to send in post
             myjson = {
-                'name': form.name.data,
-                'location': form.location.data,
-                'description': form.description.data,
-                'opening_hours': form.opening_hours.data
+                'name':form.name.data,
+                'location':form.location.data,
+                'description':form.description.data,
+                'opening_hours':form.opening_hours.data
             }
-
+            print("json a enviar")
+            print(myjson)
 
             #r = requests.put(url=api_url, data=json.dumps(myjson))
-            r = requests.put(url=api_url, data=myjson)
+            r = requests.put(api_url, json=myjson)
+            print("status code")
+            print(r)
+            print(r.status_code)
 
             if r.status_code != 200:
                 print(r.text)
-
-            resp= r.json()
-            print(resp)
-            #url = '/secretariats/' + str(resp["id"])
-            url = '/secretariats/' + str(resp["id"])
-            print(url)
-            return redirect(url)
+                flash("Bad Request!")
+                return redirect(url_for('secretariats'))
+            else:
+                resp= r.json()
+                #print(resp)
+                #url = '/secretariats/' + str(resp["id"])
+                url = '/secretariats/' + str(resp["id"])
+                #print(url)
+                return redirect(url)
 
     return render_template("edit_secretariat.html", form=form, secr=secr)
 

@@ -94,6 +94,10 @@ def create_secretariat():
 def update_secretariat(id):
     secr = Secretariat.query.get_or_404(id)
     data = request.get_json() or {}
+
+    #data = request.get_json() or {}
+    print("changing db")
+    print(data)
     secr.from_dict(data, new_secretariat=False)
     db.session.commit()
     return jsonify(secr.to_dict())
