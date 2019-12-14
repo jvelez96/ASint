@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask import request
 from flask import json
 from flask import Response
 from flask import redirect
@@ -13,6 +14,8 @@ from config import Config
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+
+from werkzeug.datastructures import MultiDict
 
 from flask import url_for
 
@@ -101,11 +104,7 @@ def new_secretariat():
 
         r = requests.post(url=api_url, json=myjson)
         resp= r.json()
-        response = json.loads(r.content)
-        print(resp)
-        print(resp["id"])
-        print("segundo id")
-        print(response)
+
 
         #Enviar para a pagina da secretaria inserida lendo a response
 
@@ -115,15 +114,65 @@ def new_secretariat():
 
         #fazer o redirect para a pagina da nova secretaria atraves do resp["id"] que nao esta a funcionar pelo tipo dessa variavel
         #return redirect(url_for(secretariats))
-        return redirect('/secretariats')
+        url= '/secretariats/' + str(resp["id"])
+        return redirect(url)
     return render_template("new_secretariat.html", form=form)
 
 @app.route("/secretariats/delete/<id>")
 def delete_secretariat(id):
     api_url = 'http://0.0.0.0:5003/secretariatWS/secretariats/' + id
     x = requests.delete(api_url)
-    flash("Secretariat registered")
+    flash("Secretariat deleted!")
     return redirect("/secretariats")
+
+#Edit secretariat with PUT method
+@app.route("/secretariats/edit/<id>", methods=['GET', 'POST'])
+def edit_secretariat(id):
+    form = NewSecretariatForm()
+    api_url = 'http://0.0.0.0:5003/secretariatWS/secretariats/' + id
+
+    if request.method == 'GET':
+
+        r = requests.get(api_url).content
+        secr = json.loads(r)
+
+        #Verify if we got a response
+        #if secr:
+
+        name = secr["name"]
+        location= secr["location"]
+        description= secr["description"]
+        opening_hours=secr["opening_hours"]
+
+        #flash("That secretariat does not exist!")
+
+        form = NewSecretariatForm(MultiDict([('name', name),('location', location),('description', description),('opening_hours', opening_hours)]))
+
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            #create json to send in post
+            myjson = {
+                'name': form.name.data,
+                'location': form.location.data,
+                'description': form.description.data,
+                'opening_hours': form.opening_hours.data
+            }
+
+
+            #r = requests.put(url=api_url, data=json.dumps(myjson))
+            r = requests.put(url=api_url, data=myjson)
+
+            if r.status_code != 200:
+                print(r.text)
+
+            resp= r.json()
+            print(resp)
+            #url = '/secretariats/' + str(resp["id"])
+            url = '/secretariats/' + str(resp["id"])
+            print(url)
+            return redirect(url)
+
+    return render_template("edit_secretariat.html", form=form, secr=secr)
 
 if __name__== "__main__":
     app.run(host='0.0.0.0',
