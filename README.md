@@ -35,8 +35,8 @@ TO DOS:
 Zé Cordeiro:
 
 - Melhorar o Micro Serviço dos rooms e disponibilizar mais interaçoes com o backend (Zé Cordeiro)
--- Verificar se o tipo de resposta do roomWS e BUILDING, FLOOR ou ROOM e mostrar o template de acordo
--- Dar a opção de voltar ao edificio/floor/campus atras quando se esta na pagina a seguir: 
+- Verificar se o tipo de resposta do roomWS e BUILDING, FLOOR ou ROOM e mostrar o template de acordo
+- Dar a opção de voltar ao edificio/floor/campus atras quando se esta na pagina a seguir: 
 EX: Quando se está no room X dar a opção na pagina de voltar para o floor ou building ou campus onde esse room pertence
 
 - Implementar os perfis disponiveis de acordo com o tipo de utilizador e dar autorizacao as paginas de acordo com esse perfil (LER ENUNCIADO)
@@ -51,7 +51,8 @@ Rui Silva:
 - Implementar a autorização nos web services atraves de username e password definidos no documento .env apenas se estiverem autenticados no fenix
 
 - Melhoria dos frontends - Bootstrap, responsive html, etc... (Rui Silva)
--- Verificar quais necessitam de melhorias
+
+- Verificar quais necessitam de melhorias
 
 Velez:
  
