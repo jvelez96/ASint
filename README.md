@@ -1,9 +1,5 @@
 # ASint
 
-To Dos:<br/>
-1- Web Application with Flask<br/>
-2- Rooms Web Service
-
 installs:<br/>
 virtualenv flask<br/>
 pip install flask<br/>
