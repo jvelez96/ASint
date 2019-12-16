@@ -16,6 +16,9 @@ https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxiii-applicat
 
 https://github.com/miguelgrinberg/microblog/tree/master/app
 
+Conectar a BD postgres da CloudSQL a aplicacao 
+https://cloud.google.com/appengine/docs/flexible/python/using-cloud-sql-postgres
+
 Funcionalidades já feitas:
 
 - roomWS com integração com o fenix
