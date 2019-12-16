@@ -1,4 +1,4 @@
-Flask==1.0.2
+Flask==1.1.1
 urllib3==1.23
 flask-cors==3.0.7
 fenixedu==1.0.0
@@ -8,4 +8,5 @@ gunicorn==19.9.0
 redis==3.0.1
 python-binary-memcached==0.28.0
 PyMySQL==0.9.2
-SQLAlchemy==1.2.14
+Flask-SQLAlchemy==2.4.1
+psycopg2==2.8.3
