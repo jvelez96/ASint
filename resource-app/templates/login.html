@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Montalvileiro</title>
+    <style type="text/css">
+    </style>
+    <!--
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    -->
+    <script src="static/jquery.js"></script>
+    <script src="static/jquery-ui.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+    <header>
+      <div class="container">
+        <h1 class="logo">Welcome to Montalvileiro</h1>
+      </div>
+    </header>
+    <div class="container">
+        <center>
+        <h3>Please Login into your Fenix account</h3>
+        <form action="{{ url_for('my_redirect') }}" method="POST">
+  		    <div class="container">
+                <center>
+    		        <button type="submit">Login</button>
+                </center>
+            </div>
+	    </form>
+        </center>
+    </div>
+</body>
+</html>

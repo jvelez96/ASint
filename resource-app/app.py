@@ -6,12 +6,19 @@ from flask import redirect
 from flask_cors import CORS
 from flask import flash
 from flask import jsonify
+from flask import session
+
+from requests_oauthlib import OAuth2Session
+import urllib3
 
 from flask_bootstrap import Bootstrap
 
 import requests
 
 from config import Config
+
+import fenixedu
+import bmemcached
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -20,10 +27,15 @@ from werkzeug.datastructures import MultiDict
 
 from flask import url_for
 
+config = fenixedu.FenixEduConfiguration.fromConfigFile('fenixedu.ini')
+client = fenixedu.FenixEduClient(config)
 
+base_url = 'https://fenix.tecnico.ulisboa.pt/'
 
 app = Flask(__name__)
 app.config.from_object(Config)
+app.config['SESSION_COOKIE_SECURE'] = True
+app.config['REMEMBER_COOKIE_SECURE'] = True
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 CORS(app)
@@ -33,15 +45,60 @@ canteenWS_url = 'http://0.0.0.0:5002'
 secretariatWS_url = 'http://0.0.0.0:5003'
 
 
+redis_client = bmemcached.Client('memcached-18466.c3.eu-west-1-1.ec2.cloud.redislabs.com:18466', 'mc-KBY4m', 'otaT9lPXY9e3ppBnemshXeyIIvhBlAGL')
+
+app.secret_key = 'tlxm7/1dt7a2UhkkE7BsOfEVi9EZMcnLETzzfUaDslyuNSH6MXeakcjFl7pnsvWiaDAGilRTbUwHywZ10f3loA=='
+client_id='570015174623357'
+
+
 from models import *
 from forms import *
+
+def checkToken(token, username):
+    if redis_client.get(username)==token:
+        return True
+    else:
+        return False
 
 
 @app.shell_context_processor
 def make_shell_context():
     return {'db': db, 'User': User, 'Post': Post}
 
-@app.route("/")
+@app.route('/')
+def login():
+    return render_template('login.html')
+
+@app.route('/redirect', methods=["POST"])
+def my_redirect():
+    authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=0.0.0.0:8080/callback'
+    return redirect(authorization_url)
+
+@app.route('/callback', methods=["GET"])
+def callback():
+    tokencode = request.args.get('code')
+
+    fenixuser = client.get_user_by_code(tokencode)
+    person = client.get_person(fenixuser)
+
+    username=person['username']
+
+    token = fenixuser.access_token
+    session['access_token']=token
+    session['username']=username
+
+    #escreve username-token na memcache REDIS, expirando depois de 10 minutos
+    redis_client.set(username, token, 600)
+
+    if(not checkToken(session['access_token'], session['username'])):
+        authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://0.0.0.0:8080/callback'
+        return redirect(authorization_url)
+
+    resp = make_response(redirect(url_for('home')))
+    resp.set_cookie('username', username, secure=True)  #accessible in javascript
+    return resp
+
+@app.route("/home")
 def home():
     return render_template("index.html")
 
