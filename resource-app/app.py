@@ -71,8 +71,10 @@ def login():
 
 @app.route('/redirect', methods=["POST"])
 def my_redirect():
-    authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=0.0.0.0:8080/callback'
+    #url = client.get_authentication_url()
+    authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://0.0.0.0:8080/callback'
     return redirect(authorization_url)
+    #return redirect(url)
 
 @app.route('/callback', methods=["GET"])
 def callback():
