@@ -1,4 +1,4 @@
-from app import db
+from main import db
 from datetime import datetime
 from flask import url_for
 

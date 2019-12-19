@@ -12,6 +12,9 @@ resources:
 manual_scaling:
   instances: 1
 
+env_variables:
+  IS_APPENGINE: 'true'
+
 handlers:
   # This configures Google App Engine to serve the files in the app's static
   # directory.

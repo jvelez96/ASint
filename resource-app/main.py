@@ -8,6 +8,8 @@ from flask import flash
 from flask import jsonify
 from flask import session
 
+import os
+
 from flask_wtf.csrf import CSRFProtect
 
 from requests_oauthlib import OAuth2Session
@@ -45,9 +47,15 @@ CORS(app)
 #csrf = CSRFProtect(app)
 #csrf.init_app(app)
 bootstrap = Bootstrap(app)
-roomsWS_url = 'http://127.0.0.1:5000'
-canteenWS_url = 'http://0.0.0.0:5002'
-secretariatWS_url = 'http://0.0.0.0:5003'
+
+if os.getenv('GAE_INSTANCE')
+    roomsWS_url = 'http://127.0.0.1:5000'
+    canteenWS_url = 'http://0.0.0.0:5002'
+    secretariatWS_url = 'https://secretariat-dot-asint2-262123.appspot.com'
+else:
+    roomsWS_url = 'http://127.0.0.1:5000'
+    canteenWS_url = 'http://127.0.0.2:5002'
+    secretariatWS_url = 'http://127.0.0.1:5003'
 
 
 redis_client = bmemcached.Client('redis-13711.c93.us-east-1-3.ec2.cloud.redislabs.com:13711', 'josemc.95@hotmail.com', '1995Jose!')

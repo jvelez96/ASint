@@ -1,6 +1,7 @@
 runtime: python
 env: flex
-entrypoint: gunicorn -b :$PORT main:app
+entrypoint: gunicorn main:app
+service: secretariat
 
 resources:
   memory_gb: 4
@@ -10,8 +11,6 @@ manual_scaling:
   instances: 1
 
 env_variables:
-    # Replace user, password, database, and instance connection name with the values obtained
-    # when configuring your Cloud SQL instance.
     SQLALCHEMY_DATABASE_URI: >-
       postgresql+psycopg2://postgres:asint2019@/secretariats?host=/cloudsql/asint2-262123:europe-west2:asint-secretariat
 
