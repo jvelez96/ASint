@@ -36,12 +36,14 @@ base_url = 'https://fenix.tecnico.ulisboa.pt/'
 
 app = Flask(__name__)
 app.config.from_object(Config)
-app.config['SESSION_COOKIE_SECURE'] = True
+#app.config['SESSION_COOKIE_SECURE'] = True ESTA MERDA TA A DAR PROBLEMAS
+app.config['SESSION_COOKIE_SECURE'] = False
 app.config['REMEMBER_COOKIE_SECURE'] = True
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 CORS(app)
-csrf = CSRFProtect(app)
+#csrf = CSRFProtect(app)
+#csrf.init_app(app)
 bootstrap = Bootstrap(app)
 roomsWS_url = 'http://127.0.0.1:5000'
 canteenWS_url = 'http://0.0.0.0:5002'
@@ -174,7 +176,7 @@ def new_secretariat():
             #not working for some reason
 
             r = requests.post(url=api_url, json=myjson)
-            flash(r)
+
             if r.status_code == 201:
                 resp= r.json()
 
@@ -277,9 +279,11 @@ def edit_secretariat(id):
                 #print(url)
                 return redirect(url)
 
-    return render_template("edit_secretariat.html", form=form, secr=secr)
+    return render_template("edit_secretariat.html", form=form, secr=secr, error=form.errors)
 
 if __name__== "__main__":
-    app.run(host='127.0.0.1',
-            port=8080,
-            debug=True)
+    app.run(debug=True)
+
+
+#host='127.0.0.1',
+            #port=8080,
