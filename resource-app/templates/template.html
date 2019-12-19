@@ -54,7 +54,7 @@
     </nav>
 
     {% block m_content %}
-    <div class="container">
+    <div class="container-fluid">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
@@ -69,5 +69,8 @@
 {% endblock %}
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+ {% block scripts %}
+ {% endblock %}
  </body>
 </html>

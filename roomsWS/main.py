@@ -126,4 +126,5 @@ def get_json_response(filename):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,
+            port=5001)

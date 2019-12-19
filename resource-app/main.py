@@ -7,6 +7,7 @@ from flask_cors import CORS
 from flask import flash
 from flask import jsonify
 from flask import session
+from flask import make_response
 
 import os
 
@@ -53,7 +54,7 @@ if os.getenv('GAE_INSTANCE'):
     canteenWS_url = 'https://canteen-dot-asint2-262123.appspot.com'
     secretariatWS_url = 'https://secretariat-dot-asint2-262123.appspot.com'
 else:
-    roomsWS_url = 'http://127.0.0.1:5000'
+    roomsWS_url = 'http://127.0.0.1:5001'
     canteenWS_url = 'http://127.0.0.1:5002'
     secretariatWS_url = 'http://127.0.0.1:5003'
 
@@ -111,8 +112,8 @@ def callback():
 
     resp = make_response(redirect(url_for('home')))
     resp.set_cookie('username', username, secure=True)  #accessible in javascript
-    #return resp
-    return redirect(url_for('home'))
+    return resp
+
 
 @app.route("/home")
 def home():

@@ -1,7 +1,13 @@
 {% extends "template.html" %}
 {% block content %}
 
-<h1> Test RoomsWS</h1>
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ url_for('rooms') }}">Campus</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('buildings_in_campus', campus_id= floor.topLevelSpace.id ) }}">{{ floor.topLevelSpace.name }}</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('floors_in_building', building_id= floor.parentSpace.id ) }}">{{ floor.parentSpace.name }}</a></li>
+    <li class="breadcrumb-item active">{{ floor.name }}</li>
+</ul>
+
 <div>
     <h1>Rooms in floor {{ floor.name }}</h1>
     <ul class="menu">

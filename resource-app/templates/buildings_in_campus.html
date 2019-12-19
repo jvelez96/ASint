@@ -1,7 +1,11 @@
 {% extends "template.html" %}
 {% block content %}
 
-<h1> Test RoomsWS</h1>
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ url_for('rooms') }}">Campus</a></li>
+    <li class="breadcrumb-item active">{{ buildings.name }}</li>
+</ul>
+
 <div>
     <h1>Buildings in {{ buildings.name }}</h1>
     <ul class="menu">
