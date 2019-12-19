@@ -98,7 +98,8 @@ def callback():
 
     resp = make_response(redirect(url_for('home')))
     resp.set_cookie('username', username, secure=True)  #accessible in javascript
-    return resp
+    #return resp
+    return redirect(url_for('home'))
 
 @app.route("/home")
 def home():
@@ -152,43 +153,47 @@ def secretariat_info(secr_id):
 @app.route("/secretariats/new", methods=['GET','POST'])
 def new_secretariat():
     form = NewSecretariatForm()
-    if form.validate_on_submit():
-        api_url = secretariatWS_url + '/secretariatWS'
-        #create json to send in post
-        myjson = {
-            'name': form.name.data,
-            'location': form.location.data,
-            'description': form.description.data,
-            'opening_hours': form.opening_hours.data
-        }
-        #data = json.dumps(myjson)
-        #print(data)
-        print(myjson)
-        #not working for some reason
-
-        r = requests.post(url=api_url, json=myjson)
-        if r.status_code == 201:
-            resp= r.json()
 
 
-            #Enviar para a pagina da secretaria inserida lendo a response
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            api_url = secretariatWS_url + '/secretariatWS'
+            #create json to send in post
+            myjson = {
+                'name': form.name.data,
+                'location': form.location.data,
+                'description': form.description.data,
+                'opening_hours': form.opening_hours.data
+            }
+            #data = json.dumps(myjson)
+            #print(data)
+            print(myjson)
+            #not working for some reason
 
-            #tratar o caso de receber uma resposta de erro
-            #if resp["error"]:
-                #return render_template("new_secretariat.html", form=form)
+            r = requests.post(url=api_url, json=myjson)
+            flash(r)
+            if r.status_code == 201:
+                resp= r.json()
 
-            #fazer o redirect para a pagina da nova secretaria atraves do resp["id"] que nao esta a funcionar pelo tipo dessa variavel
-            #return redirect(url_for(secretariats))
-            print(resp["id"])
-            url= '/secretariats/' + str(resp["id"])
-            print(url)
-            return redirect(url)
-        elif r.status_code == 400:
-            flash("Error: Secretary already exists, or fields not filled!")
-            return redirect(url_for('new_secretariat'))
-        else:
-            flash("Error!")
-            return redirect(url_for('new_secretariat'))
+
+                #Enviar para a pagina da secretaria inserida lendo a response
+
+                #tratar o caso de receber uma resposta de erro
+                #if resp["error"]:
+                    #return render_template("new_secretariat.html", form=form)
+
+                #fazer o redirect para a pagina da nova secretaria atraves do resp["id"] que nao esta a funcionar pelo tipo dessa variavel
+                #return redirect(url_for(secretariats))
+                print(resp["id"])
+                url= '/secretariats/' + str(resp["id"])
+                print(url)
+                return redirect(url)
+            elif r.status_code == 400:
+                flash("Error: Secretary already exists, or fields not filled!")
+                return redirect(url_for('new_secretariat'))
+            else:
+                flash("Error!")
+                return redirect(url_for('new_secretariat'))
 
     return render_template("new_secretariat.html", form=form)
 
