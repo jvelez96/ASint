@@ -209,10 +209,10 @@ def delete_secretariat(id):
 def edit_secretariat(id):
     form = NewSecretariatForm()
     api_url = secretariatWS_url + '/secretariatWS/secretariats/' + id
-    print("url")
-    print(api_url)
+    secr=[]
 
     if request.method == 'GET':
+        flash("get")
 
         r = requests.get(api_url).content
         secr = json.loads(r)
@@ -228,9 +228,13 @@ def edit_secretariat(id):
         #flash("That secretariat does not exist!")
 
         form = NewSecretariatForm(MultiDict([('name', name),('location', location),('description', description),('opening_hours', opening_hours)]))
+    else:
+        flash("not get")
 
     if request.method == 'POST':
+        flash("POST")
         if form.validate_on_submit():
+            flash("post")
             #create json to send in post
             myjson = {
                 'name':form.name.data,
@@ -253,6 +257,7 @@ def edit_secretariat(id):
                 return redirect(url_for('secretariats'))
             else:
                 resp= r.json()
+                print(resp)
                 #print(resp)
                 #url = '/secretariats/' + str(resp["id"])
                 url = '/secretariats/' + str(resp["id"])
