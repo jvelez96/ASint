@@ -36,7 +36,7 @@ class Secretariat (PaginatedAPIMixin, db.Model):
         data = {
             'id' : self.id,
             'name' : self.name,
-            'location' : 'campus :' + self.location,
+            'location' : self.location, #Decidir o que e a localizaçao (Campus e Building- Como representar isto?)
             'description' : self.description,
             'opening_hours' : self.opening_hours,
         }

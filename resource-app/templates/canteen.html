@@ -1,15 +1,44 @@
 {% extends "template.html" %}
 {% block content %}
 
-<h2>CanteenWS</h2>
-<div class="container">
-    <ul class="menu">
-        {% for menu in menus %}
-            <li>
-                {{ menu.day }}
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+    <h1>Canteen Menus</h1>
+    <div class="container">
+        <ul>
+            {% for day in days %}
+                <li>
+                    <h2>{{ day.day }} </h2>
+                </li>
+                <li>
+                    {% for meal in day.meal %}
+                        <h2> {{ meal.type }}</h2>
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Menu</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for menu in meal.info %}
+                                <tr>
+                                    <th>
+                                        {{ menu.menu }}
+                                    </th>
+                                    <th>
+                                        {{ menu.name }}
+                                    </th>
+                                    <th>
+                                        {{ menu.type }}
+                                    </th>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endfor %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 
 {% endblock %}

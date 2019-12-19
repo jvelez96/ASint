@@ -283,8 +283,8 @@ def edit_secretariat(id):
 @app.route("/canteen")
 def canteen():
     resp = requests.get(canteenWS_url + '/menus').content
-    menus = json.loads(resp)
-    return render_template("canteen.html", menus=menus)
+    days = json.loads(resp)
+    return render_template("canteen.html", days=days)
 
 if __name__== "__main__":
     app.run(debug=True)
