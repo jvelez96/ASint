@@ -1,7 +1,7 @@
 runtime: python
 env: flex
 entrypoint: gunicorn main:app
-service: rooms
+service: canteen
 
 resources:
   memory_gb: 4

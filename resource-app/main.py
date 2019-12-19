@@ -48,13 +48,13 @@ CORS(app)
 #csrf.init_app(app)
 bootstrap = Bootstrap(app)
 
-if os.getenv('GAE_INSTANCE')
-    roomsWS_url = 'http://127.0.0.1:5000'
-    canteenWS_url = 'http://0.0.0.0:5002'
+if os.getenv('GAE_INSTANCE'):
+    roomsWS_url = 'https://rooms-dot-asint2-262123.appspot.com'
+    canteenWS_url = 'https://canteen-dot-asint2-262123.appspot.com'
     secretariatWS_url = 'https://secretariat-dot-asint2-262123.appspot.com'
 else:
     roomsWS_url = 'http://127.0.0.1:5000'
-    canteenWS_url = 'http://127.0.0.2:5002'
+    canteenWS_url = 'http://127.0.0.1:5002'
     secretariatWS_url = 'http://127.0.0.1:5003'
 
 
@@ -167,7 +167,6 @@ def secretariat_info(secr_id):
 def new_secretariat():
     form = NewSecretariatForm()
 
-
     if request.method == 'POST':
         if form.validate_on_submit():
             api_url = secretariatWS_url + '/secretariatWS'
@@ -225,8 +224,6 @@ def edit_secretariat(id):
     secr=[]
 
     if request.method == 'GET':
-        flash("get")
-
         r = requests.get(api_url).content
         secr = json.loads(r)
 
@@ -241,9 +238,8 @@ def edit_secretariat(id):
         #flash("That secretariat does not exist!")
 
         form = NewSecretariatForm(MultiDict([('name', name),('location', location),('description', description),('opening_hours', opening_hours)]))
-    else:
-        flash("not get")
 
+    """
     print(form.errors)
 
     if form.is_submitted():
@@ -253,11 +249,10 @@ def edit_secretariat(id):
         print("valid")
 
     print(form.errors)
+    """
 
     if request.method == 'POST':
-        flash("POST")
         if form.validate_on_submit():
-            flash("post")
             #create json to send in post
             myjson = {
                 'name':form.name.data,
@@ -265,17 +260,11 @@ def edit_secretariat(id):
                 'description':form.description.data,
                 'opening_hours':form.opening_hours.data
             }
-            print("json a enviar")
-            print(myjson)
 
             #r = requests.put(url=api_url, data=json.dumps(myjson))
             r = requests.put(api_url, json=myjson)
-            print("status code")
-            print(r)
-            print(r.status_code)
 
             if r.status_code != 200:
-                print(r.text)
                 flash("Bad Request!")
                 return redirect(url_for('secretariats'))
             else:
@@ -288,6 +277,14 @@ def edit_secretariat(id):
                 return redirect(url)
 
     return render_template("edit_secretariat.html", form=form, secr=secr, error=form.errors)
+
+###################################### CANTEEN WS #############################################
+
+@app.route("/canteen")
+def canteen():
+    resp = requests.get(canteenWS_url + '/menus').content
+    menus = json.loads(resp)
+    return render_template("canteen.html", menus=menus)
 
 if __name__== "__main__":
     app.run(debug=True)

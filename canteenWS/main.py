@@ -36,14 +36,9 @@ def make_public_task(task):
     return new_task
 
 
-@app.route('menus', methods=['GET'])
+@app.route('/menus', methods=['GET'])
 def get_all_campus():
     return requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/canteen').content
-
-@app.route('/roomsWS/campus/<campus_id>', methods=['GET'])
-def get_buildings_for_campus(campus_id):
-    return requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/spaces/'+campus_id).content
-
 
 
 @app.errorhandler(404)

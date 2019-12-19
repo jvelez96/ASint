@@ -1,0 +1,15 @@
+{% extends "template.html" %}
+{% block content %}
+
+<h2>CanteenWS</h2>
+<div class="container">
+    <ul class="menu">
+        {% for menu in menus %}
+            <li>
+                {{ menu.day }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
