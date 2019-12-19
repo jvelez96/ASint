@@ -72,7 +72,7 @@ def login():
 @app.route('/redirect', methods=["POST"])
 def my_redirect():
     #url = client.get_authentication_url()
-    authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://0.0.0.0:8080/callback'
+    authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://asint2-262123.appspot.com/callback'
     return redirect(authorization_url)
     #return redirect(url)
 
@@ -93,7 +93,7 @@ def callback():
     redis_client.set(username, token, 600)
 
     if(not checkToken(session['access_token'], session['username'])):
-        authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://0.0.0.0:8080/callback'
+        authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://http://asint2-262123.appspot.com/callback'
         return redirect(authorization_url)
 
     resp = make_response(redirect(url_for('home')))
