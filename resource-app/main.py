@@ -257,6 +257,6 @@ def edit_secretariat(id):
     return render_template("edit_secretariat.html", form=form, secr=secr)
 
 if __name__== "__main__":
-    app.run(host='0.0.0.0',
+    app.run(host='127.0.0.1',
             port=8080,
             debug=True)
