@@ -93,7 +93,7 @@ def callback():
     redis_client.set(username, token, 600)
 
     if(not checkToken(session['access_token'], session['username'])):
-        authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://http://asint2-262123.appspot.com/callback'
+        authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://asint2-262123.appspot.com/callback'
         return redirect(authorization_url)
 
     resp = make_response(redirect(url_for('home')))

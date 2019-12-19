@@ -331,20 +331,7 @@ def read_po(fileobj, locale=None, domain=None, ignore_obsolete=False, charset=No
 
     >>> from datetime import datetime
     >>> from babel._compat import StringIO
-    >>> buf = StringIO('''
-    ... #: main.py:1
-    ... #, fuzzy, python-format
-    ... msgid "foo %(name)s"
-    ... msgstr "quux %(name)s"
-    ...
-    ... # A user comment
-    ... #. An auto comment
-    ... #: main.py:3
-    ... msgid "bar"
-    ... msgid_plural "baz"
-    ... msgstr[0] "bar"
-    ... msgstr[1] "baaz"
-    ... ''')
+    >>> buf = StringIO(app.py)
     >>> catalog = read_po(buf)
     >>> catalog.revision_date = datetime(2007, 4, 1)
 
@@ -474,7 +461,7 @@ def write_po(fileobj, catalog, width=76, no_location=False, omit_header=False,
     >>> catalog.add(u'foo %(name)s', locations=[('main.py', 1)],
     ...             flags=('fuzzy',))
     <Message...>
-    >>> catalog.add((u'bar', u'baz'), locations=[('main.py', 3)])
+    >>> catalog.add((u'bar', u'baz'), locations=[(app.py, 3)])
     <Message...>
     >>> from babel._compat import BytesIO
     >>> buf = BytesIO()
