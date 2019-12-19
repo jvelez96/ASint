@@ -8,6 +8,8 @@ from flask import flash
 from flask import jsonify
 from flask import session
 
+from flask_wtf.csrf import CSRFProtect
+
 from requests_oauthlib import OAuth2Session
 import urllib3
 
@@ -39,6 +41,7 @@ app.config['REMEMBER_COOKIE_SECURE'] = True
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 CORS(app)
+csrf = CSRFProtect(app)
 bootstrap = Bootstrap(app)
 roomsWS_url = 'http://127.0.0.1:5000'
 canteenWS_url = 'http://0.0.0.0:5002'
@@ -209,10 +212,10 @@ def delete_secretariat(id):
 def edit_secretariat(id):
     form = NewSecretariatForm()
     api_url = secretariatWS_url + '/secretariatWS/secretariats/' + id
-    print("url")
-    print(api_url)
+    secr=[]
 
     if request.method == 'GET':
+        flash("get")
 
         r = requests.get(api_url).content
         secr = json.loads(r)
@@ -228,9 +231,23 @@ def edit_secretariat(id):
         #flash("That secretariat does not exist!")
 
         form = NewSecretariatForm(MultiDict([('name', name),('location', location),('description', description),('opening_hours', opening_hours)]))
+    else:
+        flash("not get")
+
+    print(form.errors)
+
+    if form.is_submitted():
+        print("submitted")
+
+    if form.validate():
+        print("valid")
+
+    print(form.errors)
 
     if request.method == 'POST':
+        flash("POST")
         if form.validate_on_submit():
+            flash("post")
             #create json to send in post
             myjson = {
                 'name':form.name.data,
@@ -253,6 +270,7 @@ def edit_secretariat(id):
                 return redirect(url_for('secretariats'))
             else:
                 resp= r.json()
+                print(resp)
                 #print(resp)
                 #url = '/secretariats/' + str(resp["id"])
                 url = '/secretariats/' + str(resp["id"])
