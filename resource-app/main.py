@@ -45,7 +45,7 @@ canteenWS_url = 'http://0.0.0.0:5002'
 secretariatWS_url = 'http://0.0.0.0:5003'
 
 
-redis_client = bmemcached.Client('memcached-18466.c3.eu-west-1-1.ec2.cloud.redislabs.com:18466', 'mc-KBY4m', 'otaT9lPXY9e3ppBnemshXeyIIvhBlAGL')
+redis_client = bmemcached.Client('redis-13711.c93.us-east-1-3.ec2.cloud.redislabs.com:13711', 'josemc.95@hotmail.com', '1995Jose!')
 
 app.secret_key = 'tlxm7/1dt7a2UhkkE7BsOfEVi9EZMcnLETzzfUaDslyuNSH6MXeakcjFl7pnsvWiaDAGilRTbUwHywZ10f3loA=='
 client_id='570015174623357'
