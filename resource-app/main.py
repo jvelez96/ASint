@@ -31,6 +31,7 @@ from flask_migrate import Migrate
 from werkzeug.datastructures import MultiDict
 
 from flask import url_for
+from requests.auth import HTTPBasicAuth
 
 import logging
 
@@ -89,10 +90,12 @@ def checkToken(token, username):
     else:
         return False
 
-
+"""
 @app.shell_context_processor
 def make_shell_context():
     return {'db': db, 'User': User, 'Post': Post}
+"""
+
 
 @app.route('/')
 def login():
@@ -148,7 +151,12 @@ def home():
 
 @app.route("/campus")
 def campus():
-    resp = requests.get(roomsWS_url + '/roomsWS/campus').content
+    try:
+        resp = requests.get(roomsWS_url + '/roomsWS/campus', auth=('asint-user',app.config["WS_AUTH"])).content
+    except requests.exceptions.RequestException as e:
+        flash("Web Service not available!")
+        return render_template("index.html")
+
     campus = json.loads(resp)
     #campus = requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/spaces').content
     print(campus)
@@ -157,7 +165,12 @@ def campus():
 
 @app.route("/location/<id>")
 def location(id):
-    resp = requests.get(roomsWS_url + '/roomsWS/campus/' + id).content
+    try:
+        resp = requests.get(roomsWS_url + '/roomsWS/campus/' + id, auth=('asint-user',app.config["WS_AUTH"])).content
+    except requests.exceptions.RequestException as e:
+        flash("Web Service not available!")
+        return render_template("index.html")
+
     r = json.loads(resp)
     type = r["type"]
     if type == 'CAMPUS':
@@ -177,34 +190,15 @@ def location(id):
     return render_template("rooms.html", campus=campus)
 
 
-###############################  NOT USED ANYMORE #########################################################
-@app.route("/rooms/buildings/<campus_id>")
-def buildings_in_campus(campus_id):
-    resp = requests.get(roomsWS_url + '/roomsWS/campus/' + campus_id).content
-    buildings = json.loads(resp)
-    #Ainda falta tratar esta string json para apenas mostrar os edificios
-    print(buildings)
-    logger.warning('WEB access to campus page buildings_in_campus')
-    return render_template("buildings_in_campus.html", buildings=buildings)
-
-@app.route("/rooms/floors/<building_id>")
-def floors_in_building(building_id):
-    resp = requests.get(roomsWS_url + '/roomsWS/campus/' + building_id).content
-    building = json.loads(resp)
-    logger.warning('WEB access to campus page floors_in_building')
-    return render_template("floors_in_building.html", building=building)
-
-@app.route("/rooms/<floor_id>")
-def rooms_in_floor(floor_id):
-    resp = requests.get(roomsWS_url + '/roomsWS/campus/' + floor_id).content
-    floor = json.loads(resp)
-    logger.warning('WEB access to campus page rooms_in_floor')
-    return render_template("rooms_in_floor.html", floor=floor)
-
 ############################### Secretariats WS integration ###############################################
 @app.route("/secretariats")
 def secretariats():
-    resp = requests.get(secretariatWS_url + '/secretariatWS/secretariats').content
+    try:
+        resp = requests.get(secretariatWS_url + '/secretariatWS/secretariats', auth=('asint-user',app.config["WS_AUTH"])).content
+    except requests.exceptions.RequestException as e:
+        flash("Web Service not available!")
+        return render_template("index.html")
+
     dict_secrs = json.loads(resp)
     secrs = dict_secrs["items"]
     logger.warning('Access to secretariatWS endpoint')
@@ -212,7 +206,12 @@ def secretariats():
 
 @app.route("/secretariats/<secr_id>")
 def secretariat_info(secr_id):
-    resp = requests.get(secretariatWS_url + '/secretariatWS/secretariats/' + secr_id).content
+    try:
+        resp = requests.get(secretariatWS_url + '/secretariatWS/secretariats/' + secr_id, auth=('asint-user',app.config["WS_AUTH"])).content
+    except requests.exceptions.RequestException as e:
+        flash("Web Service not available!")
+        return render_template("index.html")
+
     secr = json.loads(resp)
     print("shit")
     print(secr)
@@ -233,12 +232,13 @@ def new_secretariat():
                 'description': form.description.data,
                 'opening_hours': form.opening_hours.data
             }
-            #data = json.dumps(myjson)
-            #print(data)
-            print(myjson)
-            #not working for some reason
 
-            r = requests.post(url=api_url, json=myjson)
+
+            try:
+                r = requests.post(url=api_url, json=myjson, auth=('asint-user',app.config["WS_AUTH"]))
+            except requests.exceptions.RequestException as e:
+                flash("Web Service not available!")
+                return render_template("index.html")
 
             if r.status_code == 201:
                 resp= r.json()
@@ -258,7 +258,7 @@ def new_secretariat():
                 return redirect(url)
             elif r.status_code == 400:
                 flash("Error: Secretary already exists, or fields not filled!")
-                return redirect(url_for('new_secretariat'))
+                return render_template("new_secretariat.html", form=form)
             else:
                 flash("Error!")
                 return redirect(url_for('new_secretariat'))
@@ -269,7 +269,12 @@ def new_secretariat():
 @app.route("/secretariats/delete/<id>")
 def delete_secretariat(id):
     api_url = secretariatWS_url + '/secretariatWS/secretariats/' + id
-    x = requests.delete(api_url)
+    try:
+        x = requests.delete(api_url, auth=('asint-user',app.config["WS_AUTH"]))
+    except requests.exceptions.RequestException as e:
+        flash("Web Service not available!")
+        return render_template("index.html")
+
     flash("Secretariat deleted!")
     logger.warning('Access to secretariatWS delete id endpoint')
     return redirect("/secretariats")
@@ -282,7 +287,12 @@ def edit_secretariat(id):
     secr=[]
 
     if request.method == 'GET':
-        r = requests.get(api_url).content
+        try:
+            r = requests.get(api_url, auth=('asint-user',app.config["WS_AUTH"])).content
+        except requests.exceptions.RequestException as e:
+            flash("Web Service not available!")
+            return render_template("index.html")
+
         secr = json.loads(r)
 
         #Verify if we got a response
@@ -297,17 +307,6 @@ def edit_secretariat(id):
 
         form = NewSecretariatForm(MultiDict([('name', name),('location', location),('description', description),('opening_hours', opening_hours)]))
 
-    """
-    print(form.errors)
-
-    if form.is_submitted():
-        print("submitted")
-
-    if form.validate():
-        print("valid")
-
-    print(form.errors)
-    """
 
     if request.method == 'POST':
         if form.validate_on_submit():
@@ -320,11 +319,15 @@ def edit_secretariat(id):
             }
 
             #r = requests.put(url=api_url, data=json.dumps(myjson))
-            r = requests.put(api_url, json=myjson)
+            try:
+                r = requests.put(api_url, json=myjson, auth=('asint-user',app.config["WS_AUTH"]))
+            except requests.exceptions.RequestException as e:
+                flash("Web Service not available!")
+                return render_template("index.html")
 
             if r.status_code != 200:
-                flash("Bad Request!")
-                return redirect(url_for('secretariats'))
+                flash("Secretariat with that name already exists!")
+                return render_template("new_secretariat.html", form=form)
             else:
                 resp= r.json()
                 print(resp)
@@ -341,7 +344,12 @@ def edit_secretariat(id):
 
 @app.route("/canteen")
 def canteen():
-    resp = requests.get(canteenWS_url + '/menus').content
+    try:
+        resp = requests.get(canteenWS_url + '/menus', auth=('asint-user',app.config["WS_AUTH"])).content
+    except requests.exceptions.RequestException as e:
+        flash("Web Service not available!")
+        return render_template("index.html")
+
     days = json.loads(resp)
     logger.warning('Access to canteenWS endpoint')
     return render_template("canteen.html", days=days)

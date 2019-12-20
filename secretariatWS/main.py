@@ -38,22 +38,13 @@ auth = HTTPBasicAuth()
 
 @auth.get_password
 def get_password(username):
-    if username == 'jvelez':
-        return 'python'
+    if username == 'asint-user':
+        return app.config["WS_AUTH"]
     return None
 
 @auth.error_handler
 def unauthorized():
     return make_response(jsonify({'error': 'Unauthorized access'}), 401)
-
-def make_public_task(task):
-    new_task = {}
-    for field in task:
-        if field == 'id':
-            new_task['uri'] = url_for('get_task', task_id=task['id'], _external=True)
-        else:
-            new_task[field] = task[field]
-    return new_task
 
 
 # Giving problems with special characters
@@ -63,6 +54,7 @@ def get_secretariat(id):
 
 
 @app.route('/secretariatWS/secretariats', methods=['GET'])
+@auth.login_required
 def get_all_secretariats():
     #adicionar a receçao do nmr da pagina a enviar
     page = request.args.get('page', 1, type=int)
@@ -71,6 +63,7 @@ def get_all_secretariats():
     return jsonify(data)
 
 @app.route('/secretariatWS', methods=['POST'])
+@auth.login_required
 def create_secretariat():
     data = request.get_json() or {}
     print(data)
@@ -93,18 +86,23 @@ def create_secretariat():
     return response
 
 @app.route('/secretariatWS/secretariats/<id>', methods=['PUT'])
+@auth.login_required
 def update_secretariat(id):
     secr = Secretariat.query.get_or_404(id)
     data = request.get_json() or {}
 
-    #data = request.get_json() or {}
-    print("changing db")
-    print(data)
+    s = Secretariat.query.filter_by(name=data['name']).first()
+
+    if s and s.id != id:
+        return bad_request('This secretariat already exists.')
+
     secr.from_dict(data, new_secretariat=False)
+
     db.session.commit()
     return jsonify(secr.to_dict())
 
 @app.route('/secretariatWS/secretariats/<id>', methods=['DELETE'])
+@auth.login_required
 def delete_secretariat(id):
     secr = Secretariat.query.filter_by(id=id)
     if secr.first():
@@ -114,42 +112,6 @@ def delete_secretariat(id):
         return bad_request('This secretariat does not exist.')
 
     return jsonify({'result': True})
-
-@app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['PUT'])
-def update_task(task_id):
-    task = [task for task in tasks if task['id'] == task_id]
-    if len(task) == 0:
-        abort(404)
-    if not request.json:
-        abort(400)
-    if 'title' in request.json and type(request.json['title']) != unicode:
-        abort(400)
-    if 'description' in request.json and type(request.json['description']) is not unicode:
-        abort(400)
-    if 'done' in request.json and type(request.json['done']) is not bool:
-        abort(400)
-    task[0]['title'] = request.json.get('title', task[0]['title'])
-    task[0]['description'] = request.json.get('description', task[0]['description'])
-    task[0]['done'] = request.json.get('done', task[0]['done'])
-    return jsonify({'task': task[0]})
-
-
-
-@app.errorhandler(404)
-def not_found(error):
-    return make_response(jsonify({'error': 'Not found'}), 404)
-
-@app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['GET'])
-def get_task(task_id):
-    task = [task for task in tasks if task['id'] == task_id]
-    if len(task) == 0:
-        abort(404)
-    return jsonify({'task': task[0]})
-
-@app.route('/todo/api/v1.0/tasks', methods=['GET'])
-@auth.login_required
-def get_tasks():
-    return jsonify({'tasks': [make_public_task(task) for task in tasks]})
 
 
 

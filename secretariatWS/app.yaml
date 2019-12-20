@@ -11,6 +11,7 @@ manual_scaling:
   instances: 1
 
 env_variables:
+    WS_AUTH: 'password-asint'
     SQLALCHEMY_DATABASE_URI: >-
       postgresql+psycopg2://postgres:asint2019@/secretariats?host=/cloudsql/asint2-262123:europe-west2:asint-secretariat
 
