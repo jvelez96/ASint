@@ -111,7 +111,7 @@ def my_redirect():
 def callback():
     logger.warning('GET to /callback endpoint')
     tokencode = request.args.get('code')
-    logger.warning('code = ' + code)
+    logger.warning('code = ' + tokencode)
 
     fenixuser = client.get_user_by_code(tokencode)
     person = client.get_person(fenixuser)
