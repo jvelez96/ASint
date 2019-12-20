@@ -94,10 +94,10 @@ def my_redirect():
 def callback():
     tokencode = request.args.get('code')
 
-    #fenixuser = client.get_user_by_code(tokencode)
-    #person = client.get_person(fenixuser)
+    fenixuser = client.get_user_by_code(tokencode)
+    person = client.get_person(fenixuser)
 
-    #username=person['username']
+    username=person['username']
 
     #token = fenixuser.access_token
     #session['access_token']=token
@@ -115,7 +115,7 @@ def callback():
     return resp
 
 
-@app.route("/home")
+@app.route('/home', methods=["GET", "POST"])
 def home():
     return render_template("index.html")
 
