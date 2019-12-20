@@ -94,21 +94,21 @@ def my_redirect():
 def callback():
     tokencode = request.args.get('code')
 
-    fenixuser = client.get_user_by_code(tokencode)
-    person = client.get_person(fenixuser)
+    #fenixuser = client.get_user_by_code(tokencode)
+    #person = client.get_person(fenixuser)
 
-    username=person['username']
+    #username=person['username']
 
-    token = fenixuser.access_token
-    session['access_token']=token
-    session['username']=username
+    #token = fenixuser.access_token
+    #session['access_token']=token
+    #session['username']=username
 
     #escreve username-token na memcache REDIS, expirando depois de 10 minutos
-    redis_client.set(username, token, 600)
+    #redis_client.set(username, token, 600)
 
-    if(not checkToken(session['access_token'], session['username'])):
-        authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://asint2-262123.appspot.com/callback'
-        return redirect(authorization_url)
+    #if(not checkToken(session['access_token'], session['username'])):
+    #    authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://asint2-262123.appspot.com/callback'
+    #    return redirect(authorization_url)
 
     resp = make_response(redirect(url_for('home')))
     resp.set_cookie('username', username, secure=True)  #accessible in javascript
