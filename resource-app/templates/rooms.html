@@ -6,7 +6,7 @@
 <!-- ADD PADDING TO DIVS -->
 {% for camp in campus %}
     <div class="row" style="padding: 10px;">
-        <a href=" {{ url_for('buildings_in_campus', campus_id = camp.id) }}" class="btn btn-outline-primary">
+        <a href=" {{ url_for('location', id = camp.id) }}" class="btn btn-outline-primary">
         {{ camp.name }}
         </a>
         <br>

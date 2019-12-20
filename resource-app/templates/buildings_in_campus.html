@@ -2,7 +2,7 @@
 {% block content %}
 
 <ul class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ url_for('rooms') }}">Campus</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('campus') }}">Campus</a></li>
     <li class="breadcrumb-item active">{{ buildings.name }}</li>
 </ul>
 
@@ -10,7 +10,7 @@
     <h1>Buildings in {{ buildings.name }}</h1>
     <ul class="menu">
         {% for build in buildings.containedSpaces %}
-            <li><a href="{{ url_for('floors_in_building', building_id = build.id) }}">
+            <li><a href="{{ url_for('location', id = build.id) }}">
                 {{ build.name }}
             </a></li>
         {% endfor %}

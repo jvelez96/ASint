@@ -1,0 +1,59 @@
+{% extends "template.html" %}
+{% block content %}
+
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ url_for('campus') }}">Campus</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('location', id= room.topLevelSpace.id ) }}">{{ room.topLevelSpace.name }}</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('location', id= room.parentSpace.id ) }}">{{ room.parentSpace.name }}</a></li>
+    <li class="breadcrumb-item active">{{ room.name }}</li>
+</ul>
+
+<div>
+    <h1>Room {{ room.name }}</h1>
+    {% if room.events %}
+        <h2>Schedule</h2>
+
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Weekday</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Info</th>
+                <th>Course</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for event in room.events %}
+            <tr>
+                <th>
+                    {{ event.type }}
+                </th>
+                <th>
+                    {{ event.weekday }}
+                </th>
+                <th>
+                    {{ event.period.start }}
+                </th>
+                <th>
+                    {{ event.period.end }}
+                </th>
+                <th>
+                    {{ event.info }}
+                </th>
+                <th><a href="{{ event.course.url }}" target="_blank">
+                    {{ event.course.name }}
+                </a></th>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2> No events scheduled for this room.</h2>
+    {% endif %}
+
+</div>
+
+{% endblock %}
+

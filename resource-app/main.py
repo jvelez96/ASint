@@ -120,14 +120,34 @@ def home():
     return render_template("index.html")
 
 ############################### Rooms WS integration ###############################################
-@app.route("/rooms")
-def rooms():
+
+
+@app.route("/campus")
+def campus():
     resp = requests.get(roomsWS_url + '/roomsWS/campus').content
     campus = json.loads(resp)
     #campus = requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/spaces').content
     print(campus)
     return render_template("rooms.html", campus=campus)
 
+@app.route("/location/<id>")
+def location(id):
+    resp = requests.get(roomsWS_url + '/roomsWS/campus/' + id).content
+    r = json.loads(resp)
+    type = r["type"]
+    if type == 'CAMPUS':
+        return render_template("buildings_in_campus.html", buildings=r)
+    elif type == 'BUILDING':
+        return render_template("floors_in_building.html", building=r)
+    elif type == 'FLOOR':
+        return render_template("rooms_in_floor.html", floor=r)
+    elif type == 'ROOM':
+        return render_template("room_details.html", room=r)
+
+    return render_template("rooms.html", campus=campus)
+
+
+###############################  NOT USED ANYMORE #########################################################
 @app.route("/rooms/buildings/<campus_id>")
 def buildings_in_campus(campus_id):
     resp = requests.get(roomsWS_url + '/roomsWS/campus/' + campus_id).content

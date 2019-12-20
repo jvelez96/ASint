@@ -2,9 +2,9 @@
 {% block content %}
 
 <ul class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ url_for('rooms') }}">Campus</a></li>
-    <li class="breadcrumb-item"><a href="{{ url_for('buildings_in_campus', campus_id= floor.topLevelSpace.id ) }}">{{ floor.topLevelSpace.name }}</a></li>
-    <li class="breadcrumb-item"><a href="{{ url_for('floors_in_building', building_id= floor.parentSpace.id ) }}">{{ floor.parentSpace.name }}</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('campus') }}">Campus</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('location', id= floor.topLevelSpace.id ) }}">{{ floor.topLevelSpace.name }}</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('location', id= floor.parentSpace.id ) }}">{{ floor.parentSpace.name }}</a></li>
     <li class="breadcrumb-item active">{{ floor.name }}</li>
 </ul>
 
@@ -13,7 +13,9 @@
     <ul class="menu">
         {% for room in floor.containedSpaces %}
             <li>
+                <a href="{{ url_for('location', id = room.id) }}">
                 {{ room.name }}
+                </a>
            </li>
         {% endfor %}
     </ul>
