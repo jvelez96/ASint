@@ -32,6 +32,22 @@ from werkzeug.datastructures import MultiDict
 
 from flask import url_for
 
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.WARNING)
+
+# create a file handler
+handler = logging.FileHandler('app.log')
+handler.setLevel(logging.WARNING)
+
+# create a logging format
+formatter = logging.Formatter('%(asctime)s - %(message)s')
+handler.setFormatter(formatter)
+
+# add the file handler to the logger
+logger.addHandler(handler)
+
 config = fenixedu.FenixEduConfiguration.fromConfigFile('fenixedu.ini')
 client = fenixedu.FenixEduClient(config)
 
@@ -80,17 +96,20 @@ def make_shell_context():
 
 @app.route('/')
 def login():
+    logger.warning('WEB access to default login page')
     return render_template('login.html')
 
 @app.route('/redirect', methods=["POST"])
 def my_redirect():
     #url = client.get_authentication_url()
     authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://asint2-262123.appspot.com/callback'
+    logger.warning('POST to authorization_url')
     return redirect(authorization_url)
     #return redirect(url)
 
 @app.route('/callback', methods=["GET"])
 def callback():
+    logger.warning('GET to /callback endpoint')
     tokencode = request.args.get('code')
 
     fenixuser = client.get_user_by_code(tokencode)
@@ -116,6 +135,7 @@ def callback():
 
 @app.route('/home', methods=["GET", "POST"])
 def home():
+    logger.warning('WEB access to home page')
     return render_template("index.html")
 
 ############################### Rooms WS integration ###############################################
@@ -127,6 +147,7 @@ def campus():
     campus = json.loads(resp)
     #campus = requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/spaces').content
     print(campus)
+    logger.warning('WEB access to campus page')
     return render_template("rooms.html", campus=campus)
 
 @app.route("/location/<id>")
@@ -135,14 +156,19 @@ def location(id):
     r = json.loads(resp)
     type = r["type"]
     if type == 'CAMPUS':
+        logger.warning('WEB access to campus page buildings_in_campus')
         return render_template("buildings_in_campus.html", buildings=r)
     elif type == 'BUILDING':
+        logger.warning('WEB access to campus page floors_in_building')
         return render_template("floors_in_building.html", building=r)
     elif type == 'FLOOR':
+        logger.warning('WEB access to campus page rooms_in_floor')
         return render_template("rooms_in_floor.html", floor=r)
     elif type == 'ROOM':
+        logger.warning('WEB access to campus page room_details')
         return render_template("room_details.html", room=r)
 
+    logger.warning('WEB access to campus page rooms')
     return render_template("rooms.html", campus=campus)
 
 
@@ -153,18 +179,21 @@ def buildings_in_campus(campus_id):
     buildings = json.loads(resp)
     #Ainda falta tratar esta string json para apenas mostrar os edificios
     print(buildings)
+    logger.warning('WEB access to campus page buildings_in_campus')
     return render_template("buildings_in_campus.html", buildings=buildings)
 
 @app.route("/rooms/floors/<building_id>")
 def floors_in_building(building_id):
     resp = requests.get(roomsWS_url + '/roomsWS/campus/' + building_id).content
     building = json.loads(resp)
+    logger.warning('WEB access to campus page floors_in_building')
     return render_template("floors_in_building.html", building=building)
 
 @app.route("/rooms/<floor_id>")
 def rooms_in_floor(floor_id):
     resp = requests.get(roomsWS_url + '/roomsWS/campus/' + floor_id).content
     floor = json.loads(resp)
+    logger.warning('WEB access to campus page rooms_in_floor')
     return render_template("rooms_in_floor.html", floor=floor)
 
 ############################### Secretariats WS integration ###############################################
@@ -173,6 +202,7 @@ def secretariats():
     resp = requests.get(secretariatWS_url + '/secretariatWS/secretariats').content
     dict_secrs = json.loads(resp)
     secrs = dict_secrs["items"]
+    logger.warning('Access to secretariatWS endpoint')
     return render_template("secretariats.html", secrs=secrs)
 
 @app.route("/secretariats/<secr_id>")
@@ -181,6 +211,7 @@ def secretariat_info(secr_id):
     secr = json.loads(resp)
     print("shit")
     print(secr)
+    logger.warning('Access to secretariatWS id endpoint')
     return render_template("secretariat_info.html", secr=secr)
 
 @app.route("/secretariats/new", methods=['GET','POST'])
@@ -227,6 +258,7 @@ def new_secretariat():
                 flash("Error!")
                 return redirect(url_for('new_secretariat'))
 
+    logger.warning('Access to secretariatWS new endpoint')
     return render_template("new_secretariat.html", form=form)
 
 @app.route("/secretariats/delete/<id>")
@@ -234,6 +266,7 @@ def delete_secretariat(id):
     api_url = secretariatWS_url + '/secretariatWS/secretariats/' + id
     x = requests.delete(api_url)
     flash("Secretariat deleted!")
+    logger.warning('Access to secretariatWS delete id endpoint')
     return redirect("/secretariats")
 
 #Edit secretariat with PUT method
@@ -296,6 +329,7 @@ def edit_secretariat(id):
                 #print(url)
                 return redirect(url)
 
+    logger.warning('Access to secretariatWS edit id endpoint')
     return render_template("edit_secretariat.html", form=form, secr=secr, error=form.errors)
 
 ###################################### CANTEEN WS #############################################
@@ -304,6 +338,7 @@ def edit_secretariat(id):
 def canteen():
     resp = requests.get(canteenWS_url + '/menus').content
     days = json.loads(resp)
+    logger.warning('Access to canteenWS endpoint')
     return render_template("canteen.html", days=days)
 
 if __name__== "__main__":
