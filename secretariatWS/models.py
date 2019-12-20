@@ -31,12 +31,11 @@ class Secretariat (PaginatedAPIMixin, db.Model):
     description = db.Column(db.String(300))
     opening_hours = db.Column(db.String(120))
 
-    #If any field is empty this won't work: FIX
     def to_dict(self):
         data = {
             'id' : self.id,
             'name' : self.name,
-            'location' : self.location, #Decidir o que e a localizaçao (Campus e Building- Como representar isto?)
+            'location' : self.location,
             'description' : self.description,
             'opening_hours' : self.opening_hours,
         }
