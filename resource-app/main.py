@@ -39,8 +39,7 @@ base_url = 'https://fenix.tecnico.ulisboa.pt/'
 
 app = Flask(__name__)
 app.config.from_object(Config)
-#app.config['SESSION_COOKIE_SECURE'] = True ESTA MERDA TA A DAR PROBLEMAS
-app.config['SESSION_COOKIE_SECURE'] = False
+app.config['SESSION_COOKIE_SECURE'] = True
 app.config['REMEMBER_COOKIE_SECURE'] = True
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
