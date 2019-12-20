@@ -102,7 +102,7 @@ def callback():
     session['access_token']=token
     session['username']=username
 
-    escreve username-token na memcache REDIS, expirando depois de 10 minutos
+    #escreve username-token na memcache REDIS, expirando depois de 10 minutos
     redis_client.set(username, token, 600)
 
     if(not checkToken(session['access_token'], session['username'])):
