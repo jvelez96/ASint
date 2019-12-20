@@ -111,18 +111,23 @@ def my_redirect():
 def callback():
     logger.warning('GET to /callback endpoint')
     tokencode = request.args.get('code')
+    logger.warning('code = ' + code)
 
     fenixuser = client.get_user_by_code(tokencode)
     person = client.get_person(fenixuser)
+    logger.warning('person = ' + person)
 
     username=person['username']
 
     token = fenixuser.access_token
+    logger.warning('token = ' + token)
     session['access_token']=token
     session['username']=username
 
     #escreve username-token na memcache REDIS, expirando depois de 10 minutos
-    #redis_client.set(username, token, 600)
+    logger.warning('inserting token')
+    redis_client.set(username, token, 600)
+    logger.warning('inserted')
 
     if(not checkToken(session['access_token'], session['username'])):
         authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://asint2-262123.appspot.com/callback'
