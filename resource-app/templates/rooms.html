@@ -4,15 +4,28 @@
 <h1> Campus </h1>
 
 <!-- ADD PADDING TO DIVS -->
-{% for camp in campus %}
-    <div class="row" style="padding: 10px;">
-        <a href=" {{ url_for('location', id = camp.id) }}" class="btn btn-outline-primary">
-        {{ camp.name }}
-        </a>
-        <br>
-     </div>
+<div class="row">
+    {% for camp in campus %}
+    <div class="col-sm-3" style="padding:15px;">
+        <div class="card" style="width:400px">
+            <div class="card-body">
+              <h4 class="card-title">{{ camp.name }}</h4>
+              <p class="card-text">A very good campus!</p>
+              <a href="{{ url_for('location', id = camp.id) }}" class="btn btn-primary">See buildings</a>
+            </div>
+            {% if camp.name == 'Alameda' %}
+                <img class="card-img-bottom" src="https://fenix.tecnico.ulisboa.pt/downloadFile/845043405435820/Cidade%20Med..jpg" alt="Card image" style="width:100%">
+            {% elif camp.name == 'Tecnológico e Nuclear' %}
+                <img class="card-img-bottom" src="https://tecnico.ulisboa.pt/files/2015/09/ctn-1024x575.jpg" alt="Card image" style="width:100%">
+            {% elif camp.name == 'Taguspark' %}
+                <img class="card-img-bottom" src="https://fenix.tecnico.ulisboa.pt/downloadFile/845043405435819/Tagus%20Novo%20Med..jpg" alt="Card image" style="width:100%">
+            {% endif %}
+        </div>
+    </div>
+
 {% endfor %}
+</div>
+
 
 
 {% endblock %}
-
