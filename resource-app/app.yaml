@@ -31,3 +31,9 @@ handlers:
 - url: /favicon\.ico
   static_files: static/images/favicon.ico
   upload: static/images/favicon.ico
+  
+  env_variables:
+  CLOUD_SQL_USERNAME: "root"
+  CLOUD_SQL_PASSWORD: "1995jose"
+  CLOUD_SQL_DATABASE_NAME: "cache"
+  CLOUD_SQL_CONNECTION_NAME: "asint2-262123:europe-west6:memcached

@@ -8,8 +8,8 @@ from flask import flash
 from flask import jsonify
 from flask import session
 from flask import make_response
-
 import os
+import pymysql
 
 from flask_wtf.csrf import CSRFProtect
 
@@ -74,6 +74,10 @@ else:
     canteenWS_url = 'http://127.0.0.1:5002'
     secretariatWS_url = 'http://127.0.0.1:5003'
 
+db_user = os.environ.get('CLOUD_SQL_USERNAME')
+db_password = os.environ.get('CLOUD_SQL_PASSWORD')
+db_name = os.environ.get('CLOUD_SQL_DATABASE_NAME')
+db_connection_name = os.environ.get('CLOUD_SQL_CONNECTION_NAME')
 
 redis_client = bmemcached.Client('redis-13711.c93.us-east-1-3.ec2.cloud.redislabs.com:13711', 'josemc.95@hotmail.com', '1995Jose!')
 
@@ -89,6 +93,10 @@ def checkToken(token, username):
         return True
     else:
         return False
+
+def get_connection():
+    return pymysql.connect(user=db_user, password=db_password,
+                              unix_socket=unix_socket, db=db_name, autocommit=True)
 
 """
 @app.shell_context_processor
@@ -128,14 +136,13 @@ def callback():
     session['username']=username
 
     #escreve username-token na memcache REDIS, expirando depois de 10 minutos
-    logger.warning('inserting token')
-    redis_client.set(username, token, 600)
-    logger.warning('inserted')
-
-    if(not checkToken(session['access_token'], session['username'])):
-        logger.warning('entered if')
-        authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://asint2-262123.appspot.com/callback'
-        return redirect(authorization_url)
+    cnx = get_connection()
+    with cnx.cursor() as cursor:
+        sql = "INSERT INTO users ( username, token) VALUES ('" + username + "', '" + token + "')"
+        cursor.execute(sql)
+        result = cursor.fetchall()
+    cnx.close()
+    return jsonify(result)
 
     resp = make_response(redirect(url_for('home')))
     resp.set_cookie('username', username, secure=True)  #accessible in javascript
