@@ -49,6 +49,8 @@ handler.setFormatter(formatter)
 # add the file handler to the logger
 logger.addHandler(handler)
 
+global client
+
 config = fenixedu.FenixEduConfiguration.fromConfigFile('fenixedu.ini')
 client = fenixedu.FenixEduClient(config)
 
@@ -159,7 +161,6 @@ def campus():
         return render_template("index.html")
 
     campus = json.loads(resp)
-    #campus = requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/spaces').content
     print(campus)
     logger.warning('WEB access to campus page')
     return render_template("rooms.html", campus=campus)
@@ -350,6 +351,8 @@ def canteen():
     except requests.exceptions.RequestException as e:
         flash("Web Service not available!")
         return render_template("index.html")
+
+    print(resp)
 
     days = json.loads(resp)
     logger.warning('Access to canteenWS endpoint')
