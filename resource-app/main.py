@@ -118,7 +118,6 @@ def login():
 @app.route('/testdatabase')
 def database_test():
     u = User.query.all()
-    print(u)
     return render_template('test_database.html', users=u)
 
 
