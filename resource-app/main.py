@@ -55,7 +55,8 @@ config = fenixedu.FenixEduConfiguration.fromConfigFile('fenixedu.ini')
 client = fenixedu.FenixEduClient(config)
 
 base_url = 'https://fenix.tecnico.ulisboa.pt/'
-redirect_to_me = 'http://a4fecf7f.ngrok.io/callback'
+#redirect_to_me = 'https://asint2-262123.appspot.com/callback'
+redirect_to_me = 'http://6960641f.ngrok.io/callback'
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -123,8 +124,8 @@ def database_test():
 
 @app.route('/redirect', methods=["GET", "POST"])
 def my_redirect():
-    #url = client.get_authentication_url()
-    authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri='+redirect_to_me
+    authorization_url = client.get_authentication_url()
+    #authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri='+redirect_to_me
     logger.warning('POST to authorization_url')
     return redirect(authorization_url)
     #return redirect(url)
@@ -133,6 +134,9 @@ def my_redirect():
 def callback():
     config = fenixedu.FenixEduConfiguration.fromConfigFile('fenixedu.ini')
     client = fenixedu.FenixEduClient(config)
+
+    if request.args.get('error'):
+        return redirect(url_for('/'))
 
     logger.warning('GET to /callback endpoint')
     tokencode = request.args.get('code')
@@ -149,14 +153,9 @@ def callback():
     session['access_token']=token
     session['username']=username
 
-    #escreve username-token na memcache REDIS, expirando depois de 10 minutos
-
-    cnx = get_connection()
-    with cnx.cursor() as cursor:
-        sql = "INSERT INTO users ( username, token) VALUES (%s, %s);"
-        cursor.execute(sql, (username, token))
-        result = cursor.fetchall()
-    cnx.close()
+    u = User(username=username, email="rsilva@gmail.com", tokenn=token)
+    db.session.add(u)
+    db.session.commit()
 
     resp = make_response(redirect(url_for('home')))
     resp.set_cookie('username', username, secure=True)  #accessible in javascript
@@ -172,7 +171,7 @@ def home():
 @app.route("/logs")
 def logs():
     F = open("app.log","r")
-	logs = F.read().splitlines()
+    logs = F.read().splitlines()
     return render_template("logs.html", logs=logs)
 
 
