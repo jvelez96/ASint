@@ -171,7 +171,7 @@ def home():
 
 @app.route("/logs")
 def logs():
-    F = open(“app.log”,”r”)
+    F = open("app.log","r")
 	logs = F.read().splitlines()
     return render_template("logs.html", logs=logs)
 
