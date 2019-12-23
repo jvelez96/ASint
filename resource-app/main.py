@@ -153,9 +153,12 @@ def callback():
     session['access_token']=token
     session['username']=username
 
-    u = User(username=username, email="rsilva@gmail.com", tokenn=token)
-    db.session.add(u)
-    db.session.commit()
+    try:
+        u = User(username=username, email="rsilva@gmail.com", tokenn=token)
+        db.session.add(u)
+        db.session.commit()
+    except Exception as e:
+        logger.warning('user already exists')
 
     resp = make_response(redirect(url_for('home')))
     resp.set_cookie('username', username, secure=True)  #accessible in javascript
