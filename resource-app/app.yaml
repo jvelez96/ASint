@@ -35,4 +35,7 @@ handlers:
 - url: /favicon\.ico
   static_files: static/images/favicon.ico
   upload: static/images/favicon.ico
+<<<<<<< HEAD
+=======
   
+>>>>>>> 89fa8a5cfaa7d78977caa1d3c4f2a506263d1823

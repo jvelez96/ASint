@@ -141,21 +141,18 @@ def callback():
     session['access_token']=token
     session['username']=username
 
+    #escreve username-token na memcache REDIS, expirando depois de 10 minutos
+
+    cnx = get_connection()
+    with cnx.cursor() as cursor:
+        sql = "INSERT INTO users ( username, token) VALUES (%s, %s);"
+        cursor.execute(sql, (username, token))
+        result = cursor.fetchall()
+    cnx.close()
+
     resp = make_response(redirect(url_for('home')))
     resp.set_cookie('username', username, secure=True)  #accessible in javascript
     return resp
-
-    #escreve username-token na memcache REDIS, expirando depois de 10 minutos
-"""
-    cnx = get_connection()
-    with cnx.cursor() as cursor:
-        sql = "INSERT INTO users ( username, token) VALUES ('" + username + "', '" + token + "')"
-        cursor.execute(sql)
-        result = cursor.fetchall()
-    cnx.close()
-    return jsonify(result)
-"""
-
 
 
 @app.route('/home', methods=["GET", "POST"])
