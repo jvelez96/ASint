@@ -19,6 +19,12 @@ env_variables:
   CLOUD_SQL_PASSWORD: "1995jose"
   CLOUD_SQL_DATABASE_NAME: "cache"
   CLOUD_SQL_CONNECTION_NAME: "asint2-262123:europe-west6:memcached"
+  SQLALCHEMY_DATABASE_URI: >-
+    postgresql+psycopg2://postgres:password-asint@/users?host=/cloudsql/asint2-262123:europe-west2:users
+
+
+beta_settings:
+    cloud_sql_instances: asint2-262123:europe-west2:users
 
 handlers:
   # This configures Google App Engine to serve the files in the app's static

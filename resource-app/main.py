@@ -77,10 +77,12 @@ else:
     canteenWS_url = 'http://127.0.0.1:5002'
     secretariatWS_url = 'http://127.0.0.1:5003'
 
+"""
 db_user = os.environ.get('CLOUD_SQL_USERNAME')
 db_password = os.environ.get('CLOUD_SQL_PASSWORD')
 db_name = os.environ.get('CLOUD_SQL_DATABASE_NAME')
 db_connection_name = os.environ.get('CLOUD_SQL_CONNECTION_NAME')
+"""
 
 redis_client = bmemcached.Client('redis-13711.c93.us-east-1-3.ec2.cloud.redislabs.com:13711', 'josemc.95@hotmail.com', '1995Jose!')
 
@@ -101,17 +103,24 @@ def get_connection():
     return pymysql.connect(user=db_user, password=db_password,
                               unix_socket=unix_socket, db=db_name, autocommit=True)
 
-"""
+
 @app.shell_context_processor
 def make_shell_context():
     return {'db': db, 'User': User, 'Post': Post}
-"""
+
 
 
 @app.route('/')
 def login():
     logger.warning('WEB access to default login page')
     return render_template('login.html')
+
+@app.route('/testdatabase')
+def database_test():
+    u = User.query.all()
+    print(u)
+    return render_template('test_database.html', users=u)
+
 
 @app.route('/redirect', methods=["GET", "POST"])
 def my_redirect():

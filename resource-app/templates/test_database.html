@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+{% block content %}
+
+<h2>Users</h2>
+<div class="container">
+    {% if users %}
+        <ul class="menu">
+            {% for user in users %}
+                <li>
+                    {{ user.username }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+    <h2>ola</h2>
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1>No userss available!</h1>
+            <p>The canteen is probably on vacations! Happy holidays!</p>
+          </div>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}
