@@ -168,6 +168,14 @@ def home():
     logger.warning('WEB access to home page')
     return render_template("index.html")
 
+
+@app.route("/logs")
+def logs():
+    F = open(“app.log”,”r”)
+	logs = F.read().splitlines()
+    return render_template("logs.html", logs=logs)
+
+
 ############################### Rooms WS integration ###############################################
 
 

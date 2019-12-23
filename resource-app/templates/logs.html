@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+{% block content %}
+
+<h2>Logs</h2>
+<div class="container">
+    {% if logs %}
+        <ul class="menu">
+            {% for log in logs %}
+                <li>
+                    {{ log }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1>No logs available!</h1>
+          </div>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}
