@@ -49,10 +49,13 @@ handler.setFormatter(formatter)
 # add the file handler to the logger
 logger.addHandler(handler)
 
+global client
+
 config = fenixedu.FenixEduConfiguration.fromConfigFile('fenixedu.ini')
 client = fenixedu.FenixEduClient(config)
 
 base_url = 'https://fenix.tecnico.ulisboa.pt/'
+redirect_to_me = 'http://a4fecf7f.ngrok.io/callback'
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -110,16 +113,19 @@ def login():
     logger.warning('WEB access to default login page')
     return render_template('login.html')
 
-@app.route('/redirect', methods=["POST"])
+@app.route('/redirect', methods=["GET", "POST"])
 def my_redirect():
     #url = client.get_authentication_url()
-    authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri=http://asint2-262123.appspot.com/callback'
+    authorization_url='https://fenix.tecnico.ulisboa.pt/oauth/userdialog?client_id='+client_id+'&redirect_uri='+redirect_to_me
     logger.warning('POST to authorization_url')
     return redirect(authorization_url)
     #return redirect(url)
 
-@app.route('/callback', methods=["GET"])
+@app.route('/callback', methods=["GET", "POST"])
 def callback():
+    config = fenixedu.FenixEduConfiguration.fromConfigFile('fenixedu.ini')
+    client = fenixedu.FenixEduClient(config)
+
     logger.warning('GET to /callback endpoint')
     tokencode = request.args.get('code')
     logger.warning('code = ' + tokencode)
@@ -136,6 +142,7 @@ def callback():
     session['username']=username
 
     #escreve username-token na memcache REDIS, expirando depois de 10 minutos
+
     cnx = get_connection()
     with cnx.cursor() as cursor:
         sql = "INSERT INTO users ( username, token) VALUES (%s, %s);"
@@ -165,7 +172,6 @@ def campus():
         return render_template("index.html")
 
     campus = json.loads(resp)
-    #campus = requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/spaces').content
     print(campus)
     logger.warning('WEB access to campus page')
     return render_template("rooms.html", campus=campus)
@@ -356,6 +362,8 @@ def canteen():
     except requests.exceptions.RequestException as e:
         flash("Web Service not available!")
         return render_template("index.html")
+
+    print(resp)
 
     days = json.loads(resp)
     logger.warning('Access to canteenWS endpoint')

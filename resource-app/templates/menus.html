@@ -3,13 +3,23 @@
 
 <h2>CanteenWS</h2>
 <div class="container">
-    <ul class="menu">
-        {% for menu in menus %}
-            <li>
-                {{ menu.day }}
-            </li>
-        {% endfor %}
-    </ul>
+    {% if days %}
+        <ul class="menu">
+            {% for menu in menus %}
+                <li>
+                    {{ menu.day }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+    <h2>ola</h2>
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1>No menus available!</h1>
+            <p>The canteen is probably on vacations! Happy holidays!</p>
+          </div>
+        </div>
+    {% endif %}
 </div>
 
 {% endblock %}

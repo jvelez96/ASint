@@ -33,7 +33,7 @@ def unauthorized():
 
 @app.route('/menus', methods=['GET'])
 @auth.login_required
-def get_all_campus():
+def get_all_menus():
     return requests.get('https://fenix.tecnico.ulisboa.pt/api/fenix/v1/canteen').content
 
 
