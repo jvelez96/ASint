@@ -159,11 +159,18 @@ def callback():
         db.session.commit()
     except Exception as e:
         logger.warning('user %s already exists', username)
-        db.session.rollback()
+        flash("user already exists!")
+        u = User.query.get_or_404(username)
+        u.tokenn = token
+        db.session.commit()
 
+
+    """
     u = db.session.query(User).filter(User.username == username).first()
     u.tokenn = token
     db.session.commit()
+    """
+
 
     resp = make_response(redirect(url_for('home')))
     resp.set_cookie('username', username, secure=True)  #accessible in javascript
