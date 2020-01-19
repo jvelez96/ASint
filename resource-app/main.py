@@ -11,6 +11,8 @@ from flask import make_response
 import os
 import pymysql
 
+from flask_user import current_user, login_required, roles_required, UserManager, UserMixin
+
 from flask_wtf.csrf import CSRFProtect
 
 from requests_oauthlib import OAuth2Session
@@ -69,6 +71,7 @@ CORS(app)
 #csrf.init_app(app)
 bootstrap = Bootstrap(app)
 
+
 if os.getenv('GAE_INSTANCE'):
     roomsWS_url = 'https://rooms-dot-asint2-262123.appspot.com'
     canteenWS_url = 'https://canteen-dot-asint2-262123.appspot.com'
@@ -94,6 +97,7 @@ client_id='570015174623357'
 from models import *
 from forms import *
 
+
 def checkToken(token, username):
     if redis_client.get(username)==token:
         return True
@@ -107,8 +111,7 @@ def get_connection():
 
 @app.shell_context_processor
 def make_shell_context():
-    return {'db': db, 'User': User, 'Post': Post}
-
+    return {'db': db, 'User': User, 'UserRoles': UserRoles, 'Role': Role}
 
 
 @app.route('/')
@@ -119,6 +122,8 @@ def login():
 @app.route('/testdatabase')
 def database_test():
     u = User.query.all()
+    admin = User.query.filter(User.roles.any(name="Admin")).all()
+
     return render_template('test_database.html', users=u)
 
 
@@ -154,9 +159,16 @@ def callback():
     session['username']=username
 
     try:
-        u = User(username=username, email="rsilva@gmail.com", tokenn=token)
+        u = User(username=username, email=username, tokenn=token)
         db.session.add(u)
         db.session.commit()
+
+        #roles = Role.query.all()
+        #role = roles[0]
+
+        #r = UserRoles(user_id=u.id, role_id=role.id)
+        #db.session.add(r)
+        #db.session.commit()
     except Exception as e:
         logger.warning('user %s already exists', username)
         flash("user already exists!")
@@ -164,6 +176,8 @@ def callback():
         u.tokenn = token
         db.session.commit()
 
+    ###################### GET ADMINS ###########################3
+    #admin = User.query.filter(User.roles.any(name="Admin")).all()
 
     """
     u = db.session.query(User).filter(User.username == username).first()

@@ -1,8 +1,8 @@
-"""users table
+"""token
 
-Revision ID: 0ac23b9e4fdb
+Revision ID: 04be6043c3be
 Revises: 
-Create Date: 2019-12-23 08:56:35.117946
+Create Date: 2020-01-19 09:24:23.994145
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '0ac23b9e4fdb'
+revision = '04be6043c3be'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,9 +23,12 @@ def upgrade():
     sa.Column('username', sa.String(length=64), nullable=True),
     sa.Column('email', sa.String(length=120), nullable=True),
     sa.Column('password_hash', sa.String(length=128), nullable=True),
+    sa.Column('admin', sa.Boolean(), nullable=True),
+    sa.Column('tokenn', sa.String(length=500), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_user_email'), 'user', ['email'], unique=True)
+    op.create_index(op.f('ix_user_tokenn'), 'user', ['tokenn'], unique=True)
     op.create_index(op.f('ix_user_username'), 'user', ['username'], unique=True)
     op.create_table('post',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -44,6 +47,7 @@ def downgrade():
     op.drop_index(op.f('ix_post_timestamp'), table_name='post')
     op.drop_table('post')
     op.drop_index(op.f('ix_user_username'), table_name='user')
+    op.drop_index(op.f('ix_user_tokenn'), table_name='user')
     op.drop_index(op.f('ix_user_email'), table_name='user')
     op.drop_table('user')
     # ### end Alembic commands ###
