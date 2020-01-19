@@ -56,7 +56,7 @@ client = fenixedu.FenixEduClient(config)
 
 base_url = 'https://fenix.tecnico.ulisboa.pt/'
 #redirect_to_me = 'https://asint2-262123.appspot.com/callback'
-redirect_to_me = 'http://6960641f.ngrok.io/callback'
+redirect_to_me = 'https://27898e7b.ngrok.io/callback'
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -400,7 +400,9 @@ def canteen():
     return render_template("canteen.html", days=days)
 
 if __name__== "__main__":
+    port = 80,
     app.run(debug=True)
+
 
 
 #host='127.0.0.1',
