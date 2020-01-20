@@ -717,3 +717,44 @@
 2020-01-20 08:02:29,004 - User ist181358 is generating key.
 2020-01-20 08:06:36,256 - WEB access to home page
 2020-01-20 08:06:36,256 - admin variable: Admin .
+2020-01-20 09:04:36,969 - WEB access to default login page
+2020-01-20 09:04:44,111 - POST to authorization_url
+2020-01-20 09:04:45,635 - GET to /callback endpoint
+2020-01-20 09:04:45,635 - code = c79550f220117f722a7357cb0413fbe714b9646a76f4c1f3d76409271ef94a2816674c564ec39f78e393b7cf74efee35bc3c3b3e119054b177625d9d3514cfc8
+2020-01-20 09:04:47,989 - username = ist181358
+2020-01-20 09:04:47,989 - token = Mjg4NTQ4Nzg3OTIxMzgwOmRlZTM3OTI5NzA2N2JlYjJjZGU3MGIyMGVlNDc3M2JlYmU2NDExMDBiM2Y4YTJlNTUyZWQ0NGY1MzEwYzM2OTI1YTdlMTA3NTJkZmU1MzBmNjM3MTNlYjMyMTBmZDQ2NjAzM2NlZWEwZmQwZWU2YTMyMjg0NDQyOGNiNDFmZGZj
+2020-01-20 09:04:48,004 - user being created
+2020-01-20 09:04:48,009 - finished if
+2020-01-20 09:04:48,482 - WEB access to home page
+2020-01-20 09:04:48,482 - admin variable: Admin .
+2020-01-20 09:12:37,461 - WEB access to default login page
+2020-01-20 09:12:39,153 - POST to authorization_url
+2020-01-20 09:12:41,563 - GET to /callback endpoint
+2020-01-20 09:12:41,564 - code = e1d394015a241be4419d5f99470236aa7e56794644c37d2b3a89e470adf91a19362b131e52f8e9b0146fe24b170d368ff8dceec39cbbc871d93d767696e52ec7
+2020-01-20 09:12:43,857 - username = ist181358
+2020-01-20 09:12:43,857 - token = Mjg4NTQ4Nzg3OTIxMzgzOjI1YjMxMzA0ZTE3MDRlNTc1YTgyYmU4ZjlhMmQ2ZjU0ZWIxYTk4ZDRiMWI0MjdkMDNkZGViNWFkZDkxMzM3Mzk5YjAzMjQ4OGFkYTI2OGQwY2YwZGIyYzEwM2UxOGE2NDRiMzQyODAyN2MwYzIyNWJmOTllNzllODE1YjEwZjgw
+2020-01-20 09:12:43,873 - user exists
+2020-01-20 09:12:43,879 - user ist181358 already exists, and token was updated
+2020-01-20 09:12:43,881 - finished if
+2020-01-20 09:12:44,177 - WEB access to home page
+2020-01-20 09:12:44,177 - admin variable: Not Admin .
+2020-01-20 09:12:49,087 - User ist181358 is generating key.
+2020-01-20 09:12:59,034 - WEB access to home page
+2020-01-20 09:12:59,035 - admin variable: Not Admin .
+2020-01-20 09:13:04,534 - WEB access to default login page
+2020-01-20 09:13:09,305 - WEB access to home page
+2020-01-20 09:13:09,305 - admin variable: Not Admin .
+2020-01-20 09:13:46,383 - WEB access to home page
+2020-01-20 09:13:46,383 - admin variable: Not Admin .
+2020-01-20 09:13:47,909 - WEB access to home page
+2020-01-20 09:13:47,909 - admin variable: Not Admin .
+2020-01-20 09:13:52,939 - POST to authorization_url
+2020-01-20 09:13:53,300 - GET to /callback endpoint
+2020-01-20 09:13:53,300 - code = 3b0be96ea78d4a1124ecfa6ffbf528b757c858486c12b256fb52c7002c0c1d25fecb45cb41fc72bfb6e4d14df624c81d4d953663a975bca29b0fdeef67eace24
+2020-01-20 09:13:53,654 - username = ist181358
+2020-01-20 09:13:53,654 - token = Mjg4NTQ4Nzg3OTIxMzg0OjA1ZWJkYTY4MDdmNGNjNmEyNmMzZDkyNDU5NjUxOTgwNmU4ZDFkOGNlNzczN2JkZDcwMDFjZjcwOGFmN2EyYjg4NWM2YjM3NGUwYjZmNzhjNDY3NGMzZTgzNmJmMGU4NjRhNWI5ZmI1Y2YyMzAyY2MyNGM3MTAzMTY2ZjAxNmMy
+2020-01-20 09:13:53,674 - user exists
+2020-01-20 09:13:53,683 - user ist181358 already exists, and token was updated
+2020-01-20 09:13:53,684 - finished if
+2020-01-20 09:13:53,993 - WEB access to home page
+2020-01-20 09:13:53,993 - admin variable: Admin .

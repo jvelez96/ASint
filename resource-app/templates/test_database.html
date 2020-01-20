@@ -20,10 +20,10 @@
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
                 <td>
-                    {% if user.is_admin %}
+                    {% if user.admin %}
                         Admin
                     {% else %}
-                        Normal User
+                        Client
                     {% endif %}
                 </td>
                 <td>{{ user.tokenn }}</td>

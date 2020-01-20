@@ -182,7 +182,7 @@ def callback():
             flash('Error registering User')
             logger.warning('Error inserting user.')
 
-    if u.is_admin:
+    if u.admin:
         session['admin'] = True
     else:
         session['admin'] = False
@@ -308,6 +308,14 @@ def location(id):
 ############################### Secretariats WS integration ###############################################
 @app.route("/secretariats")
 def secretariats():
+    user = User.query.filter_by(username=session['username']).first()
+    if not user:
+        flash("No user with that id")
+        return redirect(url_for('my_redirect'))
+    elif not user.admin:
+        flash("User is not admin")
+        return redirect(url_for('home'))
+
     try:
         resp = requests.get(secretariatWS_url + '/secretariatWS/secretariats', auth=('asint-user',app.config["WS_AUTH"])).content
     except requests.exceptions.RequestException as e:
