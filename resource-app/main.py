@@ -8,8 +8,11 @@ from flask import flash
 from flask import jsonify
 from flask import session
 from flask import make_response
+
 import os
 import pymysql
+
+import redis
 
 from flask_bootstrap import Bootstrap
 
@@ -51,14 +54,15 @@ global client
 config = fenixedu.FenixEduConfiguration.fromConfigFile('fenixedu.ini')
 client = fenixedu.FenixEduClient(config)
 
+
 base_url = 'https://fenix.tecnico.ulisboa.pt/'
 #redirect_to_me = 'https://asint2-262123.appspot.com/callback'
 redirect_to_me = 'https://27898e7b.ngrok.io/callback'
 
 app = Flask(__name__)
 app.config.from_object(Config)
-app.config['SESSION_COOKIE_SECURE'] = True
-app.config['REMEMBER_COOKIE_SECURE'] = True
+#app.config['SESSION_COOKIE_SECURE'] = True
+#app.config['REMEMBER_COOKIE_SECURE'] = True
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 CORS(app)
@@ -172,6 +176,11 @@ def callback():
             flash('Error registering User')
             logger.warning('Error inserting user.')
 
+    if u.is_admin:
+        session['admin'] = True
+    else:
+        session['admin'] = False
+
     logger.warning('finished if')
     ###################### GET ADMINS ###########################3
     #admin = User.query.filter(User.roles.any(name="Admin")).all()
@@ -189,6 +198,12 @@ def callback():
 @app.route('/home', methods=["GET", "POST"])
 def home():
     logger.warning('WEB access to home page')
+    if session['admin']:
+        c = "Admin"
+    else:
+        c = "Not Admin"
+
+    logger.warning('admin variable: %s .', c)
     return render_template("index.html")
 
 

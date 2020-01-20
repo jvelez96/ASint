@@ -35,31 +35,36 @@
           <a class="nav-link" href="{{ url_for('campus') }}">Rooms</a>
         </li>
 
-        <!-- Secretariat Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            Secretariats
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ url_for('new_secretariat') }}">Register Secretariat</a>
-            <a class="dropdown-item" href="{{ url_for('secretariats') }}">Secretariat Management</a>
-          </div>
-        </li>
+        {% if session['admin'] %}
+            <!-- Secretariat Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Secretariats
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ url_for('new_secretariat') }}">Register Secretariat</a>
+                <a class="dropdown-item" href="{{ url_for('secretariats') }}">Secretariat Management</a>
+              </div>
+            </li>
+        {% endif %}
 
         <!-- Canteen -->
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('canteen') }}">Canteen</a>
         </li>
 
-        <!-- Logs -->
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('logs') }}">Logs</a>
-        </li>
+        {% if session['admin'] %}
+            <!-- Logs -->
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logs') }}">Logs</a>
+            </li>
 
-        <!-- Manage Users -->
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('database_test') }}">Manage Users</a>
-        </li>
+            <!-- Manage Users -->
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('database_test') }}">Manage Users</a>
+            </li>
+        {% endif %}
+
 
         <!-- Generate Key -->
         <li class="nav-item dropdown">
