@@ -125,8 +125,16 @@ def default_login():
     logger.warning("WEB access to default login page")
     return render_template('login.html')
 
-@app.route('/testdatabase')
+@app.route('/usermanagement')
 def database_test():
+    user = User.query.filter_by(username=session['username']).first()
+    if not user:
+        flash("No user with that id")
+        return redirect(url_for('my_redirect'))
+    elif not user.admin:
+        flash("User is not admin")
+        return redirect(url_for('home'))
+    
     u = User.query.all()
     admin = User.query.filter(User.roles.any(name="Admin")).all()
 
@@ -329,6 +337,14 @@ def secretariats():
 
 @app.route("/secretariats/<secr_id>")
 def secretariat_info(secr_id):
+    user = User.query.filter_by(username=session['username']).first()
+    if not user:
+        flash("No user with that id")
+        return redirect(url_for('my_redirect'))
+    elif not user.admin:
+        flash("User is not admin")
+        return redirect(url_for('home'))
+
     try:
         resp = requests.get(secretariatWS_url + '/secretariatWS/secretariats/' + secr_id, auth=('asint-user',app.config["WS_AUTH"])).content
     except requests.exceptions.RequestException as e:
@@ -343,6 +359,14 @@ def secretariat_info(secr_id):
 
 @app.route("/secretariats/new", methods=['GET','POST'])
 def new_secretariat():
+    user = User.query.filter_by(username=session['username']).first()
+    if not user:
+        flash("No user with that id")
+        return redirect(url_for('my_redirect'))
+    elif not user.admin:
+        flash("User is not admin")
+        return redirect(url_for('home'))
+
     form = NewSecretariatForm()
 
     if request.method == 'POST':
