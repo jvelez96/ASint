@@ -9,14 +9,11 @@ from flask import jsonify
 from flask import session
 from flask import make_response
 
-from io import StringIO
 import io
 from PIL import Image
 
 import os
 import pymysql
-
-import redis
 
 from flask_bootstrap import Bootstrap
 
@@ -172,8 +169,22 @@ def callback():
     name=person['name']
     email=person['email']
     birthday=person['birthday']
-    #image_data=person['photo']['data']
+    image_data=person['photo']['data']
 
+    #raw_bytes = ''.join(format(ord(i), 'b') for i in image_data)
+    import base64
+    img = base64.b64decode(image_data)
+    fh = open("./static/images/"+ username + ".png", "wb")
+    fh.write(img)
+    fh.close()
+
+    #buff = io.StringIO()
+    #buff.write(open('im.png', 'rb').read())
+    #buff.seek(0)
+
+    #im = Image.open(buff)
+    #im = Image.open(io.StringIO(image_data)).convert("RGBA")
+    #im.show()
     """
     buff = StringIO()  # buffer where image is stored
     buff.write(image_data)  # data is from the socket

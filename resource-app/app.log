@@ -879,3 +879,91 @@
 2020-01-20 12:47:41,220 - WEB access to home page
 2020-01-20 12:47:41,221 - admin variable: Admin .
 2020-01-20 12:47:47,592 - User ist181358 is generating key.
+2020-01-20 13:05:02,937 - WEB access to default login page
+2020-01-20 13:05:05,231 - POST to authorization_url
+2020-01-20 13:05:05,855 - GET to /callback endpoint
+2020-01-20 13:05:05,856 - code = 6ed7b94ae59f0009a2bf48b416fa8caa69956958e48275f64db6142ad159773829a309414b7fa66a042691fdd59ce762b5ea7919205425c01b7c972e1bd7af71
+2020-01-20 13:07:51,288 - POST to authorization_url
+2020-01-20 13:07:51,903 - GET to /callback endpoint
+2020-01-20 13:07:51,904 - code = 7fd15ca03579a4ae64765cd8c7ac2f5218f2fb776f38e687e63ba67b75d82117e48c889e5e8e762a4df18ed80a16680322362828e0e27ee71d70621a6cdabae6
+2020-01-20 13:16:51,283 - POST to authorization_url
+2020-01-20 13:16:51,955 - GET to /callback endpoint
+2020-01-20 13:16:51,956 - code = 72356cb3c8cea2183fb49478648e070e766c9f530ba778eba0846ec748b100ced854ac763344da40e4873f37cc208ec1c6631d5576aca565c22098ea288c0a6f
+2020-01-20 13:21:42,769 - POST to authorization_url
+2020-01-20 13:21:45,018 - GET to /callback endpoint
+2020-01-20 13:21:45,019 - code = 4029397d711567ceb28bc5d7d12eec31f13361a9e06bd0fbba1ef15fe7dadc294a6a11fbd3346565fd04fe7ce783ebd0d9cb8f606f27fd54298fdb156c4229c3
+2020-01-20 13:26:09,467 - POST to authorization_url
+2020-01-20 13:26:10,444 - GET to /callback endpoint
+2020-01-20 13:26:10,445 - code = 12f3a606c39c86cacfa0c23723a7523c22243c1d5a139cc78c3d17b98f8697c1d26e4713480da3f55a9e2198e7f4b9f14d8cd24a7903fc1515158f7ce3c53aba
+2020-01-20 13:31:34,935 - WEB access to default login page
+2020-01-20 13:31:37,807 - POST to authorization_url
+2020-01-20 13:31:39,104 - GET to /callback endpoint
+2020-01-20 13:31:39,104 - code = fa5c072785a90e8191a7eb6b157ec6a3cada7a380a8b8a992077cb85a800ca85ac8e402379a1c9af4ec466a026689a5a2062415d7469c52dc59f2fdf87f35ed1
+2020-01-20 13:33:11,922 - WEB access to default login page
+2020-01-20 13:33:13,553 - POST to authorization_url
+2020-01-20 13:33:14,424 - GET to /callback endpoint
+2020-01-20 13:33:14,425 - code = 8da95522a31143ae2e4bc4f136791d3e4da37b7d433e487e6631d6b78e53dddde5b8fd9f32601e86999f48212102ced7a74915f21537a6c83f5a7c6f228538f4
+2020-01-20 13:34:07,584 - WEB access to default login page
+2020-01-20 13:34:09,561 - POST to authorization_url
+2020-01-20 13:34:10,468 - GET to /callback endpoint
+2020-01-20 13:34:10,469 - code = 27fc1c8bcfb16c3417bbe2b8d598c6eb79051e635b0a3e9137b6d727a2ae1dfb71787c580a87e182f43d86add9f72e87e4900a78ca462ccfee4993c72a88e3ac
+2020-01-20 13:34:54,870 - GET to /callback endpoint
+2020-01-20 13:34:54,870 - code = 27fc1c8bcfb16c3417bbe2b8d598c6eb79051e635b0a3e9137b6d727a2ae1dfb71787c580a87e182f43d86add9f72e87e4900a78ca462ccfee4993c72a88e3ac
+2020-01-20 13:36:24,074 - WEB access to default login page
+2020-01-20 13:36:25,759 - POST to authorization_url
+2020-01-20 13:36:26,471 - GET to /callback endpoint
+2020-01-20 13:36:26,472 - code = 7c0c2688faaca1ff0c554bd73b0ead41df65e73318d14fbd60aaedc95103fe1a2ec8c1f3e7f4cef284ebe168ca5e5a9940b84fb029ba384abbeeb0097139b030
+2020-01-20 13:38:42,395 - WEB access to default login page
+2020-01-20 13:38:44,607 - POST to authorization_url
+2020-01-20 13:38:46,039 - GET to /callback endpoint
+2020-01-20 13:38:46,039 - code = 6b4d3e5d2d5444a7d6e204e308028a5021cb3e838a13a29b1f0d8633b6626884315db955c2c30c0cd2531d651d4d7f86d7e546c6c08988dd2d34b9b83b694522
+2020-01-20 13:38:46,485 - name: José Augusto da Mata Velez
+2020-01-20 13:38:46,488 - email: j.velez2210@gmail.com
+2020-01-20 13:38:46,489 - birthday: 22/10/1996
+2020-01-20 13:38:46,490 - username = ist181358
+2020-01-20 13:38:46,490 - token = Mjg4NTQ4Nzg3OTIxNDY1OmVmMzU3YmJmODI4Mjk2ZTAzYzM3ZTYyNjc1MGViMmI1YWQzYmU2ZTRhZWFkNDk5NWJhZGQ1YmY3MTIyY2JkNjkyOTNmNmQxZGYxYjgzMzMwMDFjNDlhYjUwM2UwMTZmMGJhNTM0YWRiNTg0OGEzM2IwZjhkOWM5NTgyM2I3MDVl
+2020-01-20 13:38:46,571 - user being created
+2020-01-20 13:38:46,597 - finished if
+2020-01-20 13:38:47,490 - WEB access to home page
+2020-01-20 13:38:47,492 - admin variable: Not Admin .
+2020-01-20 13:41:12,923 - WEB access to default login page
+2020-01-20 13:41:15,383 - POST to authorization_url
+2020-01-20 13:41:15,850 - GET to /callback endpoint
+2020-01-20 13:41:15,851 - code = 48d43a916187c872801add66d4551128e09f3b8a2d48190fb9edc831302160598bac205097b2e466eb829249b60fcd1d8911fa72cb85441c9a6baf1818bfc701
+2020-01-20 13:44:21,230 - WEB access to default login page
+2020-01-20 13:44:24,282 - POST to authorization_url
+2020-01-20 13:44:25,079 - GET to /callback endpoint
+2020-01-20 13:44:25,080 - code = e52128e27a93386a8d98412963d9dd5c2f5da20f94794d317c952aac311e470ea5a044c4c9bedc6e55b907915405dc0290aeea1c2cc183e0d47f9a9c69361977
+2020-01-20 13:45:08,337 - WEB access to default login page
+2020-01-20 13:45:10,364 - POST to authorization_url
+2020-01-20 13:45:18,479 - GET to /callback endpoint
+2020-01-20 13:45:18,480 - code = af80ba1447b74e37e56f23a66f30344c9fcbb681baa186ce560c727e184769ce939261c247af10dc55e25b30bb19513359127c80307d7328ba2ea0531170d66a
+2020-01-20 13:46:24,634 - WEB access to default login page
+2020-01-20 13:46:26,775 - POST to authorization_url
+2020-01-20 13:46:27,389 - GET to /callback endpoint
+2020-01-20 13:46:27,389 - code = d3e7822b7048e4d79f5a55c721b435cdd606366a155342c60e86f5b30c83a033b615e220e5efa9b416b9deabfe2273aba3b36aab6abd19aa63864a2d19871365
+2020-01-20 13:46:27,725 - name: José Augusto da Mata Velez
+2020-01-20 13:46:27,725 - email: j.velez2210@gmail.com
+2020-01-20 13:46:27,726 - birthday: 22/10/1996
+2020-01-20 13:46:27,726 - username = ist181358
+2020-01-20 13:46:27,726 - token = Mjg4NTQ4Nzg3OTIxNDY5OmJhMWJiZTgyNzBlNjIyODY3YmNmNGRiNzI4ZDdjOGVlNmE1MjBlZjg0M2U0ZjdlYjg0MWI1ODVkMjY0ODY3MDhiZmMxM2VmYWIzZDY2NDc2N2EwZTNmYTU0MGVhNDA1Mjc0ZDc4ZGVkMjU5ZDc5ZDkwNGNhMGJiNjlkMTQ2NDBj
+2020-01-20 13:46:27,797 - user being created
+2020-01-20 13:46:27,825 - finished if
+2020-01-20 13:46:29,182 - WEB access to home page
+2020-01-20 13:46:29,183 - admin variable: Not Admin .
+2020-01-20 13:52:09,259 - WEB access to default login page
+2020-01-20 13:52:12,188 - POST to authorization_url
+2020-01-20 13:52:13,027 - GET to /callback endpoint
+2020-01-20 13:52:13,027 - code = a1f6a8b0f5406be2a4a65f61ec86819682eb0d87816a56ce227e896c0cae97b0618b0ae0b78099179b9ad29d37e71cd8c540f8e6a1317f998ac0b6acfe68bc18
+2020-01-20 13:52:13,393 - name: José Augusto da Mata Velez
+2020-01-20 13:52:13,394 - email: j.velez2210@gmail.com
+2020-01-20 13:52:13,395 - birthday: 22/10/1996
+2020-01-20 13:52:13,395 - username = ist181358
+2020-01-20 13:52:13,396 - token = Mjg4NTQ4Nzg3OTIxNDcwOjkxMWE5YjQ0NDgxOWUwY2M3MGNhZmMyMGIyMGExN2RjM2JmNjgyNzk2MzQ5MzEyYWIwMmMwY2EwYTg3YzY2NzU1Y2YxZDExNjIxNGY4NzQ5MWI0NmNhMmRkZDg3MDM2OWM0OWEyMGM3ZmE5ZGM2MjM1NGRmNmM0Y2RmYWNmOThi
+2020-01-20 13:52:13,472 - user being created
+2020-01-20 13:52:13,487 - finished if
+2020-01-20 13:52:14,139 - WEB access to home page
+2020-01-20 13:52:14,140 - admin variable: Not Admin .
+2020-01-20 14:00:35,413 - User ist181358 is generating key.
+2020-01-20 14:00:47,813 - WEB access to home page
+2020-01-20 14:00:47,814 - admin variable: Not Admin .
