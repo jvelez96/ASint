@@ -620,3 +620,59 @@
 2020-01-20 06:42:28,654 - admin variable: Admin .
 2020-01-20 06:43:44,033 - WEB access to home page
 2020-01-20 06:43:44,033 - admin variable: Admin .
+2020-01-20 06:52:56,252 - WEB access to default login page
+2020-01-20 06:52:58,957 - POST to authorization_url
+2020-01-20 06:52:59,370 - GET to /callback endpoint
+2020-01-20 06:52:59,370 - code = 8a804ddfbbbd4c1c63b092eef5178d5b0804973a02e1c2ccf92a2543de75f83509d6f99220a4356ce8c1acbd4d5d2b12d2af511aea642b7cab408787ac4913d1
+2020-01-20 06:52:59,792 - username = ist181358
+2020-01-20 06:52:59,792 - token = Mjg4NTQ4Nzg3OTIxMzM2OmUzYWFkYWRmYzZlN2Y5M2FkNzgwMWM3MjYyNmFiOTE4ZDE2NmI4ZjdkODhjOGEwMzZiYTgyNWRkYTQ2NDYyNGIwZmMzNzIyZTczYjZmNGFjYjVmNDhkZmVhZWYwODcyNjllNjU4ZjRkNGJjYWYxZDFjNTFjNGE2MGU3NzYyNDAw
+2020-01-20 06:52:59,807 - user exists
+2020-01-20 06:52:59,812 - user ist181358 already exists, and token was updated
+2020-01-20 06:52:59,813 - finished if
+2020-01-20 06:53:00,300 - WEB access to home page
+2020-01-20 06:53:00,300 - admin variable: Admin .
+2020-01-20 06:53:59,310 - WEB access to campus page
+2020-01-20 06:54:01,803 - WEB access to campus page buildings_in_campus
+2020-01-20 06:54:04,229 - WEB access to campus page floors_in_building
+2020-01-20 06:54:09,068 - WEB access to campus page rooms_in_floor
+2020-01-20 06:54:09,122 - WEB access to campus page rooms_in_floor
+2020-01-20 06:54:26,669 - WEB access to campus page room_details
+2020-01-20 06:54:29,294 - WEB access to campus page rooms_in_floor
+2020-01-20 06:54:34,504 - WEB access to campus page room_details
+2020-01-20 06:54:36,202 - WEB access to campus page rooms_in_floor
+2020-01-20 06:54:43,411 - WEB access to campus page room_details
+2020-01-20 06:54:45,563 - WEB access to campus page rooms_in_floor
+2020-01-20 06:54:47,366 - WEB access to campus page buildings_in_campus
+2020-01-20 06:54:54,035 - WEB access to campus page floors_in_building
+2020-01-20 06:54:55,861 - WEB access to campus page rooms_in_floor
+2020-01-20 06:54:57,356 - WEB access to campus page rooms_in_floor
+2020-01-20 06:55:06,353 - WEB access to campus page rooms_in_floor
+2020-01-20 06:55:07,702 - WEB access to campus page rooms_in_floor
+2020-01-20 06:55:12,626 - WEB access to campus page rooms_in_floor
+2020-01-20 06:55:13,772 - WEB access to campus page floors_in_building
+2020-01-20 06:55:16,791 - WEB access to campus page rooms_in_floor
+2020-01-20 06:55:18,850 - WEB access to campus page rooms_in_floor
+2020-01-20 06:55:26,316 - WEB access to campus page room_details
+2020-01-20 06:55:28,283 - WEB access to campus page rooms_in_floor
+2020-01-20 06:55:41,222 - WEB access to campus page room_details
+2020-01-20 06:56:04,026 - WEB access to campus page buildings_in_campus
+2020-01-20 06:56:04,071 - WEB access to campus page buildings_in_campus
+2020-01-20 06:56:09,026 - WEB access to campus page floors_in_building
+2020-01-20 06:56:14,794 - WEB access to campus page rooms_in_floor
+2020-01-20 06:56:22,991 - WEB access to campus page room_details
+2020-01-20 06:56:40,602 - WEB access to campus page buildings_in_campus
+2020-01-20 06:56:42,666 - WEB access to campus page floors_in_building
+2020-01-20 06:56:48,448 - WEB access to campus page rooms_in_floor
+2020-01-20 06:56:58,017 - WEB access to campus page room_details
+2020-01-20 06:59:22,673 - WEB access to campus page room_details
+2020-01-20 07:00:51,272 - WEB access to campus page room_details
+2020-01-20 07:01:48,107 - WEB access to campus page room_details
+2020-01-20 07:02:02,313 - Access to canteenWS endpoint
+2020-01-20 07:02:10,019 - Access to secretariatWS endpoint
+2020-01-20 07:02:14,887 - Access to secretariatWS delete id endpoint
+2020-01-20 07:02:15,249 - Access to secretariatWS endpoint
+2020-01-20 07:02:19,587 - Access to secretariatWS new endpoint
+2020-01-20 07:02:55,110 - Access to secretariatWS id endpoint
+2020-01-20 07:02:59,365 - Access to secretariatWS endpoint
+2020-01-20 07:03:04,908 - Access to secretariatWS delete id endpoint
+2020-01-20 07:03:05,251 - Access to secretariatWS endpoint

@@ -42,9 +42,13 @@
                 <th>
                     {{ event.info }}
                 </th>
-                <th><a href="{{ event.course.url }}" target="_blank">
-                    {{ event.course.name }}
-                </a></th>
+                {% if event.course %}
+                    <th><a href="{{ event.course.url }}" target="_blank">
+                        {{ event.course.name }}
+                    </a></th>
+                {% else %}
+                    <th>No course</th>
+                {% endif %}
             </tr>
             {% endfor %}
             </tbody>
