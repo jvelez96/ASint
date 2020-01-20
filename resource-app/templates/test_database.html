@@ -19,7 +19,13 @@
             <tr>
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.roles.name }}</td>
+                <td>
+                    {% if user.is_admin %}
+                        Admin
+                    {% else %}
+                        Normal User
+                    {% endif %}
+                </td>
                 <td>{{ user.tokenn }}</td>
             </tr>
         {% endfor %}

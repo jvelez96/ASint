@@ -3,7 +3,7 @@ from datetime import datetime
 from flask_user import current_user, login_required, roles_required, UserManager, UserMixin
 
 
-class User(db.Model, UserMixin):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -13,6 +13,13 @@ class User(db.Model, UserMixin):
     tokenn = db.Column(db.String(500), index=True, unique=True)
 
     roles = db.relationship('Role', secondary='user_roles', backref=db.backref('role'))
+
+    def is_admin(self):
+        if self.userRoles_set.filter(user_id=self.id, role_id=1).exists():
+            #UserRoles.query.filter_by(user_id=self.id, role_id=1).exists()
+            #self.query.filter(User.roles.any(name="Admin")).all()
+            return True
+        return False
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -29,3 +36,6 @@ class UserRoles(db.Model):
     role_id = db.Column(db.Integer(), db.ForeignKey('roles.id', ondelete='CASCADE'))
 
 
+# Setup Flask-User
+#db_adapter = SQLAlchemyAdapter(db, User)
+#user_manager = UserManager(db_adapter, app)

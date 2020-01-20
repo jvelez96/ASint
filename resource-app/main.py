@@ -11,14 +11,9 @@ from flask import make_response
 import os
 import pymysql
 
-from flask_user import current_user, login_required, roles_required, UserManager, UserMixin
-
-from flask_wtf.csrf import CSRFProtect
-
-from requests_oauthlib import OAuth2Session
-import urllib3
-
 from flask_bootstrap import Bootstrap
+
+from flask_user import roles_required, UserManager
 
 import requests
 
@@ -93,10 +88,12 @@ redis_client = bmemcached.Client('redis-13711.c93.us-east-1-3.ec2.cloud.redislab
 app.secret_key = 'tlxm7/1dt7a2UhkkE7BsOfEVi9EZMcnLETzzfUaDslyuNSH6MXeakcjFl7pnsvWiaDAGilRTbUwHywZ10f3loA=='
 client_id='570015174623357'
 
-
 from models import *
 from forms import *
 
+
+# Setup Flask-User and specify the User data-model
+#user_manager = UserManager(app, db_adapter)
 
 def checkToken(token, username):
     if redis_client.get(username)==token:
@@ -108,15 +105,14 @@ def get_connection():
     return pymysql.connect(user=db_user, password=db_password,
                               unix_socket=unix_socket, db=db_name, autocommit=True)
 
-
 @app.shell_context_processor
 def make_shell_context():
     return {'db': db, 'User': User, 'UserRoles': UserRoles, 'Role': Role}
 
 
 @app.route('/')
-def login():
-    logger.warning('WEB access to default login page')
+def default_login():
+    logger.warning("WEB access to default login page")
     return render_template('login.html')
 
 @app.route('/testdatabase')
@@ -158,24 +154,25 @@ def callback():
     session['access_token']=token
     session['username']=username
 
-    try:
-        u = User(username=username, email=username, tokenn=token)
-        db.session.add(u)
-        db.session.commit()
+    u = User.query.filter_by(username=username).first()
 
-        #roles = Role.query.all()
-        #role = roles[0]
-
-        #r = UserRoles(user_id=u.id, role_id=role.id)
-        #db.session.add(r)
-        #db.session.commit()
-    except Exception as e:
-        logger.warning('user %s already exists', username)
-        flash("user already exists!")
-        u = User.query.get_or_404(username)
+    if u:
+        logger.warning('user exists')
         u.tokenn = token
         db.session.commit()
+        logger.warning('user %s already exists, and token was updated', username)
+    else:
+        try:
+            logger.warning('user being created')
+            u = User(username=username, email=username, tokenn=token)
+            db.session.add(u)
+            db.session.commit()
+            logger.info('user %s logged in and was registered in db.', username)
+        except Exception as e:
+            flash('Error registering User')
+            logger.warning('Error inserting user.')
 
+    logger.warning('finished if')
     ###################### GET ADMINS ###########################3
     #admin = User.query.filter(User.roles.any(name="Admin")).all()
 
@@ -184,8 +181,6 @@ def callback():
     u.tokenn = token
     db.session.commit()
     """
-
-
     resp = make_response(redirect(url_for('home')))
     resp.set_cookie('username', username, secure=True)  #accessible in javascript
     return resp
