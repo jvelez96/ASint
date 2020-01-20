@@ -970,3 +970,20 @@
 2020-01-20 15:05:23,419 - WEB access to home page
 2020-01-20 15:05:23,420 - admin variable: Not Admin .
 2020-01-20 15:05:34,944 - User ist181358 is generating key.
+2020-01-20 15:17:44,458 - WEB access to default login page
+2020-01-20 15:17:46,179 - POST to authorization_url
+2020-01-20 15:17:47,139 - GET to /callback endpoint
+2020-01-20 15:17:47,140 - code = 091575b315a60046562445d1300d952c04b7a2385bd79f5e1afc187d1b70aa36182ec98b786dc6c431a26480b0fbc22e09567ebed220ec116f36cf82d75aa6fd
+2020-01-20 15:17:47,399 - name: José Augusto da Mata Velez
+2020-01-20 15:17:47,399 - email: j.velez2210@gmail.com
+2020-01-20 15:17:47,400 - birthday: 22/10/1996
+2020-01-20 15:17:47,400 - username = ist181358
+2020-01-20 15:17:47,400 - token = Mjg4NTQ4Nzg3OTIxNDg5OmY5MmM4ODI0ZDY0MDQ0NGE1Y2M2MzY1ZDdjNGYyZDU4MThhZWY2MzkyODBiZGFkMmNmYjY0NDI2ODg3OTQzMzQxNGE4MWRiNWJjOGFlZWJjZjdkZmUyN2FiYjA0NDk4YjUxOTA3ODE5ZDdlMzIxZGMyOWMyMDMyMjM1YzcxMjcw
+2020-01-20 15:17:47,415 - user exists
+2020-01-20 15:17:47,420 - user ist181358 already exists, and token was updated
+2020-01-20 15:17:47,422 - finished if
+2020-01-20 15:17:47,755 - WEB access to home page
+2020-01-20 15:17:47,755 - admin variable: Admin .
+2020-01-20 15:18:06,128 - User ist181358 is generating key.
+2020-01-20 15:18:47,411 - User ist181358 is generating key.
+2020-01-20 15:19:27,781 - WEB access to default login page
