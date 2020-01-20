@@ -39,6 +39,8 @@ import random
 
 import logging
 
+IMAGES_FOLDER = os.path.join('static', 'images')
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.WARNING)
 
@@ -65,6 +67,7 @@ redirect_to_me = 'https://27898e7b.ngrok.io/callback'
 
 app = Flask(__name__)
 app.config.from_object(Config)
+app.config['UPLOAD_FOLDER'] = IMAGES_FOLDER
 #app.config['SESSION_COOKIE_SECURE'] = True
 #app.config['REMEMBER_COOKIE_SECURE'] = True
 db = SQLAlchemy(app)
@@ -299,8 +302,10 @@ def find_key():
 @app.route("/user/<id>")
 def user_info(id):
     user = User.query.filter_by(id=id).first()
+
     if user:
-        return render_template("user_info.html", user=user)
+        full_filename = os.path.join(app.config['UPLOAD_FOLDER'], user.username +'.png')
+        return render_template("user_info.html", user=user, filename=full_filename)
     else:
         flash("No user with that id")
         return redirect(url_for('home'))
