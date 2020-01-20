@@ -1,7 +1,7 @@
 {% extends "template.html" %}
 {% block content %}
 
-<h2>Users</h2>
+<h2>User Management</h2>
 
 <div class="container">
   {% if users %}
@@ -9,7 +9,9 @@
       <thead>
         <tr>
           <th>User</th>
+          <th>Name</th>
           <th>Email</th>
+          <th>Birthday</th>
           <th>Role</th>
           <th>Token</th>
         </tr>
@@ -18,7 +20,9 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.username }}</td>
+                <td>{{ user.name }}</td>
                 <td>{{ user.email }}</td>
+                <td>{{ user.birthday }}</td>
                 <td>
                     {% if user.admin %}
                         Admin

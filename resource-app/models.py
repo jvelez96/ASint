@@ -6,8 +6,12 @@ from flask_user import current_user, login_required, roles_required, UserManager
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
     username = db.Column(db.String(64), index=True, unique=True)
-    email = db.Column(db.String(120), index=True, unique=True)
+    email = db.Column(db.String(120), index=True)
+    birthday = db.Column(db.String(64))
+    image = db.Column(db.String(500))
+    campus = db.Column(db.String(64))
     password_hash = db.Column(db.String(128))
     admin = db.Column(db.Boolean, default=False)
     tokenn = db.Column(db.String(500), index=True, unique=True)

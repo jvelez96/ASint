@@ -9,6 +9,10 @@ from flask import jsonify
 from flask import session
 from flask import make_response
 
+from io import StringIO
+import io
+from PIL import Image
+
 import os
 import pymysql
 
@@ -134,7 +138,7 @@ def database_test():
     elif not user.admin:
         flash("User is not admin")
         return redirect(url_for('home'))
-    
+
     u = User.query.all()
     admin = User.query.filter(User.roles.any(name="Admin")).all()
 
@@ -165,6 +169,25 @@ def callback():
     person = client.get_person(fenixuser)
 
     username=person['username']
+    name=person['name']
+    email=person['email']
+    birthday=person['birthday']
+    #image_data=person['photo']['data']
+
+    """
+    buff = StringIO()  # buffer where image is stored
+    buff.write(image_data)  # data is from the socket
+    output = open("/static/images/"+ username + ".png", 'wb')
+    output.write(buff)
+    output.close()
+    """
+
+
+    logger.warning('name: ' + name)
+    logger.warning('email: ' + email)
+    #logger.warning('photo: ' + image)
+    logger.warning('birthday: ' + birthday)
+
     logger.warning('username = ' + username)
 
     token = fenixuser.access_token
@@ -182,13 +205,14 @@ def callback():
     else:
         try:
             logger.warning('user being created')
-            u = User(username=username, email=username, tokenn=token)
+            u = User(username=username, email=email, tokenn=token, name=name, birthday=birthday)
             db.session.add(u)
             db.session.commit()
             logger.info('user %s logged in and was registered in db.', username)
         except Exception as e:
             flash('Error registering User')
             logger.warning('Error inserting user.')
+            return redirect(url_for('default_login'))
 
     if u.admin:
         session['admin'] = True
