@@ -24,59 +24,81 @@
    {% block title%}<title>Fenix Resource App</title>{% endblock %}
  </head>
  <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-      <!-- Brand -->
-      <a class="navbar-brand" href="{{ url_for('home') }}">FenixResourceApp</a>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+          <!-- Brand -->
+          <a class="navbar-brand" href="{{ url_for('home') }}">FenixResourceApp</a>
 
-      <!-- Links -->
-      <ul class="navbar-nav">
-        <!-- Rooms -->
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('campus') }}">Rooms</a>
-        </li>
+          <!-- Links -->
+          <ul class="navbar-nav">
+            <!-- Rooms -->
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('campus') }}">Rooms</a>
+            </li>
 
-        {% if session['admin'] %}
-            <!-- Secretariat Dropdown -->
+            {% if session['admin'] %}
+                <!-- Secretariat Dropdown -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Secretariats
+                  </a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{{ url_for('new_secretariat') }}">Register Secretariat</a>
+                    <a class="dropdown-item" href="{{ url_for('secretariats') }}">Secretariat Management</a>
+                  </div>
+                </li>
+            {% endif %}
+
+            <!-- Canteen -->
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('canteen') }}">Canteen</a>
+            </li>
+
+            {% if session['admin'] %}
+                <!-- Logs -->
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('logs') }}">Logs</a>
+                </li>
+
+                <!-- Manage Users -->
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('database_test') }}">Manage Users</a>
+                </li>
+            {% endif %}
+
+
+            <!-- Generate Key -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                Secretariats
+                User keys
               </a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ url_for('new_secretariat') }}">Register Secretariat</a>
-                <a class="dropdown-item" href="{{ url_for('secretariats') }}">Secretariat Management</a>
+                <a class="dropdown-item" href="{{ url_for('generate_key') }}">Generate Private Key</a>
+                <a class="dropdown-item" href="{{ url_for('find_key') }}">Find User</a>
               </div>
             </li>
-        {% endif %}
-
-        <!-- Canteen -->
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('canteen') }}">Canteen</a>
-        </li>
-
-        {% if session['admin'] %}
-            <!-- Logs -->
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('logs') }}">Logs</a>
-            </li>
-
-            <!-- Manage Users -->
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('database_test') }}">Manage Users</a>
-            </li>
-        {% endif %}
-
-
-        <!-- Generate Key -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            User keys
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ url_for('new_secretariat') }}">Generate Private Key</a>
-            <a class="dropdown-item" href="{{ url_for('secretariats') }}">Find User</a>
-          </div>
-        </li>
-      </ul>
+          </ul>
+       </div>
+       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                {% if session['username'] %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-fw fa-user"></i>
+                            {{ session['username'] }}
+                            {% if session['admin'] %}
+                                (admin)
+                            {% endif %}
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('my_redirect') }}"><i class="fa fa-fw fa-user"></i>
+                            Login
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+       </div>
     </nav>
 
     {% block m_content %}

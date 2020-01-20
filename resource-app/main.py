@@ -33,6 +33,9 @@ from werkzeug.datastructures import MultiDict
 from flask import url_for
 from requests.auth import HTTPBasicAuth
 
+import string
+import random
+
 import logging
 
 logger = logging.getLogger(__name__)
@@ -108,6 +111,9 @@ def checkToken(token, username):
 def get_connection():
     return pymysql.connect(user=db_user, password=db_password,
                               unix_socket=unix_socket, db=db_name, autocommit=True)
+
+def secret_key_gen(size=6, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
 
 @app.shell_context_processor
 def make_shell_context():
@@ -213,6 +219,48 @@ def logs():
     logs = F.read().splitlines()
     return render_template("logs.html", logs=logs)
 
+############################### User keys ###########################################################
+
+@app.route("/generate-key")
+def generate_key():
+    try:
+        user = User.query.filter_by(username=session['username']).first()
+        logger.warning('User %s is generating key.', session['username'])
+    except:
+        logger.warning('The user is not registered.')
+        flash('User is not registered')
+        return redirect(url_for('home'))
+
+    secret = secret_key_gen()
+
+    user.secret_key = secret
+    db.session.commit()
+
+    return render_template("generate_key.html", user=user)
+
+@app.route("/validate-user", methods=['GET', 'POST'])
+def find_key():
+    form = SecretKeyForm()
+
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            user = User.query.filter_by(secret_key=form.secret_key.data).first()
+
+            if(user):
+                return redirect(url_for('user_info', id=user.id))
+            else:
+                flash('There is no use with such secret key')
+
+    return render_template("find_key.html", form=form)
+
+@app.route("/user/<id>")
+def user_info(id):
+    user = User.query.filter_by(id=id).first()
+    if user:
+        return render_template("user_info.html", user=user)
+    else:
+        flash("No user with that id")
+        return redirect(url_for('home'))
 
 ############################### Rooms WS integration ###############################################
 

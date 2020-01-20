@@ -676,3 +676,44 @@
 2020-01-20 07:02:59,365 - Access to secretariatWS endpoint
 2020-01-20 07:03:04,908 - Access to secretariatWS delete id endpoint
 2020-01-20 07:03:05,251 - Access to secretariatWS endpoint
+2020-01-20 07:09:00,140 - WEB access to default login page
+2020-01-20 07:09:01,668 - POST to authorization_url
+2020-01-20 07:09:03,654 - GET to /callback endpoint
+2020-01-20 07:09:03,654 - code = 039a21097f6183941628d2e32f8ee763f38979b7033004776664f22054dc14b290acd46f268406369feff9e2aa5794f09651395c5a736ce0fb3e8eed997152d2
+2020-01-20 07:09:03,978 - username = ist181358
+2020-01-20 07:09:03,978 - token = Mjg4NTQ4Nzg3OTIxMzQwOjE1MTYxNzE5Y2M4M2JiOGZlMWNhZjNhYmY3MjY0MTRkMTIyNjhhOThmNmRmYzBlZjhlOTY3M2VkNmE3NzNkNmRmZWJiNDdhNzFkODdjNmY4YjUxZjM4YjU2NmI0NDMwYmE4MTQxYWVjMDg4YTViZDJmMDY3MWM1YzNiZGI3MDU1
+2020-01-20 07:09:03,994 - user exists
+2020-01-20 07:09:03,999 - user ist181358 already exists, and token was updated
+2020-01-20 07:09:03,999 - finished if
+2020-01-20 07:09:04,331 - WEB access to home page
+2020-01-20 07:09:04,331 - admin variable: Admin .
+2020-01-20 07:12:46,346 - WEB access to home page
+2020-01-20 07:12:46,347 - admin variable: Admin .
+2020-01-20 07:12:48,211 - WEB access to home page
+2020-01-20 07:12:48,211 - admin variable: Admin .
+2020-01-20 07:16:07,828 - WEB access to home page
+2020-01-20 07:16:07,829 - admin variable: Admin .
+2020-01-20 07:17:57,045 - WEB access to home page
+2020-01-20 07:17:57,045 - admin variable: Admin .
+2020-01-20 07:21:34,346 - WEB access to home page
+2020-01-20 07:21:34,346 - admin variable: Admin .
+2020-01-20 07:24:00,818 - WEB access to home page
+2020-01-20 07:24:00,818 - admin variable: Admin .
+2020-01-20 07:26:56,179 - WEB access to campus page
+2020-01-20 07:30:07,553 - WEB access to home page
+2020-01-20 07:30:07,553 - admin variable: Admin .
+2020-01-20 07:30:12,432 - Access to secretariatWS new endpoint
+2020-01-20 08:02:18,766 - WEB access to default login page
+2020-01-20 08:02:20,495 - POST to authorization_url
+2020-01-20 08:02:22,956 - GET to /callback endpoint
+2020-01-20 08:02:22,957 - code = 2c59100cfc84e36d702707542dfd27aec0b4da87b38e69229f96ea558bde02157936a3330ab9f0489ef86d58cd733f6edf71ab30ca4cbb9d373c21c968a3e986
+2020-01-20 08:02:25,249 - username = ist181358
+2020-01-20 08:02:25,249 - token = Mjg4NTQ4Nzg3OTIxMzU5OmYyNDVhZjE2NDNlZTg4NzY1ZDI2NzNiZGExMmM0MmViNjM0ODU5ZGFmNmI2MDE5MzFkYTNkYzQ0NzJiODdhNmJmZGMwNzY0OWZkM2ViOGE1NjVjYjM3YjM1MjlmNmYzMjBhZjljODRkNjdkNzliM2U3OTQwNTM2OTRhZTY0YzM1
+2020-01-20 08:02:25,264 - user exists
+2020-01-20 08:02:25,270 - user ist181358 already exists, and token was updated
+2020-01-20 08:02:25,270 - finished if
+2020-01-20 08:02:25,662 - WEB access to home page
+2020-01-20 08:02:25,662 - admin variable: Admin .
+2020-01-20 08:02:29,004 - User ist181358 is generating key.
+2020-01-20 08:06:36,256 - WEB access to home page
+2020-01-20 08:06:36,256 - admin variable: Admin .

@@ -10,3 +10,6 @@ class NewSecretariatForm(FlaskForm):
     opening_hours = StringField('Opening Hours', validators=[DataRequired()])
     submit = SubmitField('Register')
 
+class SecretKeyForm(FlaskForm):
+    secret_key = StringField('Secret Key', validators=[DataRequired()])
+    submit = SubmitField('Validate User')

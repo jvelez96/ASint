@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+<div class="container" style="padding-top: 30px;">
+    <div class="card">
+        <div class="card-body">
+            <h2>Insert user's secret key</h2>
+
+            <form action="{{ url_for('find_key') }}" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <p>
+                    {{ form.secret_key.label }}<br>
+                    {{ form.secret_key(size=32, classes_='validate') }}
+                    </p>
+                </div>
+
+                <p>{{ form.submit() }}</p>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
