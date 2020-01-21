@@ -12,7 +12,7 @@ from flask import make_response
 import io
 from PIL import Image
 
-import os
+import os, sys
 import pymysql
 
 from flask_bootstrap import Bootstrap
@@ -36,7 +36,8 @@ from requests.auth import HTTPBasicAuth
 
 import string
 import random
-
+import pyqrcode
+import png
 import logging
 
 IMAGES_FOLDER = os.path.join('static', 'images')
@@ -63,7 +64,7 @@ client = fenixedu.FenixEduClient(config)
 
 base_url = 'https://fenix.tecnico.ulisboa.pt/'
 #redirect_to_me = 'https://asint2-262123.appspot.com/callback'
-redirect_to_me = 'https://27898e7b.ngrok.io/callback'
+redirect_to_me = 'https://a7a990fd.ngrok.io/callback'
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -123,6 +124,10 @@ def secret_key_gen(size=6, chars=string.ascii_uppercase + string.digits):
 def make_shell_context():
     return {'db': db, 'User': User, 'UserRoles': UserRoles, 'Role': Role}
 
+@app.route('/qrcode')
+def qrcode():
+    logger.warning("WEB access to qr reader page")
+    return render_template('qrcode.html')
 
 @app.route('/')
 def default_login():
@@ -347,7 +352,9 @@ def location(id):
         return render_template("rooms_in_floor.html", floor=r)
     elif type == 'ROOM':
         logger.warning('WEB access to campus page room_details')
-        return render_template("room_details.html", room=r)
+        code = pyqrcode.create(request.base_url)
+        code.svg("static/images/"+ str(id) +".svg",scale=8)
+        return render_template("room_details.html", room=r, filename=str(id) + ".svg")
 
     logger.warning('WEB access to campus page rooms')
     return render_template("rooms.html", campus=campus)
