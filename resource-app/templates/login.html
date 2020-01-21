@@ -11,25 +11,34 @@
     -->
     <script src="static/jquery.js"></script>
     <script src="static/jquery-ui.js"></script>
-
+	<style>
+body {
+  background-image: url(https://tecnico.ulisboa.pt/files/2019/09/candidaturas-a-estacionamento-no-campus-alameda-ate-13-de-outubro-1140x641.jpg);
+  color: black;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>
 </head>
 <body>
     <header>
       <div class="container">
+
         <h1 class="logo">Welcome to our ASInt Project</h1>
+
       </div>
     </header>
     <div class="container">
-        <center>
+
         <h3>Please Login into your Fenix account</h3>
         <form action="{{ url_for('my_redirect') }}" method="POST">
   		    <div class="container">
-                <center>
     		        <button type="submit" class="btn btn-primary">Login</button>
-                </center>
             </div>
 	    </form>
-        </center>
+
     </div>
 </body>
 </html>

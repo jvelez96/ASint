@@ -63,7 +63,7 @@ client = fenixedu.FenixEduClient(config)
 
 base_url = 'https://fenix.tecnico.ulisboa.pt/'
 #redirect_to_me = 'https://asint2-262123.appspot.com/callback'
-redirect_to_me = 'https://27898e7b.ngrok.io/callback'
+redirect_to_me = 'https://a918212b.ngrok.io/callback'
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -472,7 +472,7 @@ def edit_secretariat(id):
     form = NewSecretariatForm()
     api_url = secretariatWS_url + '/secretariatWS/secretariats/' + id
     secr=[]
-
+    print('id: '+id)
     if request.method == 'GET':
         try:
             r = requests.get(api_url, auth=('asint-user',app.config["WS_AUTH"])).content
@@ -514,7 +514,7 @@ def edit_secretariat(id):
 
             if r.status_code != 200:
                 flash("Secretariat with that name already exists!")
-                return render_template("new_secretariat.html", form=form)
+                return redirect(url_for('secretariats'))
             else:
                 resp= r.json()
                 print(resp)
@@ -544,7 +544,7 @@ def canteen():
     return render_template("canteen.html", days=days)
 
 if __name__== "__main__":
-    port = 80,
+    port = 5000,
     app.run(debug=True)
 
 

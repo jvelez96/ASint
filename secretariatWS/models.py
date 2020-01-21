@@ -26,7 +26,7 @@ class PaginatedAPIMixin(object):
 
 class Secretariat (PaginatedAPIMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), index=True, unique=True)
+    name = db.Column(db.String(120), index=True)
     location = db.Column(db.String(120), index=True)
     description = db.Column(db.String(300))
     opening_hours = db.Column(db.String(120))

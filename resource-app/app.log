@@ -987,3 +987,96 @@
 2020-01-20 15:18:06,128 - User ist181358 is generating key.
 2020-01-20 15:18:47,411 - User ist181358 is generating key.
 2020-01-20 15:19:27,781 - WEB access to default login page
+2020-01-21 03:37:22,326 - WEB access to default login page
+2020-01-21 03:37:34,036 - POST to authorization_url
+2020-01-21 03:43:39,838 - WEB access to default login page
+2020-01-21 03:43:45,975 - WEB access to default login page
+2020-01-21 03:45:30,725 - WEB access to default login page
+2020-01-21 03:55:36,515 - WEB access to home page
+2020-01-21 03:59:10,606 - POST to authorization_url
+2020-01-21 04:00:15,406 - POST to authorization_url
+2020-01-21 04:00:24,395 - POST to authorization_url
+2020-01-21 04:00:37,345 - POST to authorization_url
+2020-01-21 04:01:31,101 - WEB access to default login page
+2020-01-21 04:01:33,111 - POST to authorization_url
+2020-01-21 04:01:33,530 - GET to /callback endpoint
+2020-01-21 04:01:33,531 - code = ee01b6f9e7f719ca7607feffabfce1b59cd5e9c8a966a4498dd7ad39081527ecf323f38897075690d66af0bf5ed13e6791b7ffdcdf4bf9a21eb9c8226e75d827
+2020-01-21 04:01:34,191 - name: José Augusto da Mata Velez
+2020-01-21 04:01:34,192 - email: j.velez2210@gmail.com
+2020-01-21 04:01:34,193 - birthday: 22/10/1996
+2020-01-21 04:01:34,193 - username = ist181358
+2020-01-21 04:01:34,194 - token = Mjg4NTQ4Nzg3OTIxNTczOjM5MzFlNzgzMTRmMjUxNTk4NWFiZDM1MDJmYmMwYTBjYzQ1OTMxMGEzODBiNmZlOWQwYmVlYTQzZTMwMmY4NjU5ODVkZTE4YzI2NmI4NDBmYjMyNDg1YmE4MDM5M2ZlMTMzMDRkMzdjNDBlY2Q5YzQ4NTNmYjkwNjY5MzhiOTE5
+2020-01-21 04:01:34,272 - user exists
+2020-01-21 04:01:34,289 - user ist181358 already exists, and token was updated
+2020-01-21 04:01:34,299 - finished if
+2020-01-21 04:01:35,366 - WEB access to home page
+2020-01-21 04:01:35,367 - admin variable: Admin .
+2020-01-21 04:01:40,284 - WEB access to campus page
+2020-01-21 04:01:42,504 - WEB access to home page
+2020-01-21 04:01:42,505 - admin variable: Admin .
+2020-01-21 04:01:47,868 - WEB access to home page
+2020-01-21 04:01:47,869 - admin variable: Admin .
+2020-01-21 04:02:00,607 - WEB access to campus page
+2020-01-21 04:03:44,161 - Access to canteenWS endpoint
+2020-01-21 04:05:12,845 - Access to secretariatWS endpoint
+2020-01-21 04:05:19,579 - WEB access to campus page
+2020-01-21 04:05:21,520 - WEB access to campus page buildings_in_campus
+2020-01-21 04:05:25,426 - WEB access to campus page buildings_in_campus
+2020-01-21 04:05:28,328 - WEB access to campus page floors_in_building
+2020-01-21 04:05:41,903 - WEB access to campus page rooms_in_floor
+2020-01-21 04:05:45,630 - WEB access to campus page room_details
+2020-01-21 04:06:28,103 - WEB access to campus page room_details
+2020-01-21 04:08:58,645 - Access to secretariatWS new endpoint
+2020-01-21 04:09:34,036 - Access to secretariatWS endpoint
+2020-01-21 04:09:43,612 - Access to secretariatWS edit id endpoint
+2020-01-21 04:10:17,196 - Access to secretariatWS edit id endpoint
+2020-01-21 04:10:47,940 - Access to secretariatWS id endpoint
+2020-01-21 04:11:03,097 - Access to secretariatWS endpoint
+2020-01-21 04:11:11,979 - Access to secretariatWS edit id endpoint
+2020-01-21 04:12:14,010 - WEB access to campus page
+2020-01-21 04:13:14,246 - WEB access to campus page room_details
+2020-01-21 04:15:19,737 - WEB access to campus page room_details
+2020-01-21 04:15:23,614 - POST to authorization_url
+2020-01-21 04:15:54,146 - GET to /callback endpoint
+2020-01-21 04:15:54,147 - code = 1f9cbcd5e950f2ee8e0cd3f325dda87ada9f4e312698673ced3ddee418c83edc26e19ce8cc9b198ac93cb5123c1ab533d37cddfc431efe0a021312622274b3c1
+2020-01-21 04:15:54,788 - name: Rui Pedro Faustino da Silva
+2020-01-21 04:15:54,789 - email: rsilva122@gmail.com
+2020-01-21 04:15:54,789 - birthday: 29/09/1995
+2020-01-21 04:15:54,789 - username = ist178938
+2020-01-21 04:15:54,789 - token = Mjg4NTQ4Nzg3OTIxNTc3OjA2NjE0NDc1ZWVkNGUxODc2ZDYxMmZhNmQxMDY2OTliM2VjOGZlM2FmMWViZWRiOTY3ZDJmYzM2NDQ2ZjMwNDAwOTRiOTI3OTE5OTA4N2E3M2VjNDVjNzNkODQ4MjBhMWIwOTBmZjQwMDFjNjdiMWJhZGNlM2E1NzMxMWVlYWYy
+2020-01-21 04:15:54,795 - user being created
+2020-01-21 04:15:54,819 - finished if
+2020-01-21 04:15:55,225 - WEB access to home page
+2020-01-21 04:15:55,226 - admin variable: Not Admin .
+2020-01-21 04:16:12,384 - User ist181358 is generating key.
+2020-01-21 06:40:47,220 - Access to secretariatWS endpoint
+2020-01-21 06:40:49,871 - Access to secretariatWS edit id endpoint
+2020-01-21 06:42:43,721 - Access to secretariatWS endpoint
+2020-01-21 06:42:47,321 - Access to secretariatWS edit id endpoint
+2020-01-21 06:44:13,165 - Access to secretariatWS endpoint
+2020-01-21 06:44:16,502 - Access to secretariatWS edit id endpoint
+2020-01-21 06:55:02,566 - Access to secretariatWS endpoint
+2020-01-21 06:55:05,767 - Access to secretariatWS delete id endpoint
+2020-01-21 06:55:06,269 - Access to secretariatWS endpoint
+2020-01-21 06:55:08,387 - Access to secretariatWS edit id endpoint
+2020-01-21 06:56:43,929 - Access to secretariatWS id endpoint
+2020-01-21 06:56:47,301 - Access to secretariatWS endpoint
+2020-01-21 06:56:49,572 - Access to secretariatWS edit id endpoint
+2020-01-21 06:58:11,619 - Access to secretariatWS new endpoint
+2020-01-21 06:58:14,915 - Access to secretariatWS endpoint
+2020-01-21 06:58:16,915 - Access to secretariatWS edit id endpoint
+2020-01-21 07:03:00,697 - Access to secretariatWS new endpoint
+2020-01-21 07:17:49,699 - Access to secretariatWS endpoint
+2020-01-21 07:17:51,953 - Access to secretariatWS edit id endpoint
+2020-01-21 07:21:31,300 - Access to secretariatWS endpoint
+2020-01-21 07:21:33,020 - Access to secretariatWS edit id endpoint
+2020-01-21 07:21:39,285 - Access to secretariatWS endpoint
+2020-01-21 07:23:01,121 - Access to secretariatWS edit id endpoint
+2020-01-21 07:23:04,477 - Access to secretariatWS endpoint
+2020-01-21 07:23:07,575 - Access to secretariatWS edit id endpoint
+2020-01-21 07:23:34,977 - Access to secretariatWS endpoint
+2020-01-21 07:23:53,217 - Access to secretariatWS edit id endpoint
+2020-01-21 07:23:56,592 - Access to secretariatWS id endpoint
+2020-01-21 07:26:17,411 - Access to secretariatWS endpoint
+2020-01-21 07:26:21,341 - Access to secretariatWS edit id endpoint
+2020-01-21 07:27:18,189 - Access to secretariatWS id endpoint

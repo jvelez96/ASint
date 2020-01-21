@@ -66,7 +66,7 @@ def get_all_secretariats():
 @auth.login_required
 def create_secretariat():
     data = request.get_json() or {}
-    print(data)
+    print('create '+data)
     #verificar o tratamento de se a descriçao nao for precisa
     if 'name' not in data or 'location' not in data or 'description' not in data or 'opening_hours' not in data:
         return bad_request('Must include all fields')
@@ -93,11 +93,11 @@ def update_secretariat(id):
 
     s = Secretariat.query.filter_by(name=data['name']).first()
 
-    if s and s.id != id:
-        return bad_request('This secretariat already exists.')
+    #verificar se existe alguma com este nome com um id diferente
+    if s and float(s.id) != float(id):
+        return bad_request('This secretariat with this name already exists.')
 
     secr.from_dict(data, new_secretariat=False)
-
     db.session.commit()
     return jsonify(secr.to_dict())
 
