@@ -987,6 +987,7 @@
 2020-01-20 15:18:06,128 - User ist181358 is generating key.
 2020-01-20 15:18:47,411 - User ist181358 is generating key.
 2020-01-20 15:19:27,781 - WEB access to default login page
+<<<<<<< HEAD
 2020-01-21 03:37:22,326 - WEB access to default login page
 2020-01-21 03:37:34,036 - POST to authorization_url
 2020-01-21 03:43:39,838 - WEB access to default login page
@@ -1080,3 +1081,424 @@
 2020-01-21 07:26:17,411 - Access to secretariatWS endpoint
 2020-01-21 07:26:21,341 - Access to secretariatWS edit id endpoint
 2020-01-21 07:27:18,189 - Access to secretariatWS id endpoint
+=======
+2020-01-20 23:47:12,808 - WEB access to default login page
+2020-01-20 23:47:14,647 - POST to authorization_url
+2020-01-20 23:48:13,317 - WEB access to home page
+2020-01-20 23:50:14,639 - WEB access to default login page
+2020-01-20 23:50:18,103 - POST to authorization_url
+2020-01-20 23:53:45,335 - WEB access to default login page
+2020-01-20 23:53:48,324 - WEB access to default login page
+2020-01-20 23:53:50,255 - POST to authorization_url
+2020-01-20 23:54:58,471 - POST to authorization_url
+2020-01-20 23:54:58,756 - GET to /callback endpoint
+2020-01-20 23:54:58,756 - code = 5b6f72520c9995108a0c78c2b20d477f047d8676961f8cd42c817cfabdfc625eabc9a2f7be8bb7bc0e1898c7df7fb79632a98cb9298c6886923f4e91b49de5be
+2020-01-20 23:54:59,175 - name: Rui Pedro Faustino da Silva
+2020-01-20 23:54:59,176 - email: rsilva122@gmail.com
+2020-01-20 23:54:59,176 - birthday: 29/09/1995
+2020-01-20 23:54:59,176 - username = ist178938
+2020-01-20 23:54:59,176 - token = ODUxNDk4NzQxMzI1Njc1OjRjZWJkMGRlZTA4NGZkMDFmOGFjZGI3ODExOThkMjE4MGYzMWRlOTMzMzFkOWU1M2UwNTk5YmI0YzA3NGNmZGNjMTljMmQxMmNiMzMxZGRjMjVhZWI1YWIwZTUxZWQxMzM3Y2Y2YzUwMDY1ZTdlOWZkMGJkMjQ4NGM3NmJlMDA2
+2020-01-20 23:54:59,249 - user being created
+2020-01-20 23:54:59,283 - finished if
+2020-01-20 23:54:59,549 - WEB access to home page
+2020-01-20 23:54:59,550 - admin variable: Not Admin .
+2020-01-20 23:58:23,112 - WEB access to campus page
+2020-01-20 23:59:05,983 - WEB access to default login page
+2020-01-20 23:59:11,623 - POST to authorization_url
+2020-01-20 23:59:21,203 - GET to /callback endpoint
+2020-01-20 23:59:21,203 - code = 0dcd1244c888df65ff17852171e6cf63717ec9928d38f965691079fe52fdfb5e4965e3fb41a39649da811f9a32f84a9b2a5b2d006b6351062a85e122897bdad3
+2020-01-20 23:59:21,608 - name: Eduardo Joaquim Leitão Libânio Gomes
+2020-01-20 23:59:21,608 - email: technikome@gmail.com
+2020-01-20 23:59:21,608 - birthday: 09/10/1995
+2020-01-20 23:59:21,608 - username = ist178224
+2020-01-20 23:59:21,608 - token = Mjg4NTQ4Nzg3OTIxNDk2OmZmYWI4NzIwMGVlYzgyN2RiYWVjYjA3OTEwYzA1YzY1YzRjOWM3ODhiMTdlNTJiNjI1MmU2NTg2OWZmYmVkZDFhNWM4OGJjZTJiOGRkYTgxNzY0YjhmZTEzODQ3NWMyMDVkNjI2MTc4ZDYyYmZlMmFlMWZkYzNhMjFhNTg1Nzgz
+2020-01-20 23:59:21,610 - user being created
+2020-01-20 23:59:21,639 - finished if
+2020-01-20 23:59:21,909 - WEB access to home page
+2020-01-20 23:59:21,909 - admin variable: Not Admin .
+2020-01-20 23:59:54,008 - User ist178224 is generating key.
+2020-01-20 23:59:56,669 - User ist178938 is generating key.
+2020-01-21 00:00:36,506 - WEB access to campus page
+2020-01-21 00:00:40,849 - WEB access to campus page buildings_in_campus
+2020-01-21 00:00:47,413 - WEB access to campus page buildings_in_campus
+2020-01-21 00:00:48,872 - WEB access to campus page floors_in_building
+2020-01-21 00:00:50,988 - WEB access to campus page rooms_in_floor
+2020-01-21 00:00:56,544 - WEB access to campus page room_details
+2020-01-21 00:00:58,564 - WEB access to campus page room_details
+2020-01-21 00:01:20,735 - WEB access to campus page
+2020-01-21 00:01:28,459 - WEB access to campus page
+2020-01-21 00:01:33,769 - WEB access to campus page
+2020-01-21 00:01:36,766 - User ist178224 is generating key.
+2020-01-21 00:01:39,507 - WEB access to home page
+2020-01-21 00:01:39,507 - admin variable: Not Admin .
+2020-01-21 00:01:41,550 - WEB access to campus page
+2020-01-21 00:01:43,466 - WEB access to campus page buildings_in_campus
+2020-01-21 00:01:45,191 - WEB access to campus page floors_in_building
+2020-01-21 00:01:46,942 - WEB access to campus page rooms_in_floor
+2020-01-21 00:02:20,590 - WEB access to home page
+2020-01-21 00:02:20,591 - admin variable: Not Admin .
+2020-01-21 00:02:32,224 - User ist178224 is generating key.
+2020-01-21 00:02:35,255 - User ist178224 is generating key.
+2020-01-21 00:02:57,915 - WEB access to home page
+2020-01-21 00:02:57,916 - admin variable: Not Admin .
+2020-01-21 00:03:06,126 - WEB access to home page
+2020-01-21 00:03:06,126 - admin variable: Not Admin .
+2020-01-21 00:03:10,979 - WEB access to home page
+2020-01-21 00:03:10,979 - admin variable: Not Admin .
+2020-01-21 00:03:24,143 - User ist178224 is generating key.
+2020-01-21 00:03:27,206 - WEB access to campus page
+2020-01-21 00:03:29,113 - WEB access to campus page buildings_in_campus
+2020-01-21 00:05:07,928 - WEB access to campus page
+2020-01-21 00:16:18,231 - WEB access to campus page
+2020-01-21 00:24:30,736 - WEB access to campus page buildings_in_campus
+2020-01-21 00:24:40,241 - WEB access to campus page floors_in_building
+2020-01-21 00:24:42,890 - WEB access to campus page rooms_in_floor
+2020-01-21 00:24:45,969 - WEB access to campus page room_details
+2020-01-21 00:25:24,857 - WEB access to campus page room_details
+2020-01-21 01:20:04,778 - WEB access to default login page
+2020-01-21 01:20:06,771 - POST to authorization_url
+2020-01-21 01:20:07,177 - GET to /callback endpoint
+2020-01-21 01:20:07,177 - code = 15603b1142db414a67cacbfc4ec5c1d117618478a8c6c8bfbbff86059d2028e213b36e31a5d6862006abce8d269d0652c7f318ce267818838a6989588b25dda0
+2020-01-21 01:20:07,517 - name: Rui Pedro Faustino da Silva
+2020-01-21 01:20:07,517 - email: rsilva122@gmail.com
+2020-01-21 01:20:07,517 - birthday: 29/09/1995
+2020-01-21 01:20:07,517 - username = ist178938
+2020-01-21 01:20:07,517 - token = ODUxNDk4NzQxMzI1Njc4OjljZmM2NDhjMmJmNmM5Y2RmNDJjOWYxNjkyZGIwNjcwYzliMmM1MGM4YTE0OTdkNTQyNzQ2MDkyNjRkNzY5ZTU1ZDI5YmFlYWJhNzU0Y2MwNTI2YjIwMmIyZGU3NjI2ZWI5ZjQ5YTg1YmQ2NmJhMGM2ODNmMWYyMmZlMTc3Yjg2
+2020-01-21 01:20:07,534 - user exists
+2020-01-21 01:20:07,555 - user ist178938 already exists, and token was updated
+2020-01-21 01:20:07,561 - finished if
+2020-01-21 01:20:07,821 - WEB access to home page
+2020-01-21 01:20:07,821 - admin variable: Not Admin .
+2020-01-21 01:21:03,640 - WEB access to campus page
+2020-01-21 01:21:06,039 - WEB access to campus page buildings_in_campus
+2020-01-21 01:21:10,910 - WEB access to campus page floors_in_building
+2020-01-21 01:21:13,175 - WEB access to campus page rooms_in_floor
+2020-01-21 01:21:14,821 - WEB access to campus page room_details
+2020-01-21 01:26:48,830 - WEB access to campus page room_details
+2020-01-21 01:27:50,229 - WEB access to campus page room_details
+2020-01-21 01:33:22,532 - WEB access to default login page
+2020-01-21 01:33:24,637 - POST to authorization_url
+2020-01-21 01:33:24,991 - GET to /callback endpoint
+2020-01-21 01:33:24,991 - code = 1fb1a1efb94b30dab1cda4fb422310718495d4cf84bde00e5d631f1b9ed33cbf0aef087c278f4a69e4ab9346378db53bf145087a26419726185398b24c02f9e1
+2020-01-21 01:33:25,298 - name: Rui Pedro Faustino da Silva
+2020-01-21 01:33:25,298 - email: rsilva122@gmail.com
+2020-01-21 01:33:25,299 - birthday: 29/09/1995
+2020-01-21 01:33:25,299 - username = ist178938
+2020-01-21 01:33:25,299 - token = ODUxNDk4NzQxMzI1Njc5OmZjMTcyZTg3NWEwMDA5MWJmOGFhYmFmOGVlZWVjYTYyNDkwOTVkMzcwNjhhNDY0NGZhNzg5NDhiN2FlZmQzOGI1YzBjNzA1OTA2Y2NiOWFjMjFmMWU5YTcyYWFiZjc3NjNkMmZjMTIzYTUzYzIzY2QwNTdkODM1MDNhNTU5ZDA3
+2020-01-21 01:33:25,314 - user exists
+2020-01-21 01:33:25,334 - user ist178938 already exists, and token was updated
+2020-01-21 01:33:25,337 - finished if
+2020-01-21 01:33:25,609 - WEB access to home page
+2020-01-21 01:33:25,610 - admin variable: Not Admin .
+2020-01-21 01:33:30,643 - WEB access to campus page
+2020-01-21 01:33:33,169 - WEB access to campus page buildings_in_campus
+2020-01-21 01:33:36,483 - WEB access to campus page floors_in_building
+2020-01-21 01:33:38,698 - WEB access to campus page rooms_in_floor
+2020-01-21 01:33:42,206 - WEB access to campus page rooms_in_floor
+2020-01-21 01:33:45,272 - WEB access to campus page room_details
+2020-01-21 01:33:45,272 - Generating qrcode
+2020-01-21 01:35:18,133 - WEB access to campus page room_details
+2020-01-21 01:35:18,134 - Generating qrcode
+2020-01-21 01:35:22,783 - WEB access to campus page rooms_in_floor
+2020-01-21 01:35:24,504 - WEB access to campus page room_details
+2020-01-21 01:35:24,504 - Generating qrcode
+2020-01-21 01:36:03,287 - WEB access to default login page
+2020-01-21 01:36:05,424 - POST to authorization_url
+2020-01-21 01:36:05,708 - GET to /callback endpoint
+2020-01-21 01:36:05,708 - code = 0b64ee540a3fdd7056c106083e12725c5d0072c9f59e82cc2d5ca96b82a49b25b9d528c558b73095317df5518f6e80f061bcea5bf9e3fdff1bfd9d57146d54c8
+2020-01-21 01:36:05,997 - name: Rui Pedro Faustino da Silva
+2020-01-21 01:36:05,997 - email: rsilva122@gmail.com
+2020-01-21 01:36:05,997 - birthday: 29/09/1995
+2020-01-21 01:36:05,997 - username = ist178938
+2020-01-21 01:36:05,997 - token = ODUxNDk4NzQxMzI1NjgwOjk0NGFhMWZkNzJlOGZkNjM2ZGVlN2I5ZjI0YTRiZWMyZmJkMzk4YjkyZmQ3NjA2YzQ4YzFjZjdiMjQzYmYzMWI5ZTVjNWQzY2Q3ZDI3MGEwNGVkYWU5YjEwODU1ZGNhYjAyYzQyMDMzNjcwZjA2MjI3OTVkZDM4Zjk1ZDNlZjdh
+2020-01-21 01:36:05,999 - user exists
+2020-01-21 01:36:06,024 - user ist178938 already exists, and token was updated
+2020-01-21 01:36:06,026 - finished if
+2020-01-21 01:36:06,352 - WEB access to home page
+2020-01-21 01:36:06,352 - admin variable: Not Admin .
+2020-01-21 01:36:17,550 - WEB access to campus page
+2020-01-21 01:36:20,494 - WEB access to campus page buildings_in_campus
+2020-01-21 01:36:27,770 - WEB access to campus page floors_in_building
+2020-01-21 01:36:31,678 - WEB access to campus page rooms_in_floor
+2020-01-21 01:36:38,911 - WEB access to campus page room_details
+2020-01-21 01:36:38,911 - Generating qrcode
+2020-01-21 01:38:22,689 - WEB access to campus page room_details
+2020-01-21 01:38:22,690 - Generating qrcode
+2020-01-21 01:38:33,537 - WEB access to default login page
+2020-01-21 01:38:35,482 - POST to authorization_url
+2020-01-21 01:38:35,788 - GET to /callback endpoint
+2020-01-21 01:38:35,788 - code = 9e6fa1a89ba88ac24de7cb2e01ed1262ce4aef33e49b184fe5949c6d86f42b177ba51176f8857581d1f7c4aecdd675eb3e70b47b5b92fd48254a356512a542dc
+2020-01-21 01:38:36,131 - name: Rui Pedro Faustino da Silva
+2020-01-21 01:38:36,131 - email: rsilva122@gmail.com
+2020-01-21 01:38:36,131 - birthday: 29/09/1995
+2020-01-21 01:38:36,132 - username = ist178938
+2020-01-21 01:38:36,132 - token = ODUxNDk4NzQxMzI1NjgxOjA3YWY5MTQ2YWVkZDc2YjAwMzFiYmEzZmFlYmVjMDc2OGNjYzQwZDI5YTliMDFjNjk3YjViNzhjOWEzNTg5OGM4OTE4YWM5NDAxNWUwMDEyN2U5MGExZDlkNTdlYWUzYWVhNzE5OTFjYzgyOWE4MGI3NzMwMTkyYzgyMThjZTRj
+2020-01-21 01:38:36,149 - user exists
+2020-01-21 01:38:36,171 - user ist178938 already exists, and token was updated
+2020-01-21 01:38:36,174 - finished if
+2020-01-21 01:38:36,439 - WEB access to home page
+2020-01-21 01:38:36,439 - admin variable: Not Admin .
+2020-01-21 01:38:39,513 - WEB access to campus page
+2020-01-21 01:38:41,935 - WEB access to campus page buildings_in_campus
+2020-01-21 01:38:43,969 - WEB access to campus page floors_in_building
+2020-01-21 01:38:46,318 - WEB access to campus page rooms_in_floor
+2020-01-21 01:38:48,297 - WEB access to campus page room_details
+2020-01-21 01:38:48,297 - Generating qrcode
+2020-01-21 01:43:19,923 - WEB access to campus page room_details
+2020-01-21 01:43:19,923 - Generating qrcode
+2020-01-21 01:44:57,291 - WEB access to default login page
+2020-01-21 01:44:59,765 - POST to authorization_url
+2020-01-21 01:45:00,154 - GET to /callback endpoint
+2020-01-21 01:45:00,154 - code = ad17b4f549b1dc15e55f7aaf1dc6f9d26e37a9b16d5bead43a9a07a7a1fbbfd742454d257e44ac558db07f7dc13a87debf6f7bbdf684214af605b0a60638995b
+2020-01-21 01:45:00,459 - name: Rui Pedro Faustino da Silva
+2020-01-21 01:45:00,459 - email: rsilva122@gmail.com
+2020-01-21 01:45:00,459 - birthday: 29/09/1995
+2020-01-21 01:45:00,459 - username = ist178938
+2020-01-21 01:45:00,459 - token = ODUxNDk4NzQxMzI1NjgzOjc1NmIxZGU0YjMwODdlM2Y4NzdmMzZkMDEzZjIyYjEyYTY5YmY4MTIzODczMTFhM2U0NmI2MmIwZmE0N2YxNWFhMDgxYTIyZmI0N2E4ZDA3M2JlNTRiNWE2MzQzYjg2MjlkOWQxMzUwNDlmM2U1ZmFhNDhjZTY1NjA0YmRjMDU2
+2020-01-21 01:45:00,475 - user exists
+2020-01-21 01:45:00,497 - user ist178938 already exists, and token was updated
+2020-01-21 01:45:00,500 - finished if
+2020-01-21 01:45:00,817 - WEB access to home page
+2020-01-21 01:45:00,817 - admin variable: Not Admin .
+2020-01-21 01:46:53,371 - WEB access to campus page
+2020-01-21 01:46:55,381 - WEB access to campus page buildings_in_campus
+2020-01-21 01:46:57,204 - WEB access to campus page floors_in_building
+2020-01-21 01:47:00,930 - WEB access to campus page floors_in_building
+2020-01-21 01:47:03,126 - WEB access to campus page rooms_in_floor
+2020-01-21 01:47:05,423 - WEB access to campus page room_details
+2020-01-21 01:47:37,864 - WEB access to campus page room_details
+2020-01-21 01:47:37,898 - Generating qrcodeQRCode(content=b'http://72b97f4c.ngrok.io/location/2448131364304', error='H', version=6, mode='binary')
+2020-01-21 01:57:02,217 - WEB access to campus page room_details
+2020-01-21 01:57:02,218 - Generating link to qrcode
+2020-01-21 02:09:37,745 - WEB access to default login page
+2020-01-21 02:09:41,408 - POST to authorization_url
+2020-01-21 02:10:53,812 - POST to authorization_url
+2020-01-21 02:11:42,205 - WEB access to default login page
+2020-01-21 02:11:44,683 - WEB access to default login page
+2020-01-21 02:11:46,769 - POST to authorization_url
+2020-01-21 02:12:26,403 - POST to authorization_url
+2020-01-21 02:12:34,827 - WEB access to default login page
+2020-01-21 02:12:47,359 - POST to authorization_url
+2020-01-21 02:12:47,665 - GET to /callback endpoint
+2020-01-21 02:12:47,666 - code = 3750f1ad7ad1b75a97387bfe24f5a68d3bd52518e43b99ac3f58943586d28784ad6942a9d55d93377fd666275f3df116c98a0d85b0ea4996141d10f17867434e
+2020-01-21 02:12:47,989 - name: Rui Pedro Faustino da Silva
+2020-01-21 02:12:47,989 - email: rsilva122@gmail.com
+2020-01-21 02:12:47,989 - birthday: 29/09/1995
+2020-01-21 02:12:47,989 - username = ist178938
+2020-01-21 02:12:47,989 - token = ODUxNDk4NzQxMzI1Njg1OjBlODQ0NmQ4ZTQwNzdhNGRjZDg4N2YwZTlkOTYxZmZmOTVlY2QxZWNjZWQxYTMwMWE4ZmY0NzI3MTJkNTI4NDk1ZmI1ZjFjNWZiNTgzNmI4ODljMTg1ZTdkNDQ5Yzg2MGVjNWU2NWU5MTVmZGViYWU4MGZkOGUzMTczZTQ5Zjgw
+2020-01-21 02:12:48,006 - user exists
+2020-01-21 02:12:48,036 - user ist178938 already exists, and token was updated
+2020-01-21 02:12:48,041 - finished if
+2020-01-21 02:12:48,301 - WEB access to home page
+2020-01-21 02:12:48,301 - admin variable: Not Admin .
+2020-01-21 02:12:52,866 - WEB access to campus page
+2020-01-21 02:12:55,264 - WEB access to campus page buildings_in_campus
+2020-01-21 02:13:02,532 - WEB access to campus page floors_in_building
+2020-01-21 02:13:05,519 - WEB access to campus page rooms_in_floor
+2020-01-21 02:13:08,830 - WEB access to campus page room_details
+2020-01-21 02:13:34,159 - WEB access to campus page room_details
+2020-01-21 02:13:39,330 - WEB access to campus page rooms_in_floor
+2020-01-21 02:13:42,188 - WEB access to campus page room_details
+2020-01-21 02:14:28,803 - WEB access to campus page room_details
+2020-01-21 02:19:14,883 - WEB access to campus page room_details
+2020-01-21 02:19:19,207 - WEB access to campus page room_details
+2020-01-21 02:26:29,223 - WEB access to default login page
+2020-01-21 02:26:32,206 - POST to authorization_url
+2020-01-21 02:26:32,570 - GET to /callback endpoint
+2020-01-21 02:26:32,570 - code = 68529c40bf697ce9cd168710b37d0fcb5512be4c131a0ed6ce56cfc4de5ce4edbc448abf6477979cb5e7a2e18da62e505861dae4c487fcab70193e092ef4515e
+2020-01-21 02:26:32,878 - name: Rui Pedro Faustino da Silva
+2020-01-21 02:26:32,878 - email: rsilva122@gmail.com
+2020-01-21 02:26:32,878 - birthday: 29/09/1995
+2020-01-21 02:26:32,878 - username = ist178938
+2020-01-21 02:26:32,878 - token = ODUxNDk4NzQxMzI1Njg2Ojk0OTkzMDhlN2UxNDBhMjg0NmFjN2Y2M2FmOWRjNDA2NDA4OWJkNjVkMzk4M2UxOWRhMmU0NGRhZTQ0NzhjMTE2ODQ5YTA1YzVlNzFhNDUyZjBkOTVhY2YxNWM5MjZlMmI5Yzg1YzU5ZDdiNzM3NWE5NDVlMzhhMzlhMmZhYWVm
+2020-01-21 02:26:32,898 - user exists
+2020-01-21 02:26:32,934 - user ist178938 already exists, and token was updated
+2020-01-21 02:26:32,938 - finished if
+2020-01-21 02:26:33,206 - WEB access to home page
+2020-01-21 02:26:33,207 - admin variable: Not Admin .
+2020-01-21 02:26:35,409 - WEB access to campus page
+2020-01-21 02:26:38,511 - WEB access to campus page buildings_in_campus
+2020-01-21 02:26:40,657 - WEB access to campus page floors_in_building
+2020-01-21 02:26:43,076 - WEB access to campus page rooms_in_floor
+2020-01-21 02:26:46,378 - WEB access to campus page room_details
+2020-01-21 02:30:18,305 - WEB access to campus page room_details
+2020-01-21 02:32:43,902 - WEB access to campus page room_details
+2020-01-21 02:39:20,295 - WEB access to campus page room_details
+2020-01-21 02:40:35,179 - WEB access to campus page room_details
+2020-01-21 02:41:22,338 - WEB access to default login page
+2020-01-21 02:41:24,450 - POST to authorization_url
+2020-01-21 02:41:24,862 - GET to /callback endpoint
+2020-01-21 02:41:24,862 - code = dc6eea8e5150c7e69dcb9404a15c7c7b4ea35771675d73b8fca9cb775ce3f4f3368c1724637428f50b19b1613b5a2ec2703d01a0dd285a4f1b92b1b878c41c2c
+2020-01-21 02:41:25,164 - name: Rui Pedro Faustino da Silva
+2020-01-21 02:41:25,164 - email: rsilva122@gmail.com
+2020-01-21 02:41:25,164 - birthday: 29/09/1995
+2020-01-21 02:41:25,164 - username = ist178938
+2020-01-21 02:41:25,164 - token = ODUxNDk4NzQxMzI1Njg5OjU2M2JhMzUyYzgxMzAyZDNmM2Y5Nzk2OWJhMTY4MmViMTg3MzgyM2U1MTcxMTJhOGUxMmI1YTgyNzdjMzhlYzYzZDYxNTA4YjEzYWVkMDQwZmNmMTNiMDg3YzQ3NDgxNDc1NGU0ZjFiZDFlM2ZiMDI4ODQ1ZmFjOGNiYWY5Njc5
+2020-01-21 02:41:25,181 - user exists
+2020-01-21 02:41:25,207 - user ist178938 already exists, and token was updated
+2020-01-21 02:41:25,210 - finished if
+2020-01-21 02:41:25,475 - WEB access to home page
+2020-01-21 02:41:25,475 - admin variable: Not Admin .
+2020-01-21 02:41:27,526 - WEB access to campus page
+2020-01-21 02:41:29,462 - WEB access to campus page buildings_in_campus
+2020-01-21 02:41:31,348 - WEB access to campus page floors_in_building
+2020-01-21 02:41:33,066 - WEB access to campus page rooms_in_floor
+2020-01-21 02:41:34,900 - WEB access to campus page room_details
+2020-01-21 02:42:46,821 - WEB access to campus page room_details
+2020-01-21 02:43:18,773 - WEB access to campus page room_details
+2020-01-21 02:44:18,906 - WEB access to campus page room_details
+2020-01-21 02:45:20,029 - WEB access to campus page room_details
+2020-01-21 02:46:38,171 - WEB access to campus page room_details
+2020-01-21 02:47:06,006 - WEB access to campus page room_details
+2020-01-21 02:49:38,168 - WEB access to campus page room_details
+2020-01-21 02:49:55,486 - WEB access to home page
+2020-01-21 02:49:55,486 - admin variable: Not Admin .
+2020-01-21 02:49:58,347 - WEB access to campus page
+2020-01-21 02:50:00,250 - WEB access to campus page buildings_in_campus
+2020-01-21 02:50:08,038 - WEB access to campus page floors_in_building
+2020-01-21 02:50:10,691 - WEB access to campus page rooms_in_floor
+2020-01-21 02:50:13,699 - WEB access to campus page room_details
+2020-01-21 02:53:42,139 - WEB access to campus page rooms_in_floor
+2020-01-21 02:53:44,407 - WEB access to campus page room_details
+2020-01-21 02:53:59,312 - WEB access to default login page
+2020-01-21 02:54:01,120 - POST to authorization_url
+2020-01-21 02:54:01,512 - GET to /callback endpoint
+2020-01-21 02:54:01,512 - code = 33159c90aa7db736a1b3b5a4fc51069ab1a2b4683d409741e6cccff2aa15d61195c62d65c8c16b8551d01d4d91b6c1d57dda57f3db0f10fd8f79929f5b3049b5
+2020-01-21 02:54:01,822 - name: Rui Pedro Faustino da Silva
+2020-01-21 02:54:01,822 - email: rsilva122@gmail.com
+2020-01-21 02:54:01,822 - birthday: 29/09/1995
+2020-01-21 02:54:01,822 - username = ist178938
+2020-01-21 02:54:01,822 - token = ODUxNDk4NzQxMzI1NjkwOmRhMTQ5ODQxNjJiOGM0ZGE3MDhjMDBkZDg5Y2Q1NDdiNzNhMDY2MmYzMWMyYzg2NTc2NWI4YTE5NDA5ZGZlODI1Njc1YzI4ZWMxYTc2YTE4Mjc0ZmMzNWUzOGJiYzMyMWRlODZhOGIyN2I5ZDc5NTNmMDg2OWQxOTU0NjY1MjVh
+2020-01-21 02:54:01,840 - user exists
+2020-01-21 02:54:01,868 - user ist178938 already exists, and token was updated
+2020-01-21 02:54:01,872 - finished if
+2020-01-21 02:54:02,149 - WEB access to home page
+2020-01-21 02:54:02,149 - admin variable: Not Admin .
+2020-01-21 02:54:04,148 - WEB access to campus page
+2020-01-21 02:54:05,994 - WEB access to campus page buildings_in_campus
+2020-01-21 02:54:10,430 - WEB access to campus page floors_in_building
+2020-01-21 02:54:12,197 - WEB access to campus page rooms_in_floor
+2020-01-21 02:54:14,438 - WEB access to campus page room_details
+2020-01-21 02:54:53,992 - WEB access to campus page
+2020-01-21 02:54:55,454 - WEB access to campus page
+2020-01-21 02:54:59,326 - WEB access to campus page buildings_in_campus
+2020-01-21 02:55:03,270 - WEB access to campus page floors_in_building
+2020-01-21 02:55:05,518 - WEB access to campus page rooms_in_floor
+2020-01-21 02:55:08,044 - WEB access to campus page room_details
+2020-01-21 02:57:55,696 - WEB access to default login page
+2020-01-21 02:57:57,477 - POST to authorization_url
+2020-01-21 02:57:57,768 - GET to /callback endpoint
+2020-01-21 02:57:57,768 - code = a5bf1ab144c959d82e55eea2ea8b4f354e17cbadf4c564062bb7390731de16e61673459fdaa112b939315e07bb7f969f77257ef1c95161d52a06d4c084218ab0
+2020-01-21 02:57:58,074 - name: Rui Pedro Faustino da Silva
+2020-01-21 02:57:58,074 - email: rsilva122@gmail.com
+2020-01-21 02:57:58,074 - birthday: 29/09/1995
+2020-01-21 02:57:58,074 - username = ist178938
+2020-01-21 02:57:58,074 - token = ODUxNDk4NzQxMzI1NjkxOjRkMzJkZjcwMTU1Zjk5Zjc2MDU0MGIwNGRkYmJkNmQ0ZTg4MTc0NDI0MTlmOTk2OTZjODdkMjFhODlkYzkwNGFjZTc0NTg2ZWEyYmM5OTY1YzgzNDM4ODI0ZjRjZDVlMWRjMWVkZjExODQ3YmY1NDVkODRmYTY2NTkzNmMxMWFm
+2020-01-21 02:57:58,091 - user exists
+2020-01-21 02:57:58,121 - user ist178938 already exists, and token was updated
+2020-01-21 02:57:58,128 - finished if
+2020-01-21 02:57:58,391 - WEB access to home page
+2020-01-21 02:57:58,391 - admin variable: Not Admin .
+2020-01-21 02:58:00,324 - WEB access to campus page
+2020-01-21 02:58:05,333 - WEB access to campus page buildings_in_campus
+2020-01-21 02:58:09,001 - WEB access to campus page floors_in_building
+2020-01-21 02:58:15,794 - WEB access to campus page rooms_in_floor
+2020-01-21 02:58:18,691 - WEB access to campus page room_details
+2020-01-21 02:58:38,792 - WEB access to campus page room_details
+2020-01-21 03:02:33,588 - WEB access to campus page floors_in_building
+2020-01-21 03:02:35,545 - WEB access to campus page rooms_in_floor
+2020-01-21 03:02:38,320 - WEB access to campus page room_details
+2020-01-21 03:03:58,391 - WEB access to campus page room_details
+2020-01-21 03:04:34,252 - WEB access to campus page rooms_in_floor
+2020-01-21 03:04:36,935 - WEB access to campus page room_details
+2020-01-21 03:05:59,562 - WEB access to campus page room_details
+2020-01-21 03:06:18,255 - WEB access to campus page room_details
+2020-01-21 03:06:31,257 - WEB access to campus page room_details
+2020-01-21 03:06:35,626 - WEB access to campus page rooms_in_floor
+2020-01-21 03:06:41,133 - WEB access to campus page room_details
+2020-01-21 03:07:00,650 - WEB access to campus page room_details
+2020-01-21 03:18:12,877 - WEB access to campus page room_details
+2020-01-21 04:33:49,069 - WEB access to qr reader page
+2020-01-21 04:33:52,512 - POST to authorization_url
+2020-01-21 04:33:52,917 - GET to /callback endpoint
+2020-01-21 04:33:52,917 - code = e49b45ad957b3f5df8f89c4aedd77c62393cb194f92bb9979eb6568b235adb9ddd298586592851707b133edfb205e5cd9ad4d127c3da883b6ea1220466c4e25e
+2020-01-21 04:33:53,251 - name: Rui Pedro Faustino da Silva
+2020-01-21 04:33:53,251 - email: rsilva122@gmail.com
+2020-01-21 04:33:53,251 - birthday: 29/09/1995
+2020-01-21 04:33:53,251 - username = ist178938
+2020-01-21 04:33:53,251 - token = Mjg4NTQ4Nzg3OTIxNTE2OjFlZjNiNjk3YTEzN2FjMzZhZjZhZDdmZmU1NGM4MjE1MmM5YjA1MzM2MTc1ZjY4Zjk0NWMyNTQxODdjOWZlZjk5ZDdjMDIzYmM2ZWUyODQ2Y2YxNGI1ZWE3ODA1NTk1MjdiZGYyYjYzNWQ4NzAyMmJjMzhmMDJmYzUxNGExMTZi
+2020-01-21 04:33:53,324 - user exists
+2020-01-21 04:33:53,353 - user ist178938 already exists, and token was updated
+2020-01-21 04:33:53,359 - finished if
+2020-01-21 04:33:53,618 - WEB access to home page
+2020-01-21 04:33:53,618 - admin variable: Not Admin .
+2020-01-21 04:34:00,093 - WEB access to qr reader page
+2020-01-21 04:34:32,134 - WEB access to qr reader page
+2020-01-21 04:38:33,308 - WEB access to home page
+2020-01-21 04:38:33,308 - admin variable: Not Admin .
+2020-01-21 04:45:33,447 - WEB access to home page
+2020-01-21 04:45:33,447 - admin variable: Not Admin .
+2020-01-21 04:47:51,748 - WEB access to home page
+2020-01-21 04:47:51,748 - admin variable: Not Admin .
+2020-01-21 04:47:54,006 - WEB access to qr reader page
+2020-01-21 04:49:02,658 - WEB access to qr reader page
+2020-01-21 04:50:01,647 - WEB access to qr reader page
+2020-01-21 04:50:06,805 - WEB access to home page
+2020-01-21 04:50:06,805 - admin variable: Not Admin .
+2020-01-21 04:50:09,783 - WEB access to qr reader page
+2020-01-21 04:51:01,092 - WEB access to qr reader page
+2020-01-21 05:02:41,378 - WEB access to qr reader page
+2020-01-21 11:05:01,180 - WEB access to default login page
+2020-01-21 11:09:59,149 - WEB access to default login page
+2020-01-21 11:10:04,677 - POST to authorization_url
+2020-01-21 11:10:32,315 - POST to authorization_url
+2020-01-21 11:10:56,048 - WEB access to default login page
+2020-01-21 11:10:57,296 - POST to authorization_url
+2020-01-21 11:13:17,872 - WEB access to default login page
+2020-01-21 11:13:19,003 - POST to authorization_url
+2020-01-21 11:13:55,081 - POST to authorization_url
+2020-01-21 11:13:55,416 - GET to /callback endpoint
+2020-01-21 11:13:55,417 - code = 1bfe16859ce7b3e11ed83e752e251c62c83e6481e889ffc93ea64fe3812d7aa3d04ad690f39bf8a1a57fd98caa3c0d2fc6495a2f98d5095f1078d08559f8f0cd
+2020-01-21 11:13:55,751 - name: Rui Pedro Faustino da Silva
+2020-01-21 11:13:55,751 - email: rsilva122@gmail.com
+2020-01-21 11:13:55,751 - birthday: 29/09/1995
+2020-01-21 11:13:55,751 - username = ist178938
+2020-01-21 11:13:55,751 - token = ODUxNDk4NzQxMzI1NzI1OmNhNmQ1ZmZhY2FiMDA3ODdhNjU3YjA0MDBlZjI5ZmM4M2RmMDJlOTA3ZmE2ODBiZTI2NDllZjczMTllNDkyYzcyNDBkMWJjNTMxMWE1MjRlNWI2YmQ5N2JhMzhkMTdlYjNjNzY3YzJjNTIyYmQ5MzhiMDJjYTI2ZGRmNWU2NDE3
+2020-01-21 11:13:55,839 - user exists
+2020-01-21 11:13:55,866 - user ist178938 already exists, and token was updated
+2020-01-21 11:13:55,869 - finished if
+2020-01-21 11:13:56,337 - WEB access to home page
+2020-01-21 11:13:56,337 - admin variable: Not Admin .
+2020-01-21 11:14:05,006 - POST to authorization_url
+2020-01-21 11:14:05,340 - GET to /callback endpoint
+2020-01-21 11:14:05,340 - code = a7434d17bad99eb38899e3152d88f280e94a4dcac768a2267511a79b9179f5313c90668d13586df6c5b85020566d283b3dbc27315e6a1842fb66f7a0cf1b20be
+2020-01-21 11:14:05,709 - name: Rui Pedro Faustino da Silva
+2020-01-21 11:14:05,709 - email: rsilva122@gmail.com
+2020-01-21 11:14:05,709 - birthday: 29/09/1995
+2020-01-21 11:14:05,709 - username = ist178938
+2020-01-21 11:14:05,709 - token = ODUxNDk4NzQxMzI1NzI2OjhhMzZhMDRiZmUxYWQ2YjMzY2NhMTUyZDY1NDg0N2MwMjIxM2M1NjIwZjI5OGFlOGY0NTVjZmM2MTliNTNhOWZiZjQzOTdjMmQ2N2Q3OGNiNjg3YWRlYjg0NDJiZDkzZjFjODVkNWJiNjAxZTRjYTA1ZTgyMDM1YzAwMGE2MjIz
+2020-01-21 11:14:05,711 - user exists
+2020-01-21 11:14:05,741 - user ist178938 already exists, and token was updated
+2020-01-21 11:14:05,744 - finished if
+2020-01-21 11:14:06,139 - WEB access to home page
+2020-01-21 11:14:06,140 - admin variable: Not Admin .
+2020-01-21 11:14:08,575 - WEB access to qr reader page
+2020-01-21 11:14:45,282 - WEB access to campus page
+2020-01-21 11:15:41,303 - WEB access to home page
+2020-01-21 11:15:41,303 - admin variable: Not Admin .
+2020-01-21 11:15:45,535 - WEB access to qr reader page
+2020-01-21 11:15:49,448 - WEB access to campus page
+2020-01-21 11:15:51,985 - WEB access to campus page buildings_in_campus
+2020-01-21 11:15:57,774 - WEB access to campus page buildings_in_campus
+2020-01-21 11:16:00,565 - WEB access to campus page floors_in_building
+2020-01-21 11:16:03,776 - WEB access to campus page rooms_in_floor
+2020-01-21 11:17:33,457 - WEB access to campus page room_details
+2020-01-21 11:17:45,017 - WEB access to campus page room_details
+2020-01-21 11:18:52,362 - WEB access to campus page room_details
+2020-01-21 11:19:20,078 - WEB access to campus page room_details
+>>>>>>> d7b0a0f61934d2b96cbfe2e1b9fba95dbea9e820
+2020-01-21 07:43:01,321 - User ist181358 is generating key.
+2020-01-21 07:43:10,015 - WEB access to home page
+2020-01-21 07:43:10,015 - admin variable: Admin .
+2020-01-21 07:43:10,436 - WEB access to home page
+2020-01-21 07:43:10,436 - admin variable: Admin .
