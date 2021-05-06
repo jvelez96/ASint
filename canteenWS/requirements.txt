@@ -1,7 +1,7 @@
 config==0.4.2
 Flask==1.0.2
 Flask-Babel==0.12.2
-Flask-Cors==3.0.7
+Flask-Cors==3.0.9
 Flask-HTTPAuth==3.3.0
 gunicorn==19.9.0
 requests==2.21.0
